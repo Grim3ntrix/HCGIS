@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\StaffController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +30,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth','role:manager'])->group(function(){
+    Route::get('admin/manager/dashboard', [ManagerController::class, 'ManagerDashboard'])->name('manager.dashboard');
+});//End Group Manager Middleware
+
+Route::middleware(['auth','role:staff'])->group(function(){
+    Route::get('admin/staff/dashboard', [StaffController::class, 'StaffDashboard'])->name('staff.dashboard');
+});//End Group Staff Middleware
+

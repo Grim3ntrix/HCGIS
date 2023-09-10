@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2023 at 03:09 PM
+-- Generation Time: Sep 10, 2023 at 05:45 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -106,7 +106,7 @@ CREATE TABLE `users` (
   `photo` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `address` text DEFAULT NULL,
-  `role` enum('manager','staff','user') NOT NULL DEFAULT 'user',
+  `role` enum('manager','staff','customer') NOT NULL DEFAULT 'customer',
   `status` enum('active','inactive') NOT NULL DEFAULT 'active',
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -118,15 +118,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `photo`, `phone`, `address`, `role`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Manager', 'manager', 'manager@gmail.com', NULL, '$2y$10$F2kLCcQOsC/PMV62fltiHe3t3qJXe0zW2TygGnr8DryC16CKwPkrm', NULL, NULL, NULL, 'manager', 'active', 'OPSmklIpuNcaYghU1P4p658dhG5HQkmDoP9Yd0ni78keoPu6F5BrCtV8H3MX', NULL, NULL),
-(2, 'Staff', 'staff', 'staff@gmail.com', NULL, '$2y$10$B0k7qLyVnxCkKqdbbIFsrOtIhxAFrB2q6NixPfGsmoH6KdXEBgVDO', NULL, NULL, NULL, 'staff', 'active', NULL, NULL, NULL),
-(3, 'User', 'user', 'user@gmail.com', NULL, '$2y$10$/g.Aw9oyYAaErRDEVKjnwuaM/i/diDrfEttAgCEZQro0Np62GzVHW', NULL, NULL, NULL, 'user', 'active', NULL, NULL, NULL),
-(4, 'Dax Kuhlman', NULL, 'delfina74@example.net', '2023-09-06 01:15:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/003300?text=voluptatem', '+1 (252) 754-3366', '121 Bayer Glens\nPort Frida, KS 30871', 'manager', 'inactive', 'kCMQhm6Omh', '2023-09-06 01:15:42', '2023-09-06 01:15:42'),
-(5, 'Prof. Pierre Fadel DDS', NULL, 'tzieme@example.net', '2023-09-06 01:15:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00ee33?text=incidunt', '(458) 950-8522', '17408 Lorna Union\nFayland, IL 42386', 'manager', 'inactive', '7zELBt477o', '2023-09-06 01:15:42', '2023-09-06 01:15:42'),
-(6, 'Dr. Robbie Prohaska', NULL, 'xlegros@example.net', '2023-09-06 01:15:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/00dd00?text=aperiam', '1-727-714-2063', '5699 Rodriguez Common\nWest Lori, NV 91436', 'staff', 'active', 'BYdBPnsouU', '2023-09-06 01:15:42', '2023-09-06 01:15:42'),
-(7, 'Magnolia Durgan', NULL, 'rherzog@example.org', '2023-09-06 01:15:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/001166?text=veniam', '919-306-0156', '1347 Hill Dale\nFredericchester, TN 19761', 'staff', 'inactive', 'uswcpQzu8L', '2023-09-06 01:15:42', '2023-09-06 01:15:42'),
-(8, 'Shanie Thompson', NULL, 'pinkie60@example.net', '2023-09-06 01:15:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/0088dd?text=quo', '272-532-3358', '22150 Pagac Expressway\nDoylebury, OH 21983-4291', 'manager', 'inactive', 'YvFESJ6MMj', '2023-09-06 01:15:42', '2023-09-06 01:15:42'),
-(9, 'Cashier Staff', NULL, 'cashierstaff@gmail.com', NULL, '$2y$10$bmhiE326jmsNEGp/jdY4nuFgKIDQ2x7gLEIpxRrOiIdogPAAGDyHq', NULL, NULL, NULL, 'user', 'active', NULL, '2023-09-06 04:32:54', '2023-09-06 04:32:54');
+(1, 'Manager', 'manager', 'manager@gmail.com', NULL, '$2y$10$PD4B2Gbhz.0MUNIGBFtHcup6CcJvJdCM.Fk0TULNh8UmvSjvv0xRu', NULL, NULL, NULL, 'manager', 'active', NULL, NULL, NULL),
+(2, 'Staff', 'staff', 'staff@gmail.com', NULL, '$2y$10$YSWWRkaOtuuX0sTqIWxzDO.gWbhaIU5fQAFG6MBe6gahNbR8STsXC', NULL, NULL, NULL, 'staff', 'active', NULL, NULL, NULL),
+(3, 'Customer', 'customer', 'customer@gmail.com', NULL, '$2y$10$ggm6bVvvZmYaIzJD1WbAIe4GZu0E4XfeTBOcttpMOW/4.N2rKZzOS', NULL, NULL, NULL, 'customer', 'active', NULL, NULL, NULL),
+(4, 'Velda Cruickshank', NULL, 'mozelle.beatty@example.net', '2023-09-09 19:16:17', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/004488?text=sint', '+1.304.862.8006', '38554 Reichel Gardens Apt. 804\nLittelstad, SD 75747', 'manager', 'active', 'jujV6apKMu', '2023-09-09 19:16:18', '2023-09-09 19:16:18'),
+(5, 'Brook Grimes Jr.', NULL, 'dorothea.ruecker@example.com', '2023-09-09 19:16:18', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/001199?text=veritatis', '682.966.1428', '509 Maxie Junction Suite 010\nLemkechester, AZ 54757-4848', 'manager', 'active', 'kNO9GhhI1q', '2023-09-09 19:16:18', '2023-09-09 19:16:18'),
+(6, 'Mr. Reymundo Hessel', NULL, 'antonia.satterfield@example.org', '2023-09-09 19:16:18', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/007722?text=natus', '+1-407-388-5722', '38180 Kyleigh Stream\nNorth Houstonmouth, IN 78400-3268', 'customer', 'inactive', 'ThDYP4MZz8', '2023-09-09 19:16:18', '2023-09-09 19:16:18'),
+(7, 'Dr. Augustine Kihn MD', NULL, 'lou.vonrueden@example.org', '2023-09-09 19:16:18', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/0099ff?text=blanditiis', '(502) 241-4058', '853 Darien Mountain\nJaneport, ME 02814-5341', 'staff', 'inactive', 'tbatS4c9N2', '2023-09-09 19:16:18', '2023-09-09 19:16:18'),
+(8, 'Cleveland Barton', NULL, 'vkuphal@example.com', '2023-09-09 19:16:18', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'https://via.placeholder.com/60x60.png/0066dd?text=est', '+1-540-254-7374', '38279 Mertz Plains Suite 960\nAlishaburgh, AL 44041-7695', 'staff', 'active', '6WMxba6OEV', '2023-09-09 19:16:18', '2023-09-09 19:16:18');
 
 --
 -- Indexes for dumped tables
@@ -192,7 +191,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -36,11 +36,11 @@ class UsersTableSeeder extends Seeder
             ],
             //Users
             [
-                'name' => 'User',
-                'username' => 'user',
-                'email' => 'user@gmail.com',
+                'name' => 'Customer',
+                'username' => 'customer',
+                'email' => 'customer@gmail.com',
                 'password' => Hash::make('333'),
-                'role' => 'user',
+                'role' => 'customer',
                 'status' => 'active',
             ],
 
