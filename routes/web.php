@@ -33,6 +33,7 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('admin/manager/dashboard', [ManagerController::class, 'ManagerDashboard'])->name('manager.dashboard');
+    Route::get('admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
 });//End Group Manager Middleware
 
 Route::middleware(['auth','role:staff'])->group(function(){
