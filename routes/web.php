@@ -32,11 +32,16 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth','role:manager'])->group(function(){
-    Route::get('admin/manager/dashboard', [ManagerController::class, 'ManagerDashboard'])->name('manager.dashboard');
-    Route::get('admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
+    Route::get('/admin/manager/dashboard', [ManagerController::class, 'ManagerDashboard'])->name('manager.dashboard');
+    Route::get('/admin/manager/profile', [ManagerController::class, 'ManagerProfile'])->name('manager.profile');
+    Route::get('/admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
+    
 });//End Group Manager Middleware
 
+Route::get('/admin/manager/login', [ManagerController::class, 'ManagerLogin'])->name('manager.login');
+//End Admin Login route
+
 Route::middleware(['auth','role:staff'])->group(function(){
-    Route::get('admin/staff/dashboard', [StaffController::class, 'StaffDashboard'])->name('staff.dashboard');
+    Route::get('/admin/staff/dashboard', [StaffController::class, 'StaffDashboard'])->name('staff.dashboard');
 });//End Group Staff Middleware
 
