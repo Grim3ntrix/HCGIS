@@ -13,8 +13,7 @@
 
                         <div>
                             <img class="wd-50 rounded-circle" src="{{ !empty($profileData->photo) ? 
-                                url('upload/admin_images/.$profileData->photo') : url('upload/no_image.jpg') }}" 
-                                alt="profile">
+                            url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}">
                             <span class="h4 ms-2">{{ $profileData->username }}</span>
                         </div>
 
@@ -49,38 +48,38 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Update Profile</h6>
-                        <form class="forms-sample">
+                        <form method="POST" action="{{ route('manager.profile.store') }}" class="forms-sample"
+                        enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">Username</label>
+                                <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" autocomplete="off" value="{{$profileData->username}}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">Name</label>
+                                <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" autocomplete="off" value="{{$profileData->name}}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email"  name="email" autocomplete="off" value="{{$profileData->email}}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Phone</label>
+                                <label for="phone" class="form-label">Phone</label>
                                 <input type="text" class="form-control" id="phone" autocomplete="off"  name="phone" autocomplete="off" value="{{$profileData->phone}}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">Address</label>
+                                <label for="address" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="address" name="address" autocomplete="off" value="{{$profileData->address}}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">Photo</label>
+                                <label for="image" class="form-label">Photo</label>
                                 <input class="form-control" type="file" name="photo" id="image" >
                             </div>
                             <div class="mb-3">
-                            <label for="exampleInputUsername1"  class="form-label"></label>
+                            <label for="showImage" class="form-label"></label>
                                 <img id="showImage" class="wd-80 rounded-circle"
                                 src="{{ !empty($profileData->photo) ? 
-                                url('upload/admin_images/.$profileData->photo') : url('upload/no_image.jpg') }}" 
-                                alt="photo">
+                                url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}">
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>

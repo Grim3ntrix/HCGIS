@@ -34,8 +34,8 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/dashboard', [ManagerController::class, 'ManagerDashboard'])->name('manager.dashboard');
     Route::get('/admin/manager/profile', [ManagerController::class, 'ManagerProfile'])->name('manager.profile');
+    Route::post('/admin/manager/profile/store', [ManagerController::class, 'ManagerProfileStore'])->name('manager.profile.store');
     Route::get('/admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
-    
 });//End Group Manager Middleware
 
 Route::get('/admin/manager/login', [ManagerController::class, 'ManagerLogin'])->name('manager.login');
