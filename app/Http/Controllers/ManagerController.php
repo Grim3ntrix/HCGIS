@@ -10,7 +10,7 @@ class ManagerController extends Controller
 {
     public function ManagerDashboard(){
 
-        return view('admin.index');
+        return view('admin.body.index');
     }//End Method
 
      /**
