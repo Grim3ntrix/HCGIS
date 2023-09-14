@@ -34,6 +34,10 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{asset('frontend/assets/images/favicon.png')}}" />
+
+  <!-- Toaster -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
 </head>
 <body>
 	<div class="main-wrapper">
@@ -57,6 +61,33 @@
 		
 		</div>
 	</div>
+	
+	<!-- Toaster JS -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script>
+		@if(Session::has('message'))
+		var type = "{{ Session::get('alert-type','info') }}"
+		switch(type){
+			case 'info':
+			toastr.info(" {{ Session::get('message') }} ");
+			break;
+
+			case 'success':
+			toastr.success(" {{ Session::get('message') }} ");
+			break;
+
+			case 'warning':
+			toastr.warning(" {{ Session::get('message') }} ");
+			break;
+
+			case 'error':
+			toastr.error(" {{ Session::get('message') }} ");
+			break; 
+		}
+		@endif 
+	</script>	
+	<!-- endtoaster -->
 
 	<!-- core:js -->
 	<script src="{{asset('frontend/assets/vendors/core/core.js')}}"></script>

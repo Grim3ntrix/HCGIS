@@ -53,12 +53,19 @@ class ManagerController extends Controller
         
         if ($request->file('photo')) {
             $file = $request->file('photo');
+            @unlink(public_path('upload/admin_images/'.$data->photo));//replaceImage
             $filename = date('YmdHi').$file->getClientOriginalName();//202309131430example.jpg
             $file->move(public_path('upload/admin_images'), $filename);
             $data['photo'] = $filename;
         }
             $data->save();
-            return redirect()->back();
+
+            $notification = array(
+                'message' => 'Profile Updated Successfully',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->back()->with($notification);
     }//End Method
 
 }
