@@ -1,5 +1,5 @@
-@extends('admin.manager.manager_dashboard')
-@section('manager')
+@extends('web_customer.verified_customer.dashboard_customer')
+@section('customer')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="page-content">
@@ -48,7 +48,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Update Profile</h6>
-                        <form method="POST" action="{{ route('manager.profile.store') }}" class="forms-sample"
+                        <form method="POST" action="{{ route('customer.profile.store') }}" class="forms-sample"
                         enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">

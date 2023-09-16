@@ -16,10 +16,20 @@ class Role
     public function handle(Request $request, Closure $next, $role): Response
     {
 
-        if($request->user()->role !== $role ){
-            return redirect('dashboard');
+
+        $Role = $request->user()->role;
+
+        if ($Role !== $role) {
+            if ($Role === 'manager') {
+                return redirect('/admin/manager/dashboard');
+            }elseif ($Role === 'staff') {
+                return redirect('/admin/staff/dashboard');
+            }elseif ($Role === 'customer') {
+                return redirect('/dashboard');
+            }
+    
         }
-        
+
         return $next($request);
     } 
 }

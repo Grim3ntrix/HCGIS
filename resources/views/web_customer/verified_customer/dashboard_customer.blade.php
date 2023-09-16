@@ -8,7 +8,7 @@
 	<meta name="author" content="Capstone Project 2023@SLSU">
 	<meta name="keywords" content="Holy Cross Garden Information System">
 
-	<title>Dashboard - Manager | Holy Cross Garden </title>
+	<title>Dashboard - Customer | Holy Cross Garden </title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
 	<div class="main-wrapper">
 
 			<!-- partial:partials/_sidebar.html -->
-			@include('admin.manager.sidebar_manager')
+			@include('web_customer.verified_customer.sidebar_customer')
 		
 			<!-- partial -->
 	
@@ -53,7 +53,7 @@
       		@include('admin.body.header')
 			<!-- partial -->
 
-      		@yield('manager')
+      		@yield('customer')
 
 			<!-- partial:partials/_footer.html -->
       		@include('admin.body.footer')

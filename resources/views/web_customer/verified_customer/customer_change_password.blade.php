@@ -1,5 +1,5 @@
-@extends('admin.manager.manager_dashboard')
-@section('manager')
+@extends('web_customer.verified_customer.dashboard_customer')
+@section('customer')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="page-content">
@@ -47,40 +47,28 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Update Profile</h6>
-                        <form method="POST" action="{{ route('manager.profile.store') }}" class="forms-sample"
-                        enctype="multipart/form-data">
+                        <h6 class="card-title">Change Password</h6>
+                        <form method="POST" action="{{ route('customer.update.password') }}" class="forms-sample">
                             @csrf
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" autocomplete="off" value="{{$profileData->username}}">
+                                <label for="old_password" class="form-label">Old Password</label>
+                                <input type="text" class="form-control @error('old_password') is-invalid @enderror" id="old_password" name="old_password" autocomplete="off">
+                                @error('old_password')
+                                    <span class="text-danger">{{ $message }}<span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" autocomplete="off" value="{{$profileData->name}}">
+                                <label for="new_password" class="form-label">New Password</label>
+                                <input type="text" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" autocomplete="off">
+                                @error('new_password')
+                                    <span class="text-danger">{{ $message }}<span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email"  name="email" autocomplete="off" value="{{$profileData->email}}">
+                                <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
+                                <input type="text" class="form-control" id="new_password_confirmation" name="new_password_confirmation" autocomplete="off">
                             </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" class="form-control" id="phone" autocomplete="off"  name="phone" autocomplete="off" value="{{$profileData->phone}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" autocomplete="off" value="{{$profileData->address}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Photo</label>
-                                <input class="form-control" type="file" name="photo" id="image" >
-                            </div>
-                            <div class="mb-3">
-                            <label for="showImage" class="form-label"></label>
-                                <img id="showImage" class="wd-80 rounded-circle"
-                                src="{{ !empty($profileData->photo) ? 
-                                url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}">
-                            </div>
+
 
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>
                         </form>
@@ -93,16 +81,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#image').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
-
-</script>
 @endsection

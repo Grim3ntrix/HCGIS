@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class StaffController extends Controller
+class CustomerController extends Controller
 {
-    public function StaffDashboard(){
+    public function CustomerDashboard(){
+
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.body.index_staff', compact('profileData'));//passProfile to the view
+        return view('admin.body.index_customer', compact('profileData'));//passProfile to the view
     }//End Method
 
-    public function StaffLogout(Request $request){
+    /**
+     * Destroy an authenticated session.
+     */
+    public function CustomerLogout(Request $request)
+    {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
@@ -23,16 +29,18 @@ class StaffController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
-    }//End Method
+    }//End Method 
 
-    public function StaffProfile(Request $request)
+
+
+    public function CustomerProfile(Request $request)
     {
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.staff.staff_profile_view', compact('profileData'));
+        return view('web_customer.verified_customer.customer_profile_view', compact('profileData'));
     }//End Method
 
-    public function StaffProfileStore(Request $request)
+    public function CustomerProfileStore(Request $request)
     {
         $id = Auth::user()->id;
         $data = User::find($id);
@@ -59,14 +67,14 @@ class StaffController extends Controller
             return redirect()->back()->with($notification);
     }//End Method
 
-    public function StaffChangePassword()
+    public function CustomerChangePassword()
     {
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.staff.staff_change_password', compact('profileData'));
+        return view('web_customer.verified_customer.customer_change_password', compact('profileData'));
     }//End Method
 
-    public function StaffUpdatePassword(Request $request){
+    public function CustomerUpdatePassword(Request $request){
 
         //Validation
         $request->validate([
@@ -96,4 +104,6 @@ class StaffController extends Controller
         );
         return back()->with($notification);
     }
+    
+
 }
