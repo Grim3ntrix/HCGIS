@@ -1,5 +1,5 @@
-@extends('web_customer.verified_customer.dashboard_customer')
-@section('customer')
+@extends('admin.staff.dashboard_staff')
+@section('staff')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="page-content">

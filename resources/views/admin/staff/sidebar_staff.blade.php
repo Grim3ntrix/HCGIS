@@ -20,14 +20,14 @@
           </li>
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
-            <a href="pages/apps/chat.html" class="nav-link">
+            <a href="{{ route('chat') }}" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Chat</span>
             </a>
           </li>
           <li class="nav-item nav-category">Buyers Ledger</li>
           <li class="nav-item">
-            <a href="pages/apps/chat.html" class="nav-link">
+            <a href="{{ route('intern') }}" class="nav-link">
               <i class="link-icon" data-feather="edit-2"></i>
               <span class="link-title">Add Interns</span>
             </a>
@@ -41,7 +41,7 @@
             <div class="collapse" id="advancedUI">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/advanced-ui/cropper.html" class="nav-link">Purchase Lot</a>
+                  <a href="{{ route('staff.purchaselot') }}" class="nav-link">Purchase Lot</a>
                 </li>
               </ul>
             </div>
@@ -56,23 +56,23 @@
             <div class="collapse" id="general-pages">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/general/blank-page.html" class="nav-link">Add Record</a>
+                  <a href="{{ route('payment.record') }}" class="nav-link">Add Record</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/general/blank-page.html" class="nav-link">Paid Customers</a>
+                  <a href="{{ route('paid.customer') }}" class="nav-link">Paid Customers</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item nav-category">How to use</li>
           <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">
+            <a href="{{ route('watch.online') }}" class="nav-link">
               <i class="link-icon" data-feather="youtube"></i>
               <span class="link-title">Watch online</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">
+            <a href="{{ route('faq') }}" class="nav-link">
               <i class="link-icon" data-feather="info"></i>
               <span class="link-title">FAQ</span>
             </a>
