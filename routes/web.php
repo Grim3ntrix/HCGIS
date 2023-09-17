@@ -10,6 +10,10 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HowToUseController;
+use App\Http\Controllers\PricelistController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\LotController;
+
 
 /*
 /*
@@ -36,6 +40,14 @@ Route::middleware(['auth','role:customer'])->group(function () {
     Route::get('/customer/profile/change_password', [CustomerController::class, 'CustomerChangePassword'])->name('customer.change.password');
     Route::post('/customer/profile/update_password', [CustomerController::class, 'CustomerUpdatePassword'])->name('customer.update.password');
     Route::get('/customer/logout', [CustomerController::class, 'CustomerLogout'])->name('customer.logout');
+    //Sidebar
+    Route::get('/web-customer/verified-customer/chat', [ChatController::class, 'CustomerChat'])->name('customer.chat');
+    Route::get('/web-customer/verified-customer/intern', [InternController::class, 'CustomerShowIntern'])->name('customer.showintern');
+    Route::get('/web-customer/verified-customer/sold-lots', [LotController::class, 'SoldLots'])->name('sold.lot');
+    Route::get('/web-customer/verified-customer/show-pricelist/with-down-payment', [PricelistController::class, 'ShowPricelistWithDP'])->name('showpricelist.withdown');
+    Route::get('/web-customer/verified-customer/show-pricelist/no-down-payment', [PricelistController::class, 'ShowPricelistNoDP'])->name('showpricelist.nodown');
+    Route::get('/web-customer/verified-customer/how-to-use/watch-online', [HowToUseController::class, 'CustomerWatchOnline'])->name('customer.watchonline');
+    Route::get('/web-customer/verified-customer/how-to-use/frequently-ask-question', [HowToUseController::class, 'CustomerFAQ'])->name('customer.faq');
 });//End Group Customer Middleware
 
 Route::middleware(['auth','role:manager'])->group(function(){
@@ -45,6 +57,13 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/profile/change_password', [ManagerController::class, 'ManagerChangePassword'])->name('manager.change.password');
     Route::post('/admin/manager/profile/update_password', [ManagerController::class, 'ManagerUpdatePassword'])->name('manager.update.password');
     Route::get('/admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
+    //Sidebar
+    Route::get('/admin/manager/chat', [ChatController::class, 'ManagerChat'])->name('manager.chat');
+    Route::get('/admin/manager/add-pricelist/with-down-payment', [PricelistController::class, 'AddPricelistWithDP'])->name('addpricelist.withdown');
+    Route::get('/admin/manager/add-pricelist/no-down-payment', [PricelistController::class, 'AddPricelistNoDP'])->name('addpricelist.nodown');
+    Route::get('/admin/manager/account/create', [AccountController::class, 'CreateAccount'])->name('create.account');
+    Route::get('/admin/manager/how-to-use/watch-online', [HowToUseController::class, 'ManagerWatchOnline'])->name('manager.watchonline');
+    Route::get('/admin/manager/how-to-use/frequently-ask-question', [HowToUseController::class, 'ManagerFAQ'])->name('manager.faq');
 });//End Group Manager Middleware
 
 Route::middleware(['auth','role:staff'])->group(function(){
@@ -56,10 +75,10 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::get('/admin/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
     //Sidebar
     Route::get('/admin/staff/purchase-lot', [PurchaseLotController::class, 'PurchaseLot'])->name('staff.purchaselot');
-    Route::get('/admin/staff/chat', [ChatController::class, 'Chat'])->name('chat');
-    Route::get('/admin/staff/intern', [InternController::class, 'Intern'])->name('intern');
+    Route::get('/admin/staff/chat', [ChatController::class, 'StaffChat'])->name('staff.chat');
+    Route::get('/admin/staff/add-intern', [InternController::class, 'StaffAddIntern'])->name('staff.addintern');
     Route::get('/admin/staff/payment/add-record', [PaymentController::class, 'PaymentRecord'])->name('payment.record');
     Route::get('/admin/staff/payment/paid-customer', [PaymentController::class, 'PaidCustomer'])->name('paid.customer');
-    Route::get('/admin/staff/how-to-use/watch-online', [HowToUseController::class, 'WatchOnline'])->name('watch.online');
-    Route::get('/admin/staff/how-to-use/frequently-ask-question', [HowToUseController::class, 'FAQ'])->name('faq');
+    Route::get('/admin/staff/how-to-use/watch-online', [HowToUseController::class, 'StaffWatchOnline'])->name('staff.watchonline');
+    Route::get('/admin/staff/how-to-use/frequently-ask-question', [HowToUseController::class, 'StaffFAQ'])->name('staff.faq');
 });//End Group Staff Middleware

@@ -20,14 +20,14 @@
           </li>
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
-            <a href="pages/apps/chat.html" class="nav-link">
+            <a href="{{ route('customer.chat') }}" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Chat</span>
             </a>
           </li>
           <li class="nav-item nav-category">Information</li>
           <li class="nav-item">
-              <a href="pages/apps/chat.html" class="nav-link">
+              <a href="{{ route('customer.showintern') }}" class="nav-link">
                 <i class="link-icon" data-feather="map-pin"></i>
                 <span class="link-title">Interns</span>
               </a>
@@ -41,7 +41,7 @@
             <div class="collapse" id="uiComponents">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/ui-components/alerts.html" class="nav-link">Sold Lots</a>
+                  <a href="{{ route('sold.lot') }}" class="nav-link">Sold Lots</a>
                 </li>
               </ul>
             </div>
@@ -55,10 +55,10 @@
             <div class="collapse" id="forms">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/forms/basic-elements.html" class="nav-link">With Down-payment</a>
+                  <a href="{{ route('showpricelist.withdown') }}" class="nav-link">With Down-payment</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/forms/basic-elements.html" class="nav-link">No Down-payment</a>
+                  <a href="{{ route('showpricelist.nodown') }}" class="nav-link">No Down-payment</a>
                 </li>
               </ul>
             </div>
@@ -66,13 +66,13 @@
           
           <li class="nav-item nav-category">How to use</li>
           <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">
+            <a href="{{ route('customer.watchonline') }}" class="nav-link">
               <i class="link-icon" data-feather="youtube"></i>
               <span class="link-title">Watch online</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">
+            <a href="{{ route('customer.faq') }}" class="nav-link">
               <i class="link-icon" data-feather="info"></i>
               <span class="link-title">FAQ</span>
             </a>

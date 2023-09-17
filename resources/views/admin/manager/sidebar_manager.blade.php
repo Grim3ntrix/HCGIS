@@ -20,7 +20,7 @@
           </li>
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
-            <a href="pages/apps/chat.html" class="nav-link">
+            <a href="{{ route('manager.chat') }}" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Chat</span>
             </a>
@@ -35,10 +35,10 @@
             <div class="collapse" id="charts">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/charts/apex.html" class="nav-link">With Down-payment</a>
+                  <a href="{{ route('addpricelist.withdown') }}" class="nav-link">With Down-payment</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/charts/chartjs.html" class="nav-link">No Down-payment</a>
+                  <a href="{{ route('addpricelist.nowdown') }}" class="nav-link">No Down-payment</a>
                 </li>
               </ul>
             </div>
@@ -52,20 +52,20 @@
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/email/inbox.html" class="nav-link">Create</a>
+                  <a href="{{ route('create.account') }}" class="nav-link">Create</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item nav-category">How to use</li>
           <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">
+            <a href="{{ route('manager.watchonline') }}" class="nav-link">
               <i class="link-icon" data-feather="youtube"></i>
               <span class="link-title">Watch online</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">
+            <a href="{{ route('manager.faq') }}" class="nav-link">
               <i class="link-icon" data-feather="info"></i>
               <span class="link-title">FAQ</span>
             </a>
