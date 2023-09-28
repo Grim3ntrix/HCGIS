@@ -48,6 +48,7 @@ class StaffController extends Controller
             $filename = date('YmdHi').$file->getClientOriginalName();//202309131430example.jpg
             $file->move(public_path('upload/admin_images'), $filename);
             $data['photo'] = $filename;
+            dd($data->photo);
         }
             $data->save();
 

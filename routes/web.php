@@ -74,7 +74,7 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::post('/admin/staff/profile/update_password', [StaffController::class, 'StaffUpdatePassword'])->name('staff.update.password');
     Route::get('/admin/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
     //Sidebar
-    Route::get('/admin/staff/purchase-lot', [PurchaseLotController::class, 'PurchaseLot'])->name('staff.purchaselot');
+    Route::get('/admin/staff/purchase-lot', [PurchaseLotController::class, 'purchaseLot'])->name('staff.purchaselot');
     Route::get('/admin/staff/chat', [ChatController::class, 'StaffChat'])->name('staff.chat');
     Route::get('/admin/staff/add-intern', [InternController::class, 'StaffAddIntern'])->name('staff.addintern');
     Route::get('/admin/staff/payment/add-record', [PaymentController::class, 'PaymentRecord'])->name('payment.record');

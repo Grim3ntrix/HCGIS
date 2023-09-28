@@ -9,12 +9,17 @@
 	<meta name="keywords" content="Holy Cross Garden Information System">
 
 	<title>Purchase Lot | Holy Cross Garden </title>
-
+	
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- End fonts -->
+  
+  	<!-- jQuery and Datatable Css-->
+  	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">	
+	<!-- End jQuery and Datatable Css-->
 
 	<!-- core:css -->
 	<link rel="stylesheet" href="{{asset('frontend/assets/vendors/core/core.css')}}">
@@ -23,11 +28,6 @@
 	<!-- Plugin css for this page -->
 	<link rel="stylesheet" href="{{asset('frontend/assets/vendors/flatpickr/flatpickr.min.css')}}">
 	<!-- End plugin css for this page -->
-
-	<!-- inject:css -->
-	<link rel="stylesheet" href="{{asset('frontend/assets/fonts/feather-fonts/css/iconfont.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/assets/vendors/flag-icons-css/css/flag-icon.min.css')}}">
-	<!-- endinject -->
 
   <!-- Layout styles -->  
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/demo2/style.css')}}">
@@ -61,7 +61,18 @@
 		
 		</div>
 	</div>
-	
+	<!-- core:js Conflict if core.js is not loaded first-->
+	<script src="{{asset('frontend/assets/vendors/core/core.js')}}"></script>
+	<!-- endinject -->
+
+	<!--Datatable js-->
+	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+	<!--Datatable js-->
+
+	<!--Perfect Scrollbar js CDN-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js"></script>
+	<!--End Perfect Scrollbar js CDN-->
+
 	<!-- Toaster JS -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -88,10 +99,6 @@
 		@endif 
 	</script>	
 	<!-- endtoaster -->
-
-	<!-- core:js -->
-	<script src="{{asset('frontend/assets/vendors/core/core.js')}}"></script>
-	<!-- endinject -->
 
 	<!-- Plugin js for this page -->
   <script src="{{asset('frontend/assets/vendors/flatpickr/flatpickr.min.js')}}"></script>
