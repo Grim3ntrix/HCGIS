@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use DataTables;
+use App\DataTables\UserDataTable;
 
 class PurchaseLotController extends Controller
 {
-    public function purchaseLot(Request $request){
+    public function purchaseLot(UserDataTable $userDataTable)
+    {
+        $datatable = $userDataTable;
 
-        $users = User::all()->where('role','customer');
-        return view('admin.staff.content.index-purchase-lot', compact('users'));
-        
+        return view('admin.staff.content.index-purchase-lot', compact('datatable'));
     }
 }
