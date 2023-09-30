@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- End fonts -->
+  <script src="https://kit.fontawesome.com/07672f603e.js" crossorigin="anonymous"></script>
+
   
   	<!-- jQuery and Datatable Css-->
   	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -24,7 +26,7 @@
 	<!-- core:css -->
 	<link rel="stylesheet" href="{{asset('frontend/assets/vendors/core/core.css')}}">
 	<!-- endinject -->
-
+	
 	<!-- Plugin css for this page -->
 	<link rel="stylesheet" href="{{asset('frontend/assets/vendors/flatpickr/flatpickr.min.css')}}">
 	<!-- End plugin css for this page -->
@@ -72,6 +74,10 @@
 	<!--Perfect Scrollbar js CDN-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js"></script>
 	<!--End Perfect Scrollbar js CDN-->
+
+	<!--Start diffForHumans js CDN ex. 1 minute ago-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+	<!--End diffForHumans js CDN ex. 1 minute ago-->
 
 	<!-- Toaster JS -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

@@ -17,4 +17,8 @@ class PurchaseLotController extends Controller
         }
         return view('admin.staff.content.index-purchase-lot');
     }
+
+    public function addPurchaseLot(){
+        return view('admin.staff.content.index-add-purchase-lot');
+    }
 }

@@ -74,11 +74,16 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::post('/admin/staff/profile/update_password', [StaffController::class, 'StaffUpdatePassword'])->name('staff.update.password');
     Route::get('/admin/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
     //Sidebar
+    //Add Buyer Information
     Route::get('/admin/staff/purchase-lot', [PurchaseLotController::class, 'purchaseLot'])->name('staff.purchaselot');
+    Route::get('/admin/staff/purchase-lot/add-information', [PurchaseLotController::class, 'addPurchaseLot'])->name('staff.purchaselot.add');
+    //End
     Route::get('/admin/staff/chat', [ChatController::class, 'StaffChat'])->name('staff.chat');
     Route::get('/admin/staff/add-intern', [InternController::class, 'StaffAddIntern'])->name('staff.addintern');
+    //Payments Information
     Route::get('/admin/staff/payment/add-record', [PaymentController::class, 'PaymentRecord'])->name('payment.record');
     Route::get('/admin/staff/payment/paid-customer', [PaymentController::class, 'PaidCustomer'])->name('paid.customer');
+    //How to use
     Route::get('/admin/staff/how-to-use/watch-online', [HowToUseController::class, 'StaffWatchOnline'])->name('staff.watchonline');
     Route::get('/admin/staff/how-to-use/frequently-ask-question', [HowToUseController::class, 'StaffFAQ'])->name('staff.faq');
 });//End Group Staff Middleware
