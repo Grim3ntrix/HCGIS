@@ -84,7 +84,7 @@
 											</div><!-- Col -->
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Tel</label>
+													<label class="form-label">Tel.</label>
 													<input type="text" class="form-control" placeholder="Enter telephone number">
 												</div>
 											</div><!-- Col -->										
@@ -94,6 +94,20 @@
 													<input type="text" class="form-control" placeholder="Enter phone number">
 												</div>
 											</div><!-- Col -->
+										</div><!-- Row -->
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="mb-3">
+													<label class="form-label">Sales Counselor</label>
+													<input type="text" class="form-control" placeholder="Enter sales counselor">
+												</div>
+											</div><!-- Col -->
+											<div class="col-sm-6">
+												<div class="mb-3">
+													<label class="form-label">Agency Manager</label>
+													<input type="text" class="form-control" placeholder="Enter agency manager">
+												</div>
+											</div><!-- Col -->																					
 										</div><!-- Row -->
 									</form>
 						<button type="button" class="btn btn-primary submit">Submit</button>

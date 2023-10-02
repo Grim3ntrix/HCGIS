@@ -76,7 +76,8 @@ Route::middleware(['auth','role:staff'])->group(function(){
     //Sidebar
     //Add Buyer Information
     Route::get('/admin/staff/purchase-lot', [PurchaseLotController::class, 'purchaseLot'])->name('staff.purchaselot');
-    Route::get('/admin/staff/purchase-lot/add-information', [PurchaseLotController::class, 'addPurchaseLot'])->name('staff.purchaselot.add');
+    Route::get('/admin/staff/purchase-lot/personal-information', [PurchaseLotController::class, 'showPurchaseLotForm'])->name('staff.show.personalinfo.form');
+    Route::get('/admin/staff/purchase-lot/personal-info/product-detail', [PurchaseLotController::class, 'showPurchaseProductDetail'])->name('staff.show.productdetail.form');
     //End
     Route::get('/admin/staff/chat', [ChatController::class, 'StaffChat'])->name('staff.chat');
     Route::get('/admin/staff/add-intern', [InternController::class, 'StaffAddIntern'])->name('staff.addintern');

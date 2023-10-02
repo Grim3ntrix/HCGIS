@@ -16,9 +16,13 @@ class PurchaseLotController extends Controller
             return DataTables::of($data)->addIndexColumn()->make(true);
         }
         return view('admin.staff.content.index-purchase-lot');
-    }
+    }//End Method (Purchase Lot Customers DataTable)
 
-    public function addPurchaseLot(){
+    public function showPurchaseLotForm(){
         return view('admin.staff.content.index-add-purchase-lot');
-    }
+    }//End Method (Customer Personal Information)
+
+    public function showPurchaseProductDetail(){
+        return view('admin.staff.content.index-add-product-detail-of-purchase');
+    }//End Method (Customer Product Detail)
 }
