@@ -8,7 +8,7 @@
 	<meta name="author" content="Capstone Project 2023@SLSU">
 	<meta name="keywords" content="Holy Cross Garden Information System">
 
-	<title>Add New Payment Record | Holy Cross Garden </title>
+	<title>Paid Customer | Holy Cross Garden </title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,7 @@
       		@include('admin.body.header')
 			<!-- partial -->
 
-      		@yield('')
+      		@yield('show-paid-customer-content')
 
 			<!-- partial:partials/_footer.html -->
       		@include('admin.body.footer')

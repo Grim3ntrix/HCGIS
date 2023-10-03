@@ -11,25 +11,25 @@
 											<div class="col-sm-3">
 												<div class="mb-3">
 													<label class="form-label">Lot No.</label>
-													<input type="text" class="form-control" placeholder="Enter last name">
+													<input type="text" class="form-control" placeholder="Enter lot no.">
 												</div>
 											</div><!-- Col -->
 											<div class="col-sm-3">
 												<div class="mb-3">
 													<label class="form-label">Customer No.</label>
-													<input type="text" class="form-control" placeholder="Enter first name">
+													<input type="text" class="form-control" placeholder="">
 												</div>
 											</div><!-- Col -->
 											<div class="col-sm-3">
 												<div class="mb-3">
 													<label class="form-label">Reservation Date</label>
-													<input type="date" class="form-control" placeholder="Enter middle name">
+													<input type="date" class="form-control" placeholder="">
 												</div>
 											</div><!-- Col -->
 											<div class="col-sm-3">
 												<div class="mb-3">
 													<label class="form-label">Contract Date</label>
-													<input type="date" class="form-control" placeholder="Enter middle name">
+													<input type="date" class="form-control" placeholder="">
 												</div>
 											</div><!-- Col -->
 										</div><!-- Row -->
@@ -95,8 +95,8 @@
 													<select class="form-select mb-3">
 														<option selected="">Open this select menu</option>
 														<option value="1">10%</option>
-														<option value="2">20%</option>
-														<option value="3">30%</option>
+														<option value="2" disabled>20%</option>
+														<option value="3" disabled>30%</option>
 													</select>
 												</div>
 											</div><!-- Col -->
@@ -140,7 +140,7 @@
 													<label class="form-label">DP Rate</label>
 													<select class="form-select mb-3">
 														<option selected="">- Please select-</option>
-														<option value="1">10%</option>
+														<option value="1" disabled>10%</option>
 														<option value="2">20%</option>
 													</select>
 												</div>

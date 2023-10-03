@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function PaymentRecord(){
-        return view('admin.staff.body.add-payment');
+    public function showCustomerPaymentRecord(){
+        return view('admin.staff.content.index-show-payment-record');
     }
 
-    public function PaidCustomer(){
-        return view('admin.staff.body.paid-customer');
+    public function showPaidCustomer(){
+        return view('admin.staff.content.index-show-paid-customer');
     }
 }

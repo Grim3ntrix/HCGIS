@@ -20,10 +20,16 @@
 													<input type="text" class="form-control" placeholder="Enter first name">
 												</div>
 											</div><!-- Col -->
-											<div class="col-sm-4">
+											<div class="col-sm-2">
 												<div class="mb-3">
-													<label class="form-label">Middle Name</label>
-													<input type="text" class="form-control" placeholder="Enter middle name">
+													<label class="form-label">Middle Initial</label>
+													<input type="text" class="form-control" placeholder="Enter M.I">
+												</div>
+											</div><!-- Col -->
+											<div class="col-sm-2">
+												<div class="mb-3">
+													<label class="form-label">Extention</label>
+													<input type="text" class="form-control" placeholder="Jr./Sr.">
 												</div>
 											</div><!-- Col -->
 										</div><!-- Row -->

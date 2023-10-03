@@ -20,9 +20,9 @@ class PurchaseLotController extends Controller
 
     public function showPurchaseLotForm(){
         return view('admin.staff.content.index-add-purchase-lot');
-    }//End Method (Customer Personal Information)
+    }//End Method (Customer Personal Informations)
 
     public function showPurchaseProductDetail(){
         return view('admin.staff.content.index-add-product-detail-of-purchase');
-    }//End Method (Customer Product Detail)
+    }//End Method (Customer Product Details)
 }

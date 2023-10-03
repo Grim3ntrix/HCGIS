@@ -82,8 +82,8 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::get('/admin/staff/chat', [ChatController::class, 'StaffChat'])->name('staff.chat');
     Route::get('/admin/staff/add-intern', [InternController::class, 'StaffAddIntern'])->name('staff.addintern');
     //Payments Information
-    Route::get('/admin/staff/payment/add-record', [PaymentController::class, 'PaymentRecord'])->name('payment.record');
-    Route::get('/admin/staff/payment/paid-customer', [PaymentController::class, 'PaidCustomer'])->name('paid.customer');
+    Route::get('/admin/staff/payment/customer-records', [PaymentController::class, 'showCustomerPaymentRecord'])->name('payment.record');
+    Route::get('/admin/staff/payment/paid-records', [PaymentController::class, 'showPaidCustomer'])->name('paid.customer');
     //How to use
     Route::get('/admin/staff/how-to-use/watch-online', [HowToUseController::class, 'StaffWatchOnline'])->name('staff.watchonline');
     Route::get('/admin/staff/how-to-use/frequently-ask-question', [HowToUseController::class, 'StaffFAQ'])->name('staff.faq');
