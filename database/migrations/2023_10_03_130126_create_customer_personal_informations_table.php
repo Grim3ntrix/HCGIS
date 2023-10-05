@@ -17,7 +17,7 @@ class CreateCustomerPersonalInformationsTable extends Migration
             $table->string('last_name', '50');
             $table->string('first_name', '50');
             $table->string('middle_initial', '10');
-            $table->string('name_extention', '10');
+            $table->string('name_extension', '10');
             $table->string('gender', '50');
             $table->string('religion', '50');
             $table->date('date_of_birth');
