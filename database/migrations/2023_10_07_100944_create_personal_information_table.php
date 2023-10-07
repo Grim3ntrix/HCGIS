@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('last_name', '50');
             $table->string('first_name', '50');
             $table->string('middle_initial', '10');
-            $table->string('name_extension', '10');
+            $table->string('name_extension', '10')->nullable();
             $table->string('gender', '50');
             $table->string('religion', '50');
             $table->date('date_of_birth');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('marital_status', '50');
             $table->string('spouse', '50')->nullable();
             $table->string('email_address')->unique();
-            $table->string('telephone');
+            $table->string('telephone')->nullable();
             $table->string('phone_number')->unique();
             $table->string('sales_counselor', '50');
             $table->string('agency_manager', '60');
