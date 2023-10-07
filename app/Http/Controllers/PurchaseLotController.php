@@ -18,14 +18,14 @@ class PurchaseLotController extends Controller
     }//End Method (Purchase Lot Customers DataTable)
 
     public function showPersonalInfoForm(){
-        return view('admin.staff.content.index-add-purchase-lot');
+        return view('admin.staff.content.index-add-purchase-lot', ['userId' => $userId]);
     }//End Method (Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
 
+        $userId = $request->input('user_id');
         $customerPersonalInfo = new CustomerPersonalInformation();
-
-        $customerPersonalInfo->user_id = request->user()->id;
+        $customerPersonalInfo->user_id = $userId;
         $customerPersonalInfo->last_name = request->input('last_name');
         $customerPersonalInfo->first_name = request->input('first_name');
         $customerPersonalInfo->middle_initial = request->input('middle_initial');
@@ -42,11 +42,10 @@ class PurchaseLotController extends Controller
         $customerPersonalInfo->phone_number = request->input('phone_number');
         $customerPersonalInfo->sales_counselor = request->input('sales_counselor');
         $customerPersonalInfo->agency_manager = request->input('agency_manager');
-        $customerPersonalInfo->created_at = request->input('created_at');
-        $customerPersonalInfo->updated_at = request->input('updated_at');
+        $table->timestamps();
 
         $customerPersonalInfo->save();
-       
+        
     }//End Method (Customer Personal Informations)
 
     public function showPurchaseProductDetailForm(){
