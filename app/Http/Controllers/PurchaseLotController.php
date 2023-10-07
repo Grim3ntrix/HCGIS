@@ -30,7 +30,7 @@ class PurchaseLotController extends Controller
         $customerPersonalInfo->last_name = $request->input('last_name');
         $customerPersonalInfo->first_name = $request->input('first_name');
         $customerPersonalInfo->middle_initial = $request->input('middle_initial');
-        $customerPersonalInfo->name_extention = $request->input('name_extention');
+        $customerPersonalInfo->name_extension = $request->input('name_extension');
         $customerPersonalInfo->gender = $request->input('gender');
         $customerPersonalInfo->religion = $request->input('religion');
         $customerPersonalInfo->date_of_birth = $request->input('date_of_birth');
