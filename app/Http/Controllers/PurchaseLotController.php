@@ -18,7 +18,7 @@ class PurchaseLotController extends Controller
     }//End Method (Purchase Lot Customers DataTable)
 
     public function showPersonalInfoForm(){
-        return view('admin.staff.content.index-add-purchase-lot', ['userId' => $userId]);
+        return view('admin.staff.content.index-add-purchase-lot');
     }//End Method (Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
