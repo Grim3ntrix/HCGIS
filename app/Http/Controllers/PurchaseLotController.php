@@ -14,11 +14,14 @@ class PurchaseLotController extends Controller
         if($request->ajax()){
             $data = User::where('role','customer');
             return DataTables::of($data)->addIndexColumn()->make(true);
+
+            
         }
-        return view('admin.staff.content.index-purchase-lot');
+        return view('admin.staff.content.index-purchase-lot', ['userId' => $userId]);
     }//End Method (Purchase Lot Customers DataTable)
 
     public function showPersonalInfoForm(){
+        
         return view('admin.staff.content.index-add-purchase-lot');
     }//End Method (Customer Personal Informations)
 

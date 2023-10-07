@@ -8,7 +8,7 @@
 						<h6 class="card-title" style="margin-bottom: 20px;">Customer's Personal Information</h6>
 									<form id="personal-information-form" action="{{ route('staff.store.personalinfo.form') }}" method="POST">
 										@csrf
-										<input type="hidden" name="user_id" id="user_id">
+										<input type="hidden" name="user_id" id="user_id" value="{{ $data }}">
 										<div class="row">
 											<div class="col-sm-4">
 												<div class="mb-3">
