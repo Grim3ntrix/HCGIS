@@ -124,4 +124,33 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$(document).ready(function() {
+			$('.edit-button').click(function(e) {
+				e.preventDefault();
+
+				var userId = $(this).data('user-id');
+
+				// Set the value of the hidden input to the user_id.
+				$('#user_id').val(userId);
+
+				// Get the form data as an array.
+				var formData = $('#personal-information-form').serializeArray();
+
+				// Submit the form using Ajax.
+				$.ajax({
+				url: $('#personal-information-form').attr('action'),
+				type: 'POST',
+				data: formData,
+				success: function(response) {
+					// Handle the success response.
+				},
+				fail: function(error) {
+					// Handle the error response.
+				}
+				});
+			});
+		});
+
+	</script>
 @endsection
