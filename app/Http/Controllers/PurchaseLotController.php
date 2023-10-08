@@ -13,6 +13,7 @@ class PurchaseLotController extends Controller
     public function purchaseLot(Request $request){
 
         if($request->ajax()){
+            
             $data = User::where('role','customer');
             return DataTables::of($data)->addIndexColumn()->make(true);          
         }
@@ -21,7 +22,8 @@ class PurchaseLotController extends Controller
     }//End Method (Purchase Lot Customers DataTable)
 
     public function showPersonalInfoForm(){
-        
+        $userId = $row['user_id'];
+        $user = User::find($userId);
         
         return view('admin.staff.content.index-add-purchase-lot');
     }//End Method (Customer Personal Informations)

@@ -76,7 +76,7 @@ Route::middleware(['auth','role:staff'])->group(function(){
     //Sidebar
     //Add Buyer Information
     Route::get('/admin/staff/purchase-lot', [PurchaseLotController::class, 'purchaseLot'])->name('staff.purchaselot');
-    Route::get('/admin/staff/purchase-lot/personal-information', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
+    Route::get('/admin/staff/purchase-lot/personal-information/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/purchase-lot/personal-information-store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
     Route::get('/admin/staff/purchase-lot/personal-info/product-detail', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
     //End
