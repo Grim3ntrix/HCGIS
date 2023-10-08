@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseLotController extends Controller
 {
-    private $row;
+    
     public function purchaseLot(Request $request){
 
         if($request->ajax()){
@@ -31,7 +31,6 @@ class PurchaseLotController extends Controller
     }//End Method (Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
-        
 
         $userId = $request->input('user_id');
         $customerPersonalInfo = new PersonalInformation();
@@ -53,11 +52,21 @@ class PurchaseLotController extends Controller
         $customerPersonalInfo->sales_counselor = $request->input('sales_counselor');
         $customerPersonalInfo->agency_manager = $request->input('agency_manager');
         //dd($request->all());
-        $customerPersonalInfo->save();
+        $customerPersonalInfo->save(); 
+
+        $notification = array(
+            'message' => 'Successfully Added!, Please proceed final step',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('staff.show.productdetail.form')->with($notification);
         
     }//End Method (Customer Personal Informations)
 
-    public function showPurchaseProductDetailForm(){
+    public function showPurchaseProductDetailForm(Request $request){
+
+        
+
         return view('admin.staff.content.index-add-product-detail-of-purchase');
     }//End Method (Customer Product Details)
 
