@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseLotController extends Controller
 {
+    private $row;
     public function purchaseLot(Request $request){
 
         if($request->ajax()){
@@ -21,11 +22,12 @@ class PurchaseLotController extends Controller
 
     }//End Method (Purchase Lot Customers DataTable)
 
-    public function showPersonalInfoForm(){
-        $userId = $row['user_id'];
+    public function showPersonalInfoForm(Request $request){
+
+        $userId = $request->route('id');
         $user = User::find($userId);
-        
-        return view('admin.staff.content.index-add-purchase-lot');
+
+        return view('admin.staff.content.index-add-purchase-lot', with(['row'=> $user]));
     }//End Method (Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
@@ -50,7 +52,7 @@ class PurchaseLotController extends Controller
         $customerPersonalInfo->phone_number = $request->input('phone_number');
         $customerPersonalInfo->sales_counselor = $request->input('sales_counselor');
         $customerPersonalInfo->agency_manager = $request->input('agency_manager');
-        dd($request->all());
+        //dd($request->all());
         $customerPersonalInfo->save();
         
     }//End Method (Customer Personal Informations)
