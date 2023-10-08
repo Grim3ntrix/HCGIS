@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\PersonalInformation;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseLotController extends Controller
 {
@@ -13,19 +14,20 @@ class PurchaseLotController extends Controller
 
         if($request->ajax()){
             $data = User::where('role','customer');
-            return DataTables::of($data)->addIndexColumn()->make(true);
-
-            
+            return DataTables::of($data)->addIndexColumn()->make(true);          
         }
-        return view('admin.staff.content.index-purchase-lot', ['userId' => $userId]);
+        return view('admin.staff.content.index-purchase-lot');
+
     }//End Method (Purchase Lot Customers DataTable)
 
     public function showPersonalInfoForm(){
+        
         
         return view('admin.staff.content.index-add-purchase-lot');
     }//End Method (Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
+        
 
         $userId = $request->input('user_id');
         $customerPersonalInfo = new PersonalInformation();
@@ -46,7 +48,7 @@ class PurchaseLotController extends Controller
         $customerPersonalInfo->phone_number = $request->input('phone_number');
         $customerPersonalInfo->sales_counselor = $request->input('sales_counselor');
         $customerPersonalInfo->agency_manager = $request->input('agency_manager');
-
+        dd($request->all());
         $customerPersonalInfo->save();
         
     }//End Method (Customer Personal Informations)

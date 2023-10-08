@@ -35,14 +35,13 @@
           },
           columns: [
             {
-              data: 'id',
-              name: 'id',
-              render: function(data, type, row) {
-                var userId = row.id;
+            data: 'id',
+            name: 'id',
+            render: function(data, type, row) {
                 var actions = '';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', userId) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-edit fa-sm"></i></a>';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', userId) }}" class="btn btn-success btn-sm"><i class="fa-solid fa-eye fa-sm"></i></a>';
-                return actions;
+                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-edit fa-sm"></i></a>';
+                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-success btn-sm"><i class="fa-solid fa-eye fa-sm"></i></a>';
+                return actions.replace(':id', data);
               }
             },
             {data: 'name', name: 'name' },

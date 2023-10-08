@@ -8,7 +8,7 @@
 						<h6 class="card-title" style="margin-bottom: 20px;">Customer's Personal Information</h6>
 									<form id="personal-information-form" action="{{ route('staff.store.personalinfo.form') }}" method="POST">
 										@csrf
-										<input type="hidden" name="user_id" id="user_id" value="{{ $data }}">
+										<input type="text" name="user_id" id="user_id" value="1">
 										<div class="row">
 											<div class="col-sm-4">
 												<div class="mb-3">
@@ -124,33 +124,4 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		$(document).ready(function() {
-			$('.edit-button').click(function(e) {
-				e.preventDefault();
-
-				var userId = $(this).data('user-id');
-
-				// Set the value of the hidden input to the user_id.
-				$('#user_id').val(userId);
-
-				// Get the form data as an array.
-				var formData = $('#personal-information-form').serializeArray();
-
-				// Submit the form using Ajax.
-				$.ajax({
-				url: $('#personal-information-form').attr('action'),
-				type: 'POST',
-				data: formData,
-				success: function(response) {
-					// Handle the success response.
-				},
-				fail: function(error) {
-					// Handle the error response.
-				}
-				});
-			});
-		});
-
-	</script>
 @endsection
