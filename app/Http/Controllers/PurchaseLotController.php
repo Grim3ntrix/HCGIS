@@ -26,11 +26,32 @@ class PurchaseLotController extends Controller
 
         $userId = $request->route('id');
         $user = User::find($userId);
-
+        
         return view('admin.staff.content.index-add-purchase-lot', with(['row'=> $user]));
     }//End Method (Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
+
+        $userId = $request->route('id');
+        $user = User::find($userId);
+
+        //Validation
+        $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_initial' => 'required',
+            'gender' => 'required|in:Male,Female',
+            'religion' => 'required',
+            'date_of_birth' => 'required',
+            'current_address' => 'required',
+            'zip_code' => 'required',
+            'marital_status' => 'required|in:Single,Married,Widow/Widower,Separated',
+            'email_address' => 'required|unique:personal_information|max:100',
+            'telephone' => 'required',
+            'phone_number' => 'required|unique:personal_information|max:12',
+            'sales_counselor' => 'required',
+            'agency_manager' => 'required',            
+        ]);
 
         $userId = $request->input('user_id');
         $customerPersonalInfo = new PersonalInformation();
@@ -55,19 +76,24 @@ class PurchaseLotController extends Controller
         $customerPersonalInfo->save(); 
 
         $notification = array(
-            'message' => 'Successfully Added!, Please proceed final step',
+            'message' => 'Successfully Added, Proceed Final Step!',
             'alert-type' => 'success',
         );
 
-        return redirect()->route('staff.show.productdetail.form')->with($notification);
+        return redirect()->route('staff.show.productdetail.form',$user->id)->with($notification);
         
     }//End Method (Customer Personal Informations)
 
     public function showPurchaseProductDetailForm(Request $request){
 
-        
-
+        $userId = $request->query('id');
         return view('admin.staff.content.index-add-product-detail-of-purchase');
     }//End Method (Customer Product Details)
+
+    public function storePurchaseProductDetailForm(Request $request){
+
+    
+    }//End Method (Customer Product Details)
+
 
 }

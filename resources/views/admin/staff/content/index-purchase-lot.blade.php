@@ -18,7 +18,7 @@
                         </thead>
                         <tbody>
                         </tbody>
-                  </table>
+                  </table><br>
                 </div>
               </div>
             </div>
@@ -39,8 +39,8 @@
             name: 'id',
             render: function(data, type, row) {
                 var actions = '';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-edit fa-sm"></i></a>';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-success btn-sm"><i class="fa-solid fa-eye fa-sm"></i></a>';
+                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-primary btn-xs" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
+                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-success btn-xs"><i class="fa-solid fa-eye fa-sm"></i></a>';
                 return actions.replace(':id', data);
               }
             },

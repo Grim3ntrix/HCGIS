@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 class PricelistController extends Controller
 {
     public function AddPricelistWithDP(){
-        return view('admin.manager.body.add-pl-with-dp');
+        return view('admin.manager.content.index-add-pl-with-dp');
     }
 
     public function AddPricelistNoDP(){
-        return view('admin.manager.body.add-pl-no-dp');
+        return view('admin.manager.content.index-add-pl-no-dp');
     }//End Manager Pricelist
     
     public function ShowPricelistWithDP(){
