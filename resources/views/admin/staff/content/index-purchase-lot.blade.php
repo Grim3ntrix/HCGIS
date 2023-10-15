@@ -7,7 +7,7 @@
               <div class="card-body">
                 <h6 class="card-title">Purchase Memorial Lot</h6>
                 <div class="table-responsive">
-                  <table id="purchaseLot" class="table">
+                  <table id="purchaseLot" class="table table-hover">
                         <thead>
                             <th>Action</th>
                             <th>Name</th>
@@ -39,8 +39,8 @@
             name: 'id',
             render: function(data, type, row) {
                 var actions = '';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-primary btn-xs" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-success btn-xs"><i class="fa-solid fa-eye fa-sm"></i></a>';
+                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
+                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-success btn-icon"><i class="fa-solid fa-eye fa-sm"></i></a>';
                 return actions.replace(':id', data);
               }
             },

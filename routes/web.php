@@ -44,8 +44,8 @@ Route::middleware(['auth','role:customer'])->group(function () {
     Route::get('/web-customer/verified-customer/chat', [ChatController::class, 'CustomerChat'])->name('customer.chat');
     Route::get('/web-customer/verified-customer/intern', [InternController::class, 'CustomerShowIntern'])->name('customer.showintern');
     Route::get('/web-customer/verified-customer/sold-lots', [LotController::class, 'SoldLots'])->name('sold.lot');
-    Route::get('/web-customer/verified-customer/show-pricelist/with-down-payment', [PricelistController::class, 'ShowPricelistWithDP'])->name('showpricelist.withdown');
-    Route::get('/web-customer/verified-customer/show-pricelist/no-down-payment', [PricelistController::class, 'ShowPricelistNoDP'])->name('showpricelist.nodown');
+    Route::get('/web-customer/verified-customer/show-pricelist/with-down-payment', [PricelistController::class, 'showCustomerPricelistWithDP'])->name('show.customer.pricelist.withdown');
+    Route::get('/web-customer/verified-customer/show-pricelist/no-down-payment', [PricelistController::class, 'showCustomerPricelistNoDP'])->name('show.customer.pricelist.nodown');
     Route::get('/web-customer/verified-customer/how-to-use/watch-online', [HowToUseController::class, 'CustomerWatchOnline'])->name('customer.watchonline');
     Route::get('/web-customer/verified-customer/how-to-use/frequently-ask-question', [HowToUseController::class, 'CustomerFAQ'])->name('customer.faq');
 });//End Group Customer Middleware
@@ -58,9 +58,13 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::post('/admin/manager/profile/update_password', [ManagerController::class, 'ManagerUpdatePassword'])->name('manager.update.password');
     Route::get('/admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
     //Sidebar
+    //Chat
     Route::get('/admin/manager/chat', [ChatController::class, 'ManagerChat'])->name('manager.chat');
-    Route::get('/admin/manager/add-pricelist/with-down-payment', [PricelistController::class, 'AddPricelistWithDP'])->name('addpricelist.withdown');
-    Route::get('/admin/manager/add-pricelist/no-down-payment', [PricelistController::class, 'AddPricelistNoDP'])->name('addpricelist.nodown');
+    //End Chat
+    //ListPrice With Down Payment
+    Route::get('/admin/manager/add-pricelist/with-down-payment', [PricelistController::class, 'showPricelistWithDP'])->name('showpricelist.withdown');
+    //End ListPrice With Down Payment
+    Route::get('/admin/manager/add-pricelist/no-down-payment', [PricelistController::class, 'showPricelistNoDP'])->name('showpricelist.nodown');
     Route::get('/admin/manager/account/create', [AccountController::class, 'CreateAccount'])->name('create.account');
     Route::get('/admin/manager/how-to-use/watch-online', [HowToUseController::class, 'ManagerWatchOnline'])->name('manager.watchonline');
     Route::get('/admin/manager/how-to-use/frequently-ask-question', [HowToUseController::class, 'ManagerFAQ'])->name('manager.faq');
