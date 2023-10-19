@@ -35,7 +35,7 @@
             <div class="collapse" id="charts">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{ route('showpricelist.withdown') }}" class="nav-link">With Down-payment</a>
+                  <a href="{{ route('show.pricelist.withdown') }}" class="nav-link">With Down-payment</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('showpricelist.nodown') }}" class="nav-link">No Down-payment</a>

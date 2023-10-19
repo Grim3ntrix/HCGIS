@@ -1,75 +1,89 @@
 @extends('admin.manager.body.add-pl-with-dp')
 @section('price-list-with-down-payment-content')
 <div class="page-content">
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h6 class="card-title">List Price (With DownPayment)</h6>
-                
-                <a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-inverse-info" style="margin-right: 3px;"><i class="fa-solid fa-plus fa-xs"></i> New</a>
-                <div class="table-responsive">
-                  <table id="listPriceWithDP" class="table table-hover">
-                    <thead>
-                        <tr>                                                                    
-                            <th>Action</th>
-                            <th>No.</th>
-                            <th>Product Type</th>
-                            <th>Product Category</th>
-                            <th>Pre-Need Price (Spot Cash)</th>
-                            <th>Pre-Need Price (Contract Price)</th>
-                            <th>At-Need Price</th>
-                            <th>20% Downpayment</th>
-                            <th>80% Balance</th>
-                            <th>Created By</th>
-                            <th>Updated By</th>
-                            <th>Created at</th>
-                            <th>Updated at</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table><br>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-  $(document).ready(function() {
-      var listPriceTable = $('#listPriceWithDP').DataTable({
-          processing: true,
-          serverSide: true,
-          ajax: {
-            url: "{{ route('showpricelist.withdown') }}"
-          },
-          columns: [
-            {
-            data: 'id',
-            name: 'id',
-            render: function(data, type, row) {
-                var actions = '';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-pen-to-square fa-xs"></i></a>';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-danger btn-icon"><i class="fa-solid fa-trash-can fa-xs"></i></a>';
-                return actions.replace(':id', data);
-              }
-            },
-            {data: 'id', name: 'id' },
-            {data: 'product_type_id', name: 'product_type_id' },
-            {data: 'product_category_id', name: 'product_category_id' },
-            {data: 'pre_need_price_spot_cash', name: 'pre_need_price_spot_cash' },
-            {data: 'pre_need_price_contract_price', name: 'pre_need_price_contract_price' },
-            {data: 'at_need_price', name: 'at_need_price' },
-            {data: 'created_by', name: 'created_by' },
-            {data: 'updated_by', name: 'updated_by' },
-            {data: 'created_at', name: 'created_at' },         
-            {data: 'updated_at', name: 'updated_at',
-            render: function (data, type, row) {
-                return moment(data).fromNow();
-            }}, 
-          ]
-      });
-  });
-</script>
+  		<div class="row">
+			<div class="col-md-12 stretch-card">
+				<div class="card">
+					<div class="card-body">
+						<h6 class="card-title" style="margin-bottom: 20px;">Add New Price List (With Downpayment)</h6>
+                        <form action="{{ route('store.pricelist.withdown') }}" method="POST">
+                                    @csrf
+                               
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label for="product_type_id" class="form-label">Product Type</label>
+                                                <input type="text" name="product_type_id" id="product_type_id" class="form-control @error('product_type_id') is-invalid @enderror" placeholder="Enter Product Type">
+                                                @error('product_type_id')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label for="product_category_id" class="form-label">Product Category</label>
+                                                <input type="text" name="product_category_id" id="product_category_id" class="form-control @error('product_category_id') is-invalid @enderror" placeholder="Enter Product Category">
+                                                @error('product_category_id')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><!-- Col -->                                  
+                                    </div><!-- Row --> 
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label for="pre_need_price_spot_cash" class="form-label">Pre-Need Price (Spot Cash)</label>
+                                                <input type="text" name="pre_need_price_spot_cash" id="pre_need_price_spot_cash" class="form-control @error('pre_need_price_spot_cash') is-invalid @enderror" placeholder="Enter Spot Cash Price">
+                                                @error('pre_need_price_spot_cash')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label for="pre_need_price_contract_price" class="form-label">Pre-Need Price (Contract Price)</label>
+                                                <input type="text" name="pre_need_price_contract_price" id="pre_need_price_contract_price" class="form-control @error('pre_need_price_contract_price') is-invalid @enderror" placeholder="Enter Contract Price">
+                                                @error('pre_need_price_contract_price')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><!-- Col -->
+                                        
+                                    </div><!-- Row -->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="mb-3">
+                                                <label for="at_need_price" class="form-label">At-Need Price</label>
+                                                <input type="text" name="at_need_price" id="at_need_price" class="form-control @error('at_need_price') is-invalid @enderror" placeholder="Enter At-Need Price">
+                                                @error('at_need_price')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-4">
+                                            <div class="mb-3">
+                                                <label for="down_payment" class="form-label">20% Downpayment</label>
+                                                <input type="text" name="down_payment" id="down_payment" class="form-control @error('down_payment') is-invalid @enderror" placeholder="Enter Downpayment Value">
+                                                @error('down_payment')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-4">
+                                            <div class="mb-3">
+                                                <label for="balance" class="form-label">80% Balance</label>
+                                                <input type="text" name="balance" id="balance" class="form-control @error('balance') is-invalid @enderror" placeholder="Enter Expected Balance">
+                                                @error('balance')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><!-- Col -->                                      
+                                    </div><!-- Row -->             
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection

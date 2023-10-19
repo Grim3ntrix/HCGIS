@@ -86,7 +86,7 @@ class PurchaseLotController extends Controller
 
     public function showPurchaseProductDetailForm(Request $request){
 
-        $userId = $request->query('id');
+        $userId = $request->route('id');
         return view('admin.staff.content.index-add-product-detail-of-purchase');
     }//End Method (Customer Product Details)
 

@@ -62,8 +62,11 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/chat', [ChatController::class, 'ManagerChat'])->name('manager.chat');
     //End Chat
     //ListPrice With Down Payment
-    Route::get('/admin/manager/add-pricelist/with-down-payment', [PricelistController::class, 'showPricelistWithDP'])->name('showpricelist.withdown');
+    Route::get('/admin/manager/add-pricelist/with-down-payment', [PricelistController::class, 'showPricelistWithDP'])->name('show.pricelist.withdown');
+    Route::get('/admin/manager/add-pricelist/with-down-payment/new', [PricelistController::class, 'addPricelistWithDP'])->name('add.pricelist.withdown');
+    Route::post('/admin/manager/add-pricelist/with-down-payment/new/store', [PricelistController::class, 'storePricelistWithDP'])->name('store.pricelist.withdown');
     //End ListPrice With Down Payment
+
     Route::get('/admin/manager/add-pricelist/no-down-payment', [PricelistController::class, 'showPricelistNoDP'])->name('showpricelist.nodown');
     Route::get('/admin/manager/account/create', [AccountController::class, 'CreateAccount'])->name('create.account');
     Route::get('/admin/manager/how-to-use/watch-online', [HowToUseController::class, 'ManagerWatchOnline'])->name('manager.watchonline');

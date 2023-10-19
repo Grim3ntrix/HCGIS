@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('pre_need_price_spot_cash');
             $table->integer('pre_need_price_contract_price');
             $table->integer('at_need_price');
+            $table->integer('down_payment');
+            $table->integer('balance');
             $table->unsignedBigInteger('created_by')
                 ->foreign('created_by')
                 ->references('id')
