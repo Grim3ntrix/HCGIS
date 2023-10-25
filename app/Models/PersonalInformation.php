@@ -11,4 +11,8 @@ class PersonalInformation extends Model
 
     //All the form field will be fillable
     protected $guarded = [];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

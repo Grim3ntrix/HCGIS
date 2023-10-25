@@ -7,8 +7,7 @@
 					<div class="card-body">
 						<h6 class="card-title" style="margin-bottom: 20px;">Add New Price List (With Downpayment)</h6>
                         <form action="{{ route('store.pricelist.withdown') }}" method="POST">
-                                    @csrf
-                               
+                                    @csrf                            
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="mb-3">

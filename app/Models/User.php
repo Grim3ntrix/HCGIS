@@ -21,6 +21,16 @@ class User extends Authenticatable
     //All the form field will be fillable
     protected $guarded = [];
 
+    public function personalInformation()
+    {
+        return $this->hasOne(PersonalInformation::class);
+    }
+
+    public function purchaseDetail()
+    {
+        return $this->hasOne(PurchaseDetail::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\PersonalInformation;
+use App\Models\PurchaseDetail;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseLotController extends Controller
@@ -25,15 +26,12 @@ class PurchaseLotController extends Controller
     public function showPersonalInfoForm(Request $request){
 
         $userId = $request->route('id');
-        $user = User::find($userId);
+        $user = User::findOrfail($userId);
         
-        return view('admin.staff.content.index-add-purchase-lot', with(['row'=> $user]));
+        return view('admin.staff.content.index-add-purchase-lot', compact('user'));
     }//End Method (Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
-
-        $userId = $request->route('id');
-        $user = User::find($userId);
 
         //Validation
         $request->validate([
@@ -50,43 +48,24 @@ class PurchaseLotController extends Controller
             'telephone' => 'required',
             'phone_number' => 'required|unique:personal_information|max:12',
             'sales_counselor' => 'required',
-            'agency_manager' => 'required',            
+            'agency_manager' => 'required',
         ]);
 
         $userId = $request->input('user_id');
-        $customerPersonalInfo = new PersonalInformation();
-        $customerPersonalInfo->user_id = $userId;
-        $customerPersonalInfo->last_name = $request->input('last_name');
-        $customerPersonalInfo->first_name = $request->input('first_name');
-        $customerPersonalInfo->middle_initial = $request->input('middle_initial');
-        $customerPersonalInfo->name_extension = $request->input('name_extension');
-        $customerPersonalInfo->gender = $request->input('gender');
-        $customerPersonalInfo->religion = $request->input('religion');
-        $customerPersonalInfo->date_of_birth = $request->input('date_of_birth');
-        $customerPersonalInfo->current_address = $request->input('current_address');
-        $customerPersonalInfo->zip_code = $request->input('zip_code');
-        $customerPersonalInfo->marital_status = $request->input('marital_status');
-        $customerPersonalInfo->spouse = $request->input('spouse');
-        $customerPersonalInfo->email_address = $request->input('email_address');
-        $customerPersonalInfo->telephone = $request->input('telephone');
-        $customerPersonalInfo->phone_number = $request->input('phone_number');
-        $customerPersonalInfo->sales_counselor = $request->input('sales_counselor');
-        $customerPersonalInfo->agency_manager = $request->input('agency_manager');
-        //dd($request->all());
-        $customerPersonalInfo->save(); 
+        $user = User::findOrFail($userId);
+        $user->personalInformation()->create($request->all());
 
         $notification = array(
             'message' => 'Successfully Added, Proceed Final Step!',
             'alert-type' => 'success',
         );
 
-        return redirect()->route('staff.show.productdetail.form',$user->id)->with($notification);
+        return redirect()->route('staff.show.productdetail.form', ['id' => $user->id])->with($notification);
         
     }//End Method (Customer Personal Informations)
 
     public function showPurchaseProductDetailForm(Request $request){
 
-        $userId = $request->route('id');
         return view('admin.staff.content.index-add-product-detail-of-purchase');
     }//End Method (Customer Product Details)
 

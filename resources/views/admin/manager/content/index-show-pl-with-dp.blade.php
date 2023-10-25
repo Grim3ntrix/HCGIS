@@ -22,9 +22,8 @@
                             <th>20% Downpayment</th>
                             <th>80% Balance</th>
                             <th>Created By</th>
-                            <th>Updated By</th>
-                            <th>Created at</th>
-                            <th>Updated at</th>
+                            <th>Edited By</th>
+                            <th>Last Updated</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,8 +64,7 @@
             {data: 'down_payment', name: 'down_payment' },
             {data: 'balance', name: 'balance' },
             {data: 'created_by', name: 'created_by' },
-            {data: 'updated_by', name: 'updated_by' },
-            {data: 'created_at', name: 'created_at' },         
+            {data: 'updated_by', name: 'updated_by' },       
             {data: 'updated_at', name: 'updated_at',
             render: function (data, type, row) {
                 return moment(data).fromNow();
