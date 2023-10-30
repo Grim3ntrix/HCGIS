@@ -8,12 +8,12 @@
 						<h6 class="card-title" style="margin-bottom: 20px;">Customer's Personal Information</h6>
 									<form action="{{ route('staff.store.personalinfo.form') }}" method="POST">
 										@csrf
-										<input type="text" name="user_id" id="user_id" value="{{ $user->id }}">
+										<input type="hidden" name="user_id" id="user_id" value="{{ $user->id }}">
 										<div class="row">
 											<div class="col-sm-4">
 												<div class="mb-3">
 													<label for="lastname" class="form-label">Last Name</label>
-													<input type="text" name="last_name" id="lastname" class="form-control @error('last_name') is-invalid @enderror" placeholder="Enter last name">
+													<input type="text" name="last_name" id="lastname" class="form-control @error('last_name') is-invalid @enderror" placeholder="Enter last name" autocomplete="on">
 													@error('last_name')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -21,8 +21,8 @@
 											</div><!-- Col -->
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">First Name</label>
-													<input type="text" name="first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Enter first name">
+													<label for="first_name" class="form-label">First Name</label>
+													<input type="text" name="first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Enter first name" autocomplete="on">
 													@error('first_name')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -30,8 +30,8 @@
 											</div><!-- Col -->
 											<div class="col-sm-2">
 												<div class="mb-3">
-													<label class="form-label">Middle Initial</label>
-													<input type="text" name="middle_initial" id="middle_initial" class="form-control @error('middle_initial') is-invalid @enderror" placeholder="Enter M.I">
+													<label for="middle_initial" class="form-label">Middle Initial</label>
+													<input type="text" name="middle_initial" id="middle_initial" class="form-control @error('middle_initial') is-invalid @enderror" placeholder="Enter M.I" autocomplete="on">
 													@error('middle_initial')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -39,7 +39,7 @@
 											</div><!-- Col -->
 											<div class="col-sm-2">
 												<div class="mb-3">
-													<label class="form-label">Extension</label>
+													<label for="name_extension" class="form-label">Extension</label>
 													<select name="name_extension" id="name_extension" class="form-select mb-3">
 														<option value="N/A">Select</option>
 														<option value="Jr">Jr.</option>
@@ -57,7 +57,7 @@
 										<div class="row">																					
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Gender</label>
+													<label for="gender" class="form-label">Gender</label>
 													<select name="gender" id="gender" class="form-select mb-3 @error('gender') is-invalid @enderror">
 														<option selected="">Open this select menu</option>
 														<option value="Male">Male</option>
@@ -70,8 +70,8 @@
 											</div><!-- Col -->
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Religion</label>
-													<input type="text" name="religion" id="religion" class="form-control @error('religion') is-invalid @enderror" placeholder="Enter religion">
+													<label for="religion" class="form-label">Religion</label>
+													<input type="text" name="religion" id="religion" class="form-control @error('religion') is-invalid @enderror" placeholder="Enter religion" autocomplete="on">
 													@error('religion')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -79,8 +79,8 @@
 											</div><!-- Col -->
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Date of Birth</label>
-													<input type="date" name="date_of_birth" id="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" placeholder="">
+													<label for="date_of_birth" class="form-label">Date of Birth</label>
+													<input type="date" name="date_of_birth" id="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" placeholder="" autocomplete="on">
 													@error('date_of_birth')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -90,8 +90,8 @@
 										<div class="row">
 											<div class="col-sm-8">
 												<div class="mb-3">
-													<label class="form-label">Current Address</label>
-													<input type="text" name="current_address" id="current_address" class="form-control @error('current_address') is-invalid @enderror" placeholder="House No. / Street / Barangay / District / Municipality / Province">
+													<label for="current_address" class="form-label">Current Address</label>
+													<input type="text" name="current_address" id="current_address" class="form-control @error('current_address') is-invalid @enderror" placeholder="House No. / Street / Barangay / District / Municipality / Province" autocomplete="on">
 													@error('current_address')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -99,8 +99,8 @@
 											</div><!-- Col -->										
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Zip</label>
-													<input type="text" name="zip_code" id="zip_code" class="form-control @error('zip_code') is-invalid @enderror" placeholder="Enter zip code">
+													<label for="zip_code" class="form-label">Zip Code</label>
+													<input type="text" name="zip_code" id="zip_code" class="form-control @error('zip_code') is-invalid @enderror" placeholder="Enter zip code" autocomplete="on">
 													@error('zip_code')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -110,7 +110,7 @@
 										<div class="row">
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Marital Status</label>
+													<label for="marital_status" class="form-label">Marital Status</label>
 													<select name="marital_status" id="marital_status" class="form-select mb-3 @error('marital_status') is-invalid @enderror">
 														<option selected="">Open this select menu</option>
 														<option value="Single">Single</option>
@@ -126,16 +126,16 @@
 											</div><!-- Col -->										
 											<div class="col-sm-8">
 												<div class="mb-3">
-													<label class="form-label">Spouse</label>
-													<input type="text" name="spouse" id="spouse" class="form-control" placeholder="If married, enter name of spouse">
+													<label for="current_address" class="form-label">Spouse</label>
+													<input type="text" name="spouse" id="spouse" class="form-control" placeholder="If married, enter name of spouse" autocomplete="on">
 												</div>
 											</div><!-- Col -->
 										</div><!-- Row -->
 										<div class="row">
 										<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Email</label>
-													<input type="text" name="email_address" id="email_address" class="form-control @error('email_address') is-invalid @enderror" placeholder="Enter email address">
+													<label for="email_address" class="form-label">Email</label>
+													<input type="text" name="email_address" id="email_address" class="form-control @error('email_address') is-invalid @enderror" placeholder="Enter email address" autocomplete="on">
 													@error('email_address')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -143,14 +143,14 @@
 											</div><!-- Col -->
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Tel.</label>
-													<input type="text" name="telephone" id="telephone" class="form-control" placeholder="Enter telephone number">
+													<label for="telephone" class="form-label">Telephone Number</label>
+													<input type="text" name="telephone" id="telephone" class="form-control" placeholder="Enter telephone number" autocomplete="on">
 												</div>
 											</div><!-- Col -->										
 											<div class="col-sm-4">
 												<div class="mb-3">
-													<label class="form-label">Phone</label>
-													<input type="text" name="phone_number" id="phone_number" class="form-control @error('phone_number') is-invalid @enderror" placeholder="Enter phone number">
+													<label for="phone_number" class="form-label">Phone Number</label>
+													<input type="text" name="phone_number" id="phone_number" class="form-control @error('phone_number') is-invalid @enderror" placeholder="Enter phone number" autocomplete="on">
 													@error('phone_number')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -160,8 +160,8 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<div class="mb-3">
-													<label class="form-label">Sales Counselor</label>
-													<input type="text" name="sales_counselor" id="sales_counselor" class="form-control @error('sales_counselor') is-invalid @enderror" placeholder="Enter sales counselor">
+													<label for="sales_counselor" class="form-label">Sales Counselor</label>
+													<input type="text" name="sales_counselor" id="sales_counselor" class="form-control @error('sales_counselor') is-invalid @enderror" placeholder="Enter sales counselor" autocomplete="on">
 													@error('sales_counselor')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror
@@ -169,8 +169,8 @@
 											</div><!-- Col -->
 											<div class="col-sm-6">
 												<div class="mb-3">
-													<label class="form-label">Agency Manager</label>
-													<input type="text" name="agency_manager" id="agency_manager" class="form-control @error('agency_manager') is-invalid @enderror" placeholder="Enter agency manager">
+													<label for="agency_manager" class="form-label">Agency Manager</label>
+													<input type="text" name="agency_manager" id="agency_manager" class="form-control @error('agency_manager') is-invalid @enderror" placeholder="Enter agency manager" autocomplete="on">
 													@error('agency_manager')
 														<span class="text-danger">{{ $message }}</span>
 													@enderror

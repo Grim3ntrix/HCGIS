@@ -5,7 +5,7 @@
 			<div class="col-md-12 stretch-card">
 				<div class="card">
 					<div class="card-body">
-						<h6 class="card-title" style="margin-bottom: 20px;">Product Details of Purchase</h6>
+						<h6 class="card-title" style="margin-bottom: 20px;">Purchase Details</h6>
 							<form action="{{ route('staff.store.productdetail.form') }}" method="POST">
 								@csrf
 								
@@ -59,19 +59,31 @@
 										</div>
 									</div><!-- Col -->
 								</div><!-- Row -->
-								<div class="row">
+								<div class="row">																					
 									<div class="col-sm-4">
 										<div class="mb-3">
-											<label class="form-label">List Price (Contract)</label>
-											<input type="text" class="form-control" placeholder="Php" disabled>
-										</div>
-									</div><!-- Col -->										
-									<div class="col-sm-4">
-										<div class="mb-3">
-											<label class="form-label">At - Need Price</label>
-											<input type="text" class="form-control" placeholder="Php" disabled>
+											<label class="form-label">Down Payment</label>
+											<select class="form-select mb-3">
+												<option selected="">Open this select menu</option>
+												<option value="1">No down paymemt</option>
+												<option value="2">With down paymemt</option>
+											</select>
 										</div>
 									</div><!-- Col -->
+									<div class="col-sm-4">
+										<div class="mb-3">
+											<label class="form-label">DP %</label>
+											<input type="text" class="form-control" placeholder="0.00%">
+										</div>
+									</div><!-- Col -->
+									<div class="col-sm-4">
+										<div class="mb-3">
+											<label class="form-label">Down Payment Amount</label>
+											<input type="text" class="form-control" placeholder="00.00">
+										</div>
+									</div><!-- Col -->									
+								</div><!-- Row -->
+								<div class="row">																					
 									<div class="col-sm-4">
 										<div class="mb-3">
 											<label class="form-label">Price Mode</label>
@@ -83,74 +95,75 @@
 											</select>
 										</div>
 									</div><!-- Col -->
-								</div><!-- Row -->
-								<div class="row">
-									<div class="col-sm-6">
+									<div class="col-sm-4">
 										<div class="mb-3">
-											<label class="form-label">Pre-Need Amount (Spot Cash)</label>
-											<input type="text" class="form-control" placeholder="Php" disabled>
+											<label class="form-label">Discount %</label>
+											<input type="text" class="form-control" placeholder="0.00%">
 										</div>
-									</div><!-- Col -->										
-									<div class="col-sm-6">
+									</div><!-- Col -->							
+									<div class="col-sm-4">
 										<div class="mb-3">
-											<label class="form-label">Discount Rate</label>
-											<select class="form-select mb-3">
-												<option selected="">Open this select menu</option>
-												<option value="1">10%</option>
-												<option value="2" disabled>20%</option>
-												<option value="3" disabled>30%</option>
-											</select>
+											<label class="form-label">Discount Amount</label>
+											<input type="text" class="form-control" placeholder="00.00">
 										</div>
 									</div><!-- Col -->
 								</div><!-- Row -->
+								
 								<div class="row">
-									<div class="col-sm-6">
+									<div class="col-sm-4">
 										<div class="mb-3">
-											<label class="form-label">Pre-Need Amount (Installment) </label>
+											<label class="form-label">List Price (Spot Cash)</label>
+											<input type="text" class="form-control" placeholder="Php" disabled>
+										</div>
+									</div><!-- Col -->	
+									<div class="col-sm-4">
+										<div class="mb-3">
+											<label class="form-label">List Price (Contract)</label>
 											<input type="text" class="form-control" placeholder="Php" disabled>
 										</div>
 									</div><!-- Col -->										
-									<div class="col-sm-3">
+									<div class="col-sm-4">
 										<div class="mb-3">
-											<label class="form-label">Term</label>
-											<select class="form-select mb-3">
-												<option selected="">- Please select-</option>
-												<option value="1">1 yr. / 12 mos.</option>
-												<option value="2">2 yrs./ 24 mos.</option>
-												<option value="3">3 yrs./ 36 mos.</option>
-												<option value="2">4 yrs./ 48 mos.</option>
-												<option value="3">5 yrs./ 60 mos.</option>
-											</select>
-										</div>
-									</div><!-- Col -->
-									<div class="col-sm-3">
-										<div class="mb-3">
-											<label class="form-label">Interest Rate</label>
-											<input type="text" class="form-control" placeholder="" disabled>
-										</div>
-									</div><!-- Col -->
-								</div><!-- Row -->
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="mb-3">
-											<label class="form-label">Down Payment (Amount)</label>
+											<label class="form-label">List Price (At-Need)</label>
 											<input type="text" class="form-control" placeholder="Php" disabled>
 										</div>
-									</div><!-- Col -->										
-									<div class="col-sm-3">
-										<div class="mb-3">
-											<label class="form-label">DP Rate</label>
-											<select class="form-select mb-3">
-												<option selected="">- Please select-</option>
-												<option value="1" disabled>10%</option>
-												<option value="2">20%</option>
-											</select>
-										</div>
 									</div><!-- Col -->
-									<div class="col-sm-3">
+									<div class="col-sm-12">
 										<div class="mb-3">
 											<label class="form-label">Outstanding Balance</label>
-											<input type="text" class="form-control" value="Hello World!" placeholder="" disabled>
+											<input type="text" class="form-control" placeholder="Php" disabled>
+										</div>
+									</div><!-- Col -->
+								</div><!-- Row -->
+								<hr>
+								<h6 class="card-title" style="margin-top: 20px; margin-bottom: 20px;">Pre-Need (Installment) Details</h6>
+								<div class="row">																					
+									<div class="col-sm-6">
+										<div class="mb-3">
+											<label class="form-label">Installment Term</label>
+											<select class="form-select mb-3">
+												<option selected="">Open this select menu</option>
+												<option value="1">Lawn Lot (1x2.44mm)</option>
+												<option value="2">Garden Lot-Twin Lot (2x2.44mm,4.88sqm,double tiered)</option>
+												<option value="3">Garden Lot-Triple Lot (3x2.44mm,7.32sqm,double tiered)</option>
+											</select>
+										</div>
+									</div><!-- Col -->
+									<div class="col-sm-6">
+										<div class="mb-3">
+											<label class="form-label">Interest Rate </label>
+											<select class="form-select mb-3">
+												<option selected="">Open this select menu</option>
+												<option value="1">Regular</option>
+												<option value="2">Prime</option>
+												<option value="3">Super Prime</option>
+											</select>
+										</div>
+									</div><!-- Col -->
+									<div class="col-sm-12">
+										<div class="mb-3">
+											<label class="form-label">Monthly Payment</label>
+											<input type="text" class="form-control" placeholder="Php" disabled>
 										</div>
 									</div><!-- Col -->
 								</div><!-- Row -->
