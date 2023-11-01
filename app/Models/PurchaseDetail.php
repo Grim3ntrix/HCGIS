@@ -12,7 +12,19 @@ class PurchaseDetail extends Model
     //All the form field will be fillable
     protected $guarded = [];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function personalInformation(){
+        return $this->belongsTo(PersonalInformation::class, 'personal_information_id');
+    }
+
+    public function listPrice(){
+        return $this->belongsTo(ListPrice::class, 'list_price_id');
+    }
+
+    public function installmentPrice(){
+        return $this->belongsTo(InstallmentPrice::class, 'installment_price_id');
+    }
+
+    public function paymentSchedule(){
+        return $this->hasMany(PaymentSchedule::class, 'purchase_detail_id');
     }
 }

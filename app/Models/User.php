@@ -23,12 +23,12 @@ class User extends Authenticatable
 
     public function personalInformation()
     {
-        return $this->hasOne(PersonalInformation::class);
+        return $this->hasOne(PersonalInformation::class, 'user_id');
     }
 
-    public function purchaseDetail()
+    public function payment()
     {
-        return $this->hasOne(PurchaseDetail::class);
+        return $this->hasMany(Payment::class, 'user_id');
     }
 
     /**
