@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('installment_prices', function (Blueprint $table) {
+        Schema::create('installment_price_with_down_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->integer('contract_term');
             $table->decimal('interest_rate', 8, 5);
             $table->decimal('annual_interest_amount', 10, 2);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('installment_prices');
+        Schema::dropIfExists('installment_price_with_down_payments');
     }
 };

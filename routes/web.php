@@ -10,7 +10,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HowToUseController;
-use App\Http\Controllers\PricelistController;
+use App\Http\Controllers\ListPriceController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\LotController;
 
@@ -44,8 +44,8 @@ Route::middleware(['auth','role:customer'])->group(function () {
     Route::get('/web-customer/verified-customer/chat', [ChatController::class, 'CustomerChat'])->name('customer.chat');
     Route::get('/web-customer/verified-customer/intern', [InternController::class, 'CustomerShowIntern'])->name('customer.showintern');
     Route::get('/web-customer/verified-customer/sold-lots', [LotController::class, 'SoldLots'])->name('sold.lot');
-    Route::get('/web-customer/verified-customer/show-pricelist/with-down-payment', [PricelistController::class, 'showCustomerPricelistWithDP'])->name('show.customer.pricelist.withdown');
-    Route::get('/web-customer/verified-customer/show-pricelist/no-down-payment', [PricelistController::class, 'showCustomerPricelistNoDP'])->name('show.customer.pricelist.nodown');
+    Route::get('/web-customer/verified-customer/show-pricelist/with-down-payment', [ListPriceController::class, 'showCustomerPricelistWithDP'])->name('show.customer.pricelist.withdown');
+    Route::get('/web-customer/verified-customer/show-pricelist/no-down-payment', [ListPriceController::class, 'showCustomerPricelistNoDP'])->name('show.customer.pricelist.nodown');
     Route::get('/web-customer/verified-customer/how-to-use/watch-online', [HowToUseController::class, 'CustomerWatchOnline'])->name('customer.watchonline');
     Route::get('/web-customer/verified-customer/how-to-use/frequently-ask-question', [HowToUseController::class, 'CustomerFAQ'])->name('customer.faq');
 });//End Group Customer Middleware
@@ -62,13 +62,28 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/chat', [ChatController::class, 'ManagerChat'])->name('manager.chat');
     //End Chat
     //ListPrice With Down Payment
-    Route::get('/admin/manager/add-pricelist/with-down-payment', [PricelistController::class, 'showPricelistWithDP'])->name('show.pricelist.withdown');
-    Route::get('/admin/manager/add-pricelist/with-down-payment/new', [PricelistController::class, 'addPricelistWithDP'])->name('add.pricelist.withdown');
-    Route::post('/admin/manager/add-pricelist/with-down-payment/new/store', [PricelistController::class, 'storePricelistWithDP'])->name('store.pricelist.withdown');
+    Route::get('/admin/manager/listpricewithdp', [ListPriceController::class, 'showPricelistWithDP'])->name('show.pricelist.withdown');
+    Route::get('/admin/manager/listpricewithdp/new', [ListPriceController::class, 'addPricelistWithDP'])->name('add.pricelist.withdown');
+    Route::post('/admin/manager/listpricewithdp/store', [ListPriceController::class, 'storePricelistWithDP'])->name('store.pricelist.withdown');
     //End ListPrice With Down Payment
 
-    Route::get('/admin/manager/add-pricelist/no-down-payment', [PricelistController::class, 'showPricelistNoDP'])->name('showpricelist.nodown');
-    Route::get('/admin/manager/account/create', [AccountController::class, 'CreateAccount'])->name('create.account');
+    //Rendered Button
+    Route::get('/admin/manager/listpricewithdp/edit/{id}', [ListPriceController::class, 'editPricelistWithDP'])->name('edit.pricelist.withdown');
+    Route::post('/admin/manager/listpricewithdp/update', [ListPriceController::class, 'updatePricelistWithDP'])->name('update.pricelist.withdown');
+    Route::get('/admin/manager/listpricewithdp/delete/{id}', [ListPriceController::class, 'deletePricelistWithDP'])->name('delete.pricelist.withdown');
+    Route::get('/admin/manager/listpricewithdp/installment/withdp/{id}', [ListPriceController::class, 'showinstallmentPricelistWithDP'])->name('show.installment.pricelist.withdown');
+    Route::get('/admin/manager/listpricewithdp/installment/withdp/{id}/new', [ListPriceController::class, 'addinstallmentPricelistWithDP'])->name('add.installment.pricelist.withdown');
+    Route::post('/admin/manager/listpricewithdp/installment/withdp/store', [ListPriceController::class, 'storeinstallmentPricelistWithDP'])->name('store.installment.pricelist.withdown');
+    Route::get('/admin/manager/listpricewithdp/installment/withdp/{id}/delete', [ListPriceController::class, 'deleteinstallmentPricelistWithDP'])->name('delete.installment.pricelist.withdown');
+
+    Route::get('/admin/manager/listpricewithdp/installment/nodp/{id}', [ListPriceController::class, 'showinstallmentPricelistNoDP'])->name('show.installment.pricelist.nodown');
+    Route::get('/admin/manager/listpricewithdp/installment/nodp/{id}/new', [ListPriceController::class, 'addinstallmentPricelistNoDP'])->name('add.installment.pricelist.nodown');
+    Route::post('/admin/manager/listpricewithdp/installment/nodp/store', [ListPriceController::class, 'storeinstallmentPricelistNoDP'])->name('store.installment.pricelist.nodown');
+    Route::get('/admin/manager/listpricewithdp/installment/nodp/{id}/delete', [ListPriceController::class, 'deleteinstallmentPricelistNoDP'])->name('delete.installment.pricelist.nodown');
+    //End Rendered Button
+
+    Route::get('/admin/manager/account', [AccountController::class, 'showAccount'])->name('show.account');
+
     Route::get('/admin/manager/how-to-use/watch-online', [HowToUseController::class, 'ManagerWatchOnline'])->name('manager.watchonline');
     Route::get('/admin/manager/how-to-use/frequently-ask-question', [HowToUseController::class, 'ManagerFAQ'])->name('manager.faq');
 });//End Group Manager Middleware
@@ -82,11 +97,11 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::get('/admin/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
     //Sidebar
     //Add Buyer Information
-    Route::get('/admin/staff/purchase-lot', [PurchaseLotController::class, 'purchaseLot'])->name('staff.purchaselot');
-    Route::get('/admin/staff/purchase-lot/personal-information/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
-    Route::post('/admin/staff/purchase-lot/personal-information-store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
-    Route::get('/admin/staff/purchase-lot/personal-info/product-detail/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
-    Route::get('/admin/staff/purchase-lot/personal-info/product-detail-store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
+    Route::get('/admin/staff/user/customer', [PurchaseLotController::class, 'showUserCustomer'])->name('staff.show.customer.user');
+    Route::get('/admin/staff/user/customer/personalinfo/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
+    Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
+    Route::get('/admin/staff/user/customer/purchasedetail/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
+    Route::get('/admin/staff/user/customer/purchasedetail/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
     Route::get('/admin/staff/chat', [ChatController::class, 'StaffChat'])->name('staff.chat');
     Route::get('/admin/staff/add-intern', [InternController::class, 'StaffAddIntern'])->name('staff.addintern');

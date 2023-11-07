@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PurchaseLotController extends Controller
 {
     
-    public function purchaseLot(Request $request){
+    public function showUserCustomer(Request $request){
 
         if($request->ajax()){
             
@@ -53,10 +53,11 @@ class PurchaseLotController extends Controller
 
         $userId = $request->input('user_id');
         $user = User::findOrFail($userId);
+        
         $user->personalInformation()->create($request->all());
 
         $notification = array(
-            'message' => 'Successfully Added, Proceed Final Step!',
+            'message' => 'Successfully Added!',
             'alert-type' => 'success',
         );
 

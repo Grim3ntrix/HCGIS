@@ -5,9 +5,9 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-title">Purchase Memorial Lot</h6>
+                <h6 class="card-title">Customers</h6>
                 <div class="table-responsive">
-                  <table id="purchaseLot" class="table table-hover">
+                  <table id="showUserCustomer" class="table table-hover">
                         <thead>
                             <th>Action</th>
                             <th>Name</th>
@@ -27,11 +27,15 @@
 </div>
 <script>
   $(document).ready(function() {
-      var purchaseLotTable = $('#purchaseLot').DataTable({
+
+      var editUrl = "{{ route('staff.show.personalinfo.form', ':id') }}";
+      var showUrl = "{{ route('staff.show.personalinfo.form', ':id') }}";
+
+      var purchaseLotTable = $('#showUserCustomer').DataTable({
           processing: true,
           serverSide: true,
           ajax: {
-            url: "{{ route('staff.purchaselot') }}"
+            url: "{{ route('staff.show.customer.user') }}"
           },
           columns: [
             {
@@ -39,8 +43,8 @@
             name: 'id',
             render: function(data, type, row) {
                 var actions = '';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-success btn-icon"><i class="fa-solid fa-eye fa-sm"></i></a>';
+                actions += '<a href="' + editUrl.replace(':id', data) + ' }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
+                actions += '<a href="' + showUrl.replace(':id', data) + ' }}" class="btn btn-outline-success btn-icon"><i class="fa-solid fa-eye fa-sm"></i></a>';
                 return actions.replace(':id', data);
               }
             },

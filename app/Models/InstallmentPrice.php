@@ -11,15 +11,7 @@ class InstallmentPrice extends Model
 
     protected $guarded = [];
 
-    public function downPayment(){
-        return $this->belongsTo(DownPayment::class, 'down_payment_id');
-    }
-
-    public function listPrice(){
-        return $this->belongsTo(ListPrice::class, 'list_price_id');
-    }
-
-    public function purchaseDetail(){
-        return $this->hasOne(PurchaseDetail::class, 'installment_price_id');
+    public function product(){
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

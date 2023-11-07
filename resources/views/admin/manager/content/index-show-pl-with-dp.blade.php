@@ -7,7 +7,7 @@
               <div class="card-body">
                 <h6 class="card-title">List Price (With DownPayment)</h6>
                   <a href="{{ route('add.pricelist.withdown') }}" class="btn btn-dark btn-xs" style="margin-right: 3px; margin-bottom:15px;">New</a>
-                  <a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-dark btn-xs" style="margin-right: 3px; margin-bottom:15px;">Convert as PDF</a>
+                  <a href="" class="btn btn-dark btn-xs" style="margin-right: 3px; margin-bottom:15px;">Download</a>
                 <div class="table-responsive">
                   <table id="listPriceWithDP" class="table table-hover">
                     <thead>
@@ -15,15 +15,14 @@
                             <th>Action</th>
                             <th>No.</th>
                             <th>Product Type</th>
-                            <th>Product Category</th>
-                            <th>Pre-Need Price (Spot Cash)</th>
-                            <th>Pre-Need Price (Contract Price)</th>
-                            <th>At-Need Price</th>
-                            <th>20% Downpayment</th>
-                            <th>80% Balance</th>
-                            <th>Created By</th>
-                            <th>Edited By</th>
-                            <th>Last Updated</th>
+                            <th>Product Category</th>                     
+                            <th>Pre-Need (Contract) / List Price</th>
+                            <th>Pre-Need (Spot Cash)</th>
+                            <th>At Need Price</th>
+                            <th>DP Rate (%)</th>
+                            <th>Down Payment Amount</th>
+                            <th>Balance</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +36,11 @@
 </div>
 <script>
   $(document).ready(function() {
+
+      var editUrl = "{{ route('edit.pricelist.withdown', ':id') }}";
+      var deleteUrl = "{{ route('delete.pricelist.withdown', ':id') }}";
+      var moneyUrl = "{{ route('show.installment.pricelist.withdown', ':id') }}";
+
       var listPriceTable = $('#listPriceWithDP').DataTable({
           processing: true,
           serverSide: true,
@@ -45,32 +49,29 @@
           },
           columns: [
             {
-            data: 'id',
-            name: 'id',
-            render: function(data, type, row) {
+              data: 'id',
+              name: 'id',
+              render: function(data, type, row) {
                 var actions = '';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-pen-to-square fa-xs"></i></a>';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-danger btn-icon" style="margin-right: 3px"></i>Del</a>';
-                actions += '<a href="{{ route('staff.show.personalinfo.form', ':id') }}" class="btn btn-outline-success btn-icon">Mos</a>';
+                actions += '<a href="' + editUrl.replace(':id', data) + '" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-pen fa-xs"></i></a>';
+                actions += '<a href="' + deleteUrl.replace(':id', data) + '" id="delete" class="btn btn-outline-danger btn-icon" style="margin-right: 3px"><i class="fa-solid fa-trash fa-xs"></i></a>';
+                actions += '<a href="' + moneyUrl.replace(':id', data) + '" class="btn btn-outline-info btn-icon" style="margin-right: 3px"><i class="fa-solid fa-money-bills fa-xs"></i></a>';
                 return actions.replace(':id', data);
               }
             },
-            {data: 'id', name: 'id' },
-            {data: 'product_type_id', name: 'product_type_id' },
-            {data: 'product_category_id', name: 'product_category_id' },
-            {data: 'pre_need_price_spot_cash', name: 'pre_need_price_spot_cash' },
-            {data: 'pre_need_price_contract_price', name: 'pre_need_price_contract_price' },
-            {data: 'at_need_price', name: 'at_need_price' },
-            {data: 'down_payment', name: 'down_payment' },
-            {data: 'balance', name: 'balance' },
-            {data: 'created_by', name: 'created_by' },
-            {data: 'updated_by', name: 'updated_by' },       
-            {data: 'updated_at', name: 'updated_at',
-            render: function (data, type, row) {
-                return moment(data).fromNow();
-            }}, 
+            { data: 'id', name: 'id' },
+            { data: 'product_type', name: 'product_type' },
+            { data: 'product_category', name: 'product_category' },
+            { data: 'contract_price', name: 'contract_price' },
+            { data: 'spot_cash', name: 'spot_cash' },
+            { data: 'at_need_price', name: 'at_need_price' },
+            { data: 'down_payment_rate', name: 'down_payment_rate' },
+            { data: 'down_payment_amount', name: 'down_payment_amount' },
+            { data: 'balance', name: 'balance' },
+            { data: 'description', name: 'description' },
           ]
       });
   });
 </script>
+
 @endsection

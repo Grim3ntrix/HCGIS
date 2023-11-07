@@ -11,11 +11,19 @@ class DownPayment extends Model
 
     protected $guarded = [];
 
-    public function listPrice(){
-        return $this->belongsTo(ListPrice::class, 'list_price_id');
+    //Accessor
+    public function getDownPaymentRateAttribute($value)
+    {
+        return $value . '%';
     }
 
-    public function Installment(){
-        return $this->hasMany(Installment::class, 'down_payment_id');
+    // Mutator
+    public function setDownPaymentRateAttribute($value)
+    {
+        $this->attributes['down_payment_rate'] = rtrim($value, '%');
+    }
+
+    public function product(){
+        return $this->hasOne(Product::class, 'down_payment_id');
     }
 }

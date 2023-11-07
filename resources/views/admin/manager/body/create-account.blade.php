@@ -8,7 +8,7 @@
 	<meta name="author" content="Capstone Project 2023@SLSU">
 	<meta name="keywords" content="Holy Cross Garden Information System">
 
-	<title>Create new account | Holy Cross Garden </title>
+	<title>Create New Account | Holy Cross Garden </title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

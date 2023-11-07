@@ -12,7 +12,7 @@ class ProductType extends Model
     //All the form field will be fillable
     protected $guarded = [];
 
-    public function Products(){
+    public function Product(){
         return $this->hasMany(Product::class, 'product_type_id');
     }
 }

@@ -8,7 +8,7 @@
 	<meta name="author" content="Capstone Project 2023@SLSU">
 	<meta name="keywords" content="Holy Cross Garden Information System">
 
-	<title>Add Pricelist With Down Payment | Holy Cross Garden </title>
+	<title>Add New List Price | Holy Cross Garden </title>
 
     <!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,9 +107,22 @@
 	</script>	
 	<!-- endtoaster -->
 
+	<!-- SweetAlert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{{asset('frontend/assets/js/code/sweetalert.js')}}"></script>
+	<!-- SweetAlert -->
+
+	<!-- Installment Interest JS -->
+	<script src="{{asset('frontend/assets/js/code/installment-interest.js')}}"></script>
+	<!-- Installment Interest JS -->
+
+	<!-- DownPayment-Rate-Calculation -->
+	<script src="{{asset('frontend/assets/js/code/downpayment-rate.js')}}"></script>
+	<!-- DownPayment-Rate-Calculation -->
+
 	<!-- Plugin js for this page -->
-  <script src="{{asset('frontend/assets/vendors/flatpickr/flatpickr.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
+  	<script src="{{asset('frontend/assets/vendors/flatpickr/flatpickr.min.js')}}"></script>
+  	<script src="{{asset('frontend/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
 	<!-- End plugin js for this page -->
 
 	<!-- inject:js -->

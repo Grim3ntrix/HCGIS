@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    public function CreateAccount(){
+    public function showAccount(){
         return view('admin.manager.body.create-account');
     }
 }

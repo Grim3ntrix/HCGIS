@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('list_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products');
-            $table->decimal('spot_cash', 10, 2);
             $table->decimal('contract_price', 10, 2);
+            $table->decimal('spot_cash', 10, 2);
             $table->decimal('at_need_price', 10, 2);
             $table->timestamps();
         });

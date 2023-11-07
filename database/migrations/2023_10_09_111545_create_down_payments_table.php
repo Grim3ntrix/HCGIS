@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('down_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('list_price_id')->constrained('list_prices');
+            $table->string('down_payment_rate');
             $table->decimal('down_payment_amount', 10, 2);
             $table->decimal('balance', 10, 2);
             $table->timestamps();

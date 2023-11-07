@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->date('reservation_date');
             $table->date('contract_date');
-            $table->foreignId('personal_information_id')->constrained('personal_informations')->unsigned();
+            $table->string('lot_name');
+            $table->integer('block');
+            $table->integer('phase');
+            $table->foreignId('personal_information_id')->constrained('personal_information')->unsigned();
             $table->foreignId('installment_price_id')->constrained('installment_prices')->unsigned();
             $table->foreignId('list_price_id')->constrained('list_prices')->unsigned();        
             $table->timestamps();

@@ -25,37 +25,19 @@
               <span class="link-title">Chat</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Manager</li>
+          <li class="nav-item nav-category">List price</li>
           <li class="nav-item">
-            <a class="nav-link"  data-bs-toggle="collapse" href="#charts" role="button" aria-expanded="false" aria-controls="charts">
-              <i class="link-icon" data-feather="edit-2"></i>
-              <span class="link-title">Add Pricelist</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
+            <a href="{{ route('show.pricelist.withdown') }}" class="nav-link">
+              <i class="link-icon" data-feather="file-plus"></i>
+              <span class="link-title">New</span>
             </a>
-            <div class="collapse" id="charts">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ route('show.pricelist.withdown') }}" class="nav-link">With Down-payment</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('showpricelist.nodown') }}" class="nav-link">No Down-payment</a>
-                </li>
-              </ul>
-            </div>
           </li>
+          <li class="nav-item nav-category">Account Manager</li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Account</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
+            <a href="{{ route('show.account') }}" class="nav-link">
+              <i class="link-icon" data-feather="edit-3"></i>
+              <span class="link-title">Create</span>
             </a>
-            <div class="collapse" id="emails">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ route('create.account') }}" class="nav-link">Create</a>
-                </li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item nav-category">How to use</li>
           <li class="nav-item">
