@@ -19,8 +19,7 @@ return new class extends Migration
             $table->integer('block');
             $table->integer('phase');
             $table->foreignId('personal_information_id')->constrained('personal_information')->unsigned();
-            $table->foreignId('installment_price_id')->constrained('installment_prices')->unsigned();
-            $table->foreignId('list_price_id')->constrained('list_prices')->unsigned();        
+            $table->foreignId('product_id')->constrained('products')->unsigned();    
             $table->timestamps();
         });
     }

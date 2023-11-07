@@ -20,20 +20,16 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
-    public function listPrice(){
-        return $this->belongsTo(ListPrice::class, 'list_price_id');
-    }
-
-    public function downPayment(){
-        return $this->belongsTo(DownPayment::class, 'down_payment_id');
-    }
-
     public function installmentPriceWithDownPayment(){
         return $this->hasMany(InstallmentPriceWithDownPayment::class, 'product_id');
     }
 
     public function installmentPriceNoDownPayment(){
         return $this->hasMany(InstallmentPriceNoDownPayment::class, 'product_id');
+    }
+
+    public function downPayment(){
+        return $this->belongsTo(DownPayment::class, 'down_payment_id');
     }
 
     public function purchaseDetail(){
