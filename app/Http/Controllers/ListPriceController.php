@@ -18,6 +18,9 @@ class ListPriceController extends Controller
 {
     public function showPricelistWithDP(Request $request){
 
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
         if($request->ajax()){
             $products = Product::with(['productType', 'productCategory', 'listPrice', 'downPayment'])->latest()->get();
     
@@ -39,12 +42,15 @@ class ListPriceController extends Controller
             }
             return DataTables::of($data)->make(true);
         }
-        return view('admin.manager.content.index-show-pl-with-dp');
+        return view('admin.manager.content.index-show-pl-with-dp', compact('profileData'));
     }//End Show Manager Pricelist
 
     public function addPricelistWithDP(Request $request){
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
         
-        return view('admin.manager.content.index-add-pl-with-dp');
+        return view('admin.manager.content.index-add-pl-with-dp', compact('profileData'));
     }//End Show Form Manager Pricelist
 
     public function storePricelistWithDP(Request $request){
@@ -178,20 +184,26 @@ class ListPriceController extends Controller
 
     public function showinstallmentPricelistWithDP(Request $request){
 
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
         $productId = $request->route('id');
         $product = Product::findOrFail($productId);
 
         $installmentPrice = InstallmentPriceWithDownPayment::where('product_id',$productId)->get();
 
-        return view('admin.manager.content.index-show-installment-pl-with-dp', compact('product','installmentPrice'));
+        return view('admin.manager.content.index-show-installment-pl-with-dp', compact('product','installmentPrice','profileData'));
     }//End Show Manager Installment Pricelist With Down
 
     public function addinstallmentPricelistWithDP(Request $request){
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
         
         $productId = $request->route('id');
         $product = Product::findOrFail($productId);
 
-        return view('admin.manager.content.index-add-installment-pl-with-dp', compact('product'));
+        return view('admin.manager.content.index-add-installment-pl-with-dp', compact('product','profileData'));
     }//End Add Manager Installment Pricelist
 
     public function storeinstallmentPricelistWithDP(Request $request) {
@@ -251,20 +263,26 @@ class ListPriceController extends Controller
 
     public function showinstallmentPricelistNoDP(Request $request){
 
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
         $productId = $request->route('id');
         $product = Product::find($productId);
 
         $installmentPrice = InstallmentPriceNoDownPayment::where('product_id',$productId)->get();
 
-        return view('admin.manager.content.index-show-installment-pl-no-dp', compact('product','installmentPrice'));
+        return view('admin.manager.content.index-show-installment-pl-no-dp', compact('product','installmentPrice','profileData'));
     }//End Show Manager Installment Pricelist No Down
 
     public function addinstallmentPricelistNoDP(Request $request){
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
         
         $productId = $request->route('id');
         $product = Product::findOrFail($productId);
 
-        return view('admin.manager.content.index-add-installment-pl-no-dp', compact('product'));
+        return view('admin.manager.content.index-add-installment-pl-no-dp', compact('product','profileData'));
     }//End Add Manager Installment Pricelist
 
     public function storeinstallmentPricelistNoDP(Request $request) {

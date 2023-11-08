@@ -53,7 +53,7 @@
       		@include('admin.body.header')
 			<!-- partial -->
 
-      		@yield('')
+      		@yield('faq-content')
 
 			<!-- partial:partials/_footer.html -->
       		@include('admin.body.footer')

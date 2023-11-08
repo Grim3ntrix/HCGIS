@@ -20,6 +20,10 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
+    public function listPrice(){
+        return $this->belongsTo(ListPrice::class, 'list_price_id');
+    }
+
     public function installmentPriceWithDownPayment(){
         return $this->hasMany(InstallmentPriceWithDownPayment::class, 'product_id');
     }

@@ -3,17 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ChatController extends Controller
 {
     public function StaffChat(){
-        return view('admin.staff.body.chat');
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('admin.staff.body.chat', compact('profileData'));
     }
     public function ManagerChat(){
-        return view('admin.manager.body.chat');
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('admin.manager.content.index-chat', compact('profileData'));
     }
 
     public function CustomerChat(){
-        return view('web_customer.verified_customer.body.chat');
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('web_customer.verified_customer.body.chat', compact('profileData'));
     }
 }

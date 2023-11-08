@@ -13,6 +13,7 @@ class ManagerController extends Controller
 
         $id = Auth::user()->id;
         $profileData = User::find($id);
+        
         return view('admin.body.index_manager', compact('profileData'));//passProfile to the view
     }//End Method
 

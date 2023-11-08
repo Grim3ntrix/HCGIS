@@ -53,7 +53,7 @@
       		@include('admin.body.header')
 			<!-- partial -->
 
-      		@yield('')
+      		@yield('chat-content')
 
 			<!-- partial:partials/_footer.html -->
       		@include('admin.body.footer')

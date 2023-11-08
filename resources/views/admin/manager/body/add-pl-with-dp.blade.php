@@ -12,10 +12,10 @@
 
     <!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <!-- End fonts -->
-  <script src="https://kit.fontawesome.com/07672f603e.js" crossorigin="anonymous"></script>
+  	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  	<!-- End fonts -->
+  	<script src="https://kit.fontawesome.com/07672f603e.js" crossorigin="anonymous"></script>
 
   
   	<!-- jQuery and Datatable Css-->
