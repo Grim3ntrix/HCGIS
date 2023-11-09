@@ -34,7 +34,7 @@
           </li>
           <li class="nav-item nav-category">Account Manager</li>
           <li class="nav-item">
-            <a href="{{ route('show.account') }}" class="nav-link">
+            <a href="{{ route('show.admin.account') }}" class="nav-link">
               <i class="link-icon" data-feather="edit-3"></i>
               <span class="link-title">Create</span>
             </a>

@@ -83,6 +83,8 @@
 	<!-- Toaster JS -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+	<script src="https://unpkg.com/inputmask@5/dist/inputmask.bundle.js"></script>
+	
 	<script>
 		@if(Session::has('message'))
 		var type = "{{ Session::get('alert-type','info') }}"
@@ -133,6 +135,7 @@
 	<!-- Custom js for this page -->
   <script src="{{asset('frontend/assets/js/dashboard-dark.js')}}"></script>
 	<!-- End custom js for this page -->
+	
 
 </body>
 </html>    

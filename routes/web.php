@@ -82,7 +82,10 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/listpricewithdp/installment/nodp/{id}/delete', [ListPriceController::class, 'deleteinstallmentPricelistNoDP'])->name('delete.installment.pricelist.nodown');
     //End Rendered Button
 
-    Route::get('/admin/manager/account', [AccountController::class, 'showAccount'])->name('show.account');
+    Route::get('/admin/manager/account', [AccountController::class, 'showAccount'])->name('show.admin.account');
+    Route::get('/admin/manager/account/new', [AccountController::class, 'addAccount'])->name('add.admin.account');
+    Route::post('/admin/manager/account/store', [AccountController::class, 'storeAccount'])->name('store.admin.account');
+    Route::get('/admin/manager/account/delete/{id}', [AccountController::class, 'deleteAccount'])->name('delete.admin.account');
 
     Route::get('/admin/manager/how-to-use/watch-online', [HowToUseController::class, 'ManagerWatchOnline'])->name('manager.watchonline');
     Route::get('/admin/manager/how-to-use/frequently-ask-question', [HowToUseController::class, 'ManagerFAQ'])->name('manager.faq');
