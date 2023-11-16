@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="col-6 col-md-12 col-xl-7">
-                        <div id="customersChart" class="mt-md-3 mt-xl-0"></div>
+                        <div id="" class="mt-md-3 mt-xl-0"></div>
                     </div>
                     </div>
                 </div>
@@ -43,20 +43,20 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline">
-                    <h6 class="card-title mb-0">Lot Orders</h6>
+                    <h6 class="card-title mb-0">Lot Sold</h6>
                     </div>
                     <div class="row">
                     <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">35,084</h3>
+                        <h3 class="mb-2">40/100</h3>
                         <div class="d-flex align-items-baseline">
-                        <p class="text-danger">
+                        <p class="text-success">
                             <span>-2.8%</span>
-                            <i data-feather="arrow-down" class="icon-sm mb-1"></i>
+                            <i data-feather="arrow-up" class="icon-sm mb-1"></i>
                         </p>
                         </div>
                     </div>
                     <div class="col-6 col-md-12 col-xl-7">
-                        <div id="ordersChart" class="mt-md-3 mt-xl-0"></div>
+                        <div id="" class="mt-md-3 mt-xl-0"></div>
                     </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline">
-                    <h6 class="card-title mb-0">Total Interns</h6>
+                    <h6 class="card-title mb-0">Total Interment</h6>
                     </div>
                     <div class="row">
                     <div class="col-6 col-md-12 col-xl-5">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-6 col-md-12 col-xl-7">
-                        <div id="growthChart" class="mt-md-3 mt-xl-0"></div>
+                        <div id="" class="mt-md-3 mt-xl-0"></div>
                     </div>
                     </div>
                 </div>

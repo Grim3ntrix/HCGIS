@@ -28,14 +28,35 @@
           <li class="nav-item nav-category">Buyers Ledger</li>
           <li class="nav-item">
             <a href="{{ route('staff.addintern') }}" class="nav-link">
-              <i class="link-icon" data-feather="edit-2"></i>
-              <span class="link-title">Add Interment</span>
+              <i class="link-icon" data-feather="plus-square"></i>
+              <span class="link-title">Interment</span>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('staff.show.customer.user') }}" class="nav-link">
               <i class="link-icon" data-feather="shopping-bag"></i>
               <span class="link-title">Purchase Memorial Lot</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Payment</li>
+          <li class="nav-item">
+            <a href="{{ route('staff.show.payment') }}" class="nav-link">
+              <i class="link-icon" data-feather="plus-square"></i>
+              <span class="link-title">Create</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Memorial Lot</li>
+          <li class="nav-item">
+            <a href="{{ route('staff.show.memorial.lot.entry') }}" class="nav-link">
+              <i class="link-icon" data-feather="plus-circle"></i>
+              <span class="link-title">Entry</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Account Manager</li>
+          <li class="nav-item">
+            <a href="{{ route('show.customer.account') }}" class="nav-link">
+              <i class="link-icon" data-feather="user-plus"></i>
+              <span class="link-title">Create</span>
             </a>
           </li>
         </ul>

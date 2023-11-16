@@ -27,29 +27,23 @@
           </li>
           <li class="nav-item nav-category">List price</li>
           <li class="nav-item">
-            <a href="{{ route('show.pricelist.withdown') }}" class="nav-link">
+            <a href="{{ route('manager.show.list.price') }}" class="nav-link">
               <i class="link-icon" data-feather="file-plus"></i>
               <span class="link-title">New</span>
             </a>
           </li>
+          <li class="nav-item nav-category">Discount Manager</li>
+          <li class="nav-item">
+            <a href="{{ route('manager.show.discount.rate') }}" class="nav-link">
+              <i class="link-icon" data-feather="bar-chart-2"></i>
+              <span class="link-title">Rate</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">Account Manager</li>
           <li class="nav-item">
-            <a href="{{ route('show.admin.account') }}" class="nav-link">
-              <i class="link-icon" data-feather="edit-3"></i>
+            <a href="{{ route('show.agent.account') }}" class="nav-link">
+              <i class="link-icon" data-feather="user-plus"></i>
               <span class="link-title">Create</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">How to use</li>
-          <li class="nav-item">
-            <a href="{{ route('manager.watchonline') }}" class="nav-link">
-              <i class="link-icon" data-feather="youtube"></i>
-              <span class="link-title">Watch online</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('manager.faq') }}" class="nav-link">
-              <i class="link-icon" data-feather="info"></i>
-              <span class="link-title">FAQ</span>
             </a>
           </li>
         </ul>

@@ -5,14 +5,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PurchaseLotController;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\InternController;
+use App\Http\Controllers\IntermentController;
+use App\Http\Controllers\MyLotController;
+use App\Http\Controllers\MyPaymentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HowToUseController;
 use App\Http\Controllers\ListPriceController;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\LotController;
+use App\Http\Controllers\DiscountRateController;
+use App\Http\Controllers\MemorialLotEntryController;
 
 
 /*
@@ -28,8 +32,10 @@ use App\Http\Controllers\LotController;
 */
 
 Route::get('/', function () {
-    return view('web_customer.guest.welcome');
+    return view('auth.login');
 });
+
+Route::get('/welcome/guest', [GuestController::class, 'showWelcomeGuest'])->name('welcome.guest');
 
 require __DIR__.'/auth.php';
 
@@ -40,14 +46,17 @@ Route::middleware(['auth','role:customer'])->group(function () {
     Route::get('/customer/profile/change_password', [CustomerController::class, 'CustomerChangePassword'])->name('customer.change.password');
     Route::post('/customer/profile/update_password', [CustomerController::class, 'CustomerUpdatePassword'])->name('customer.update.password');
     Route::get('/customer/logout', [CustomerController::class, 'CustomerLogout'])->name('customer.logout');
+    
     //Sidebar
-    Route::get('/web-customer/verified-customer/chat', [ChatController::class, 'CustomerChat'])->name('customer.chat');
-    Route::get('/web-customer/verified-customer/intern', [InternController::class, 'CustomerShowIntern'])->name('customer.showintern');
-    Route::get('/web-customer/verified-customer/sold-lots', [LotController::class, 'SoldLots'])->name('sold.lot');
-    Route::get('/web-customer/verified-customer/show-pricelist/with-down-payment', [ListPriceController::class, 'showCustomerPricelistWithDP'])->name('show.customer.pricelist.withdown');
-    Route::get('/web-customer/verified-customer/show-pricelist/no-down-payment', [ListPriceController::class, 'showCustomerPricelistNoDP'])->name('show.customer.pricelist.nodown');
-    Route::get('/web-customer/verified-customer/how-to-use/watch-online', [HowToUseController::class, 'CustomerWatchOnline'])->name('customer.watchonline');
-    Route::get('/web-customer/verified-customer/how-to-use/frequently-ask-question', [HowToUseController::class, 'CustomerFAQ'])->name('customer.faq');
+    Route::get('/user/customer/chat', [ChatController::class, 'showCustomerChat'])->name('customer.show.chat');
+    Route::get('/user/customer/watch-online', [HowToUseController::class, 'showCustomerWatchOnline'])->name('customer.show.watchonline');
+    Route::get('/user/customer/frequently-ask-question', [HowToUseController::class, 'showCustomerFAQ'])->name('customer.show.faq');
+    
+    Route::get('/user/customer/mylot', [MyLotController::class, 'showMyLot'])->name('customer.show.mylot');
+    
+    Route::get('/user/customer/mypayment', [MyPaymentController::class, 'showMyPayment'])->name('customer.show.mypayment');
+    //Sidebar
+
 });//End Group Customer Middleware
 
 Route::middleware(['auth','role:manager'])->group(function(){
@@ -58,34 +67,25 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::post('/admin/manager/profile/update_password', [ManagerController::class, 'ManagerUpdatePassword'])->name('manager.update.password');
     Route::get('/admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
     //Sidebar
+
+    //Discount Manager
+    Route::get('/admin/manager/discount/rate', [DiscountRateController::class, 'showDiscountRate'])->name('manager.show.discount.rate');
+    //Discount Manager
+
+    //ListPrice Manager
+    Route::get('/admin/manager/listprice', [ListPriceController::class, 'showManagerListPrice'])->name('manager.show.list.price');
+    //ListPrice Manager
+
+    //Account Manager
+    Route::get('/admin/manager/agent/account', [AccountController::class, 'showAgentAccount'])->name('show.agent.account');
+    Route::get('/admin/manager/agent/account/create',[AccountController::class, 'addAgentAccount'])->name('add.agent.account');
+    Route::post('/admin/manager/account/store', [AccountController::class, 'storeAgentAccount'])->name('store.agent.account');
+    Route::get('/admin/manager/account/delete/{id}', [AccountController::class, 'deleteAgentAccount'])->name('delete.agent.account');
+    //Account Manager
+
     //Chat
-    Route::get('/admin/manager/chat', [ChatController::class, 'ManagerChat'])->name('manager.chat');
+    Route::get('/admin/manager/chat', [ChatController::class, 'showManagerChat'])->name('manager.chat');
     //End Chat
-    //ListPrice With Down Payment
-    Route::get('/admin/manager/listpricewithdp', [ListPriceController::class, 'showPricelistWithDP'])->name('show.pricelist.withdown');
-    Route::get('/admin/manager/listpricewithdp/new', [ListPriceController::class, 'addPricelistWithDP'])->name('add.pricelist.withdown');
-    Route::post('/admin/manager/listpricewithdp/store', [ListPriceController::class, 'storePricelistWithDP'])->name('store.pricelist.withdown');
-    //End ListPrice With Down Payment
-
-    //Rendered Button
-    Route::get('/admin/manager/listpricewithdp/edit/{id}', [ListPriceController::class, 'editPricelistWithDP'])->name('edit.pricelist.withdown');
-    Route::post('/admin/manager/listpricewithdp/update', [ListPriceController::class, 'updatePricelistWithDP'])->name('update.pricelist.withdown');
-    Route::get('/admin/manager/listpricewithdp/delete/{id}', [ListPriceController::class, 'deletePricelistWithDP'])->name('delete.pricelist.withdown');
-    Route::get('/admin/manager/listpricewithdp/installment/withdp/{id}', [ListPriceController::class, 'showinstallmentPricelistWithDP'])->name('show.installment.pricelist.withdown');
-    Route::get('/admin/manager/listpricewithdp/installment/withdp/{id}/new', [ListPriceController::class, 'addinstallmentPricelistWithDP'])->name('add.installment.pricelist.withdown');
-    Route::post('/admin/manager/listpricewithdp/installment/withdp/store', [ListPriceController::class, 'storeinstallmentPricelistWithDP'])->name('store.installment.pricelist.withdown');
-    Route::get('/admin/manager/listpricewithdp/installment/withdp/{id}/delete', [ListPriceController::class, 'deleteinstallmentPricelistWithDP'])->name('delete.installment.pricelist.withdown');
-
-    Route::get('/admin/manager/listpricewithdp/installment/nodp/{id}', [ListPriceController::class, 'showinstallmentPricelistNoDP'])->name('show.installment.pricelist.nodown');
-    Route::get('/admin/manager/listpricewithdp/installment/nodp/{id}/new', [ListPriceController::class, 'addinstallmentPricelistNoDP'])->name('add.installment.pricelist.nodown');
-    Route::post('/admin/manager/listpricewithdp/installment/nodp/store', [ListPriceController::class, 'storeinstallmentPricelistNoDP'])->name('store.installment.pricelist.nodown');
-    Route::get('/admin/manager/listpricewithdp/installment/nodp/{id}/delete', [ListPriceController::class, 'deleteinstallmentPricelistNoDP'])->name('delete.installment.pricelist.nodown');
-    //End Rendered Button
-
-    Route::get('/admin/manager/account', [AccountController::class, 'showAccount'])->name('show.admin.account');
-    Route::get('/admin/manager/account/new', [AccountController::class, 'addAccount'])->name('add.admin.account');
-    Route::post('/admin/manager/account/store', [AccountController::class, 'storeAccount'])->name('store.admin.account');
-    Route::get('/admin/manager/account/delete/{id}', [AccountController::class, 'deleteAccount'])->name('delete.admin.account');
 
     Route::get('/admin/manager/how-to-use/watch-online', [HowToUseController::class, 'ManagerWatchOnline'])->name('manager.watchonline');
     Route::get('/admin/manager/how-to-use/frequently-ask-question', [HowToUseController::class, 'ManagerFAQ'])->name('manager.faq');
@@ -99,18 +99,35 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::post('/admin/staff/profile/update_password', [StaffController::class, 'StaffUpdatePassword'])->name('staff.update.password');
     Route::get('/admin/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
     //Sidebar
+
+    //Payments Information
+    Route::get('admin/staff/show/payment', [PaymentController::class, 'showPayment'])->name('staff.show.payment');
+    //Payments Information
+
+    //Create Customer Account
+    Route::get('/admin/staff/customer/account', [AccountController::class, 'showCustomerAccount'])->name('show.customer.account');
+    Route::get('/admin/staff/customer/account/create',[AccountController::class, 'addCustomerAccount'])->name('add.customer.account');
+    Route::post('/admin/staff/account/store', [AccountController::class, 'storeCustomerAccount'])->name('store.customer.account');
+    Route::get('/admin/staff/account/delete/{id}', [AccountController::class, 'deleteCustomerAccount'])->name('delete.customer.account');
+    //Create Customer Account
+
     //Add Buyer Information
     Route::get('/admin/staff/user/customer', [PurchaseLotController::class, 'showUserCustomer'])->name('staff.show.customer.user');
+    Route::get('/admin/staff/user/customer/personalinfo/show/{id}', [PurchaseLotController::class, 'showPersonalInfo'])->name('staff.show.customer.personalinfo');
     Route::get('/admin/staff/user/customer/personalinfo/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
     Route::get('/admin/staff/user/customer/purchasedetail/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
     Route::get('/admin/staff/user/customer/purchasedetail/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
-    Route::get('/admin/staff/chat', [ChatController::class, 'StaffChat'])->name('staff.chat');
-    Route::get('/admin/staff/add-intern', [InternController::class, 'StaffAddIntern'])->name('staff.addintern');
-    //Payments Information
-    Route::get('/admin/staff/payment/customer-records', [PaymentController::class, 'showCustomerPaymentRecord'])->name('payment.record');
-    Route::get('/admin/staff/payment/paid-records', [PaymentController::class, 'showPaidCustomer'])->name('paid.customer');
+
+    //Memorial Lot Entry
+    Route::get('/admin/staff/show/memorial-lot-entry', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('staff.show.memorial.lot.entry');
+    //Memorial Lot Entry
+
+    Route::get('/admin/staff/chat', [ChatController::class, 'showStaffChat'])->name('staff.chat');
+
+    Route::get('/admin/staff/internment', [IntermentController::class, 'showInterment'])->name('staff.addintern');
+    
     //How to use
     Route::get('/admin/staff/how-to-use/watch-online', [HowToUseController::class, 'StaffWatchOnline'])->name('staff.watchonline');
     Route::get('/admin/staff/how-to-use/frequently-ask-question', [HowToUseController::class, 'StaffFAQ'])->name('staff.faq');

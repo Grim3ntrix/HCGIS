@@ -26,11 +26,6 @@ class User extends Authenticatable
         return $this->hasOne(PersonalInformation::class, 'user_id');
     }
 
-    public function payment()
-    {
-        return $this->hasMany(Payment::class, 'user_id');
-    }
-
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -8,23 +8,23 @@ use App\Models\User;
 
 class ChatController extends Controller
 {
-    public function StaffChat(){
+    public function showStaffChat(){
 
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.staff.body.chat', compact('profileData'));
+        return view('admin.staff.content.index-show-chat', compact('profileData'));
     }
-    public function ManagerChat(){
+    public function showManagerChat(){
 
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.manager.content.index-chat', compact('profileData'));
+        return view('admin.manager.content.index-show-chat', compact('profileData'));
     }
 
-    public function CustomerChat(){
+    public function showCustomerChat(){
 
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('web_customer.verified_customer.body.chat', compact('profileData'));
+        return view('web-customer.verified-customer.content.index-show-chat', compact('profileData'));
     }
 }

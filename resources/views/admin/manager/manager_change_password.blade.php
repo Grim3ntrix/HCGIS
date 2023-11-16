@@ -19,20 +19,24 @@
 
                     </div>
                     <div class="mt-3">
-                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Name:</label>
-                        <p class="text-muted">{{ $profileData->name }}</p>
+                            <label class="tx-11 fw-bolder mb-0 text-uppercase">User Code:</label>
+                            <p class="text-muted">{{ $profileData->user_code}}</p>
                         </div>
                         <div class="mt-3">
-                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Email:</label>
-                        <p class="text-muted">{{ $profileData->email }}</p>
+                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Name:</label>
+                            <p class="text-muted">{{ $profileData->name }}</p>
                         </div>
                         <div class="mt-3">
-                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Phone:</label>
-                        <p class="text-muted">{{ $profileData->phone }}</p>
+                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Email:</label>
+                            <p class="text-muted">{{ $profileData->email }}</p>
                         </div>
                         <div class="mt-3">
-                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Address:</label>
-                        <p class="text-muted">{{ $profileData->address }}</p>
+                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Phone:</label>
+                            <p class="text-muted">{{ $profileData->phone }}</p>
+                        </div>
+                        <div class="mt-3">
+                            <label class="tx-11 fw-bolder mb-0 text-uppercase">Address:</label>
+                            <p class="text-muted">{{ $profileData->address }}</p>
                         </div>
                         <div class="mt-3 d-flex social-links">
                         
@@ -43,7 +47,7 @@
         <!-- left wrapper end -->
 
         <!-- middle wrapper start -->
-        <div class="col-md-8 col-xl-6 middle-wrapper">
+        <div class="col-md-8 col-xl-9 middle-wrapper">
             <div class="row">
                 <div class="card">
                     <div class="card-body">
@@ -52,21 +56,21 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="old_password" class="form-label">Old Password</label>
-                                <input type="text" class="form-control @error('old_password') is-invalid @enderror" id="old_password" name="old_password" autocomplete="off">
+                                <input type="password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" name="old_password" autocomplete="off">
                                 @error('old_password')
                                     <span class="text-danger">{{ $message }}<span>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="new_password" class="form-label">New Password</label>
-                                <input type="text" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" autocomplete="off">
+                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" autocomplete="off">
                                 @error('new_password')
                                     <span class="text-danger">{{ $message }}<span>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
-                                <input type="text" class="form-control" id="new_password_confirmation" name="new_password_confirmation" autocomplete="off">
+                                <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" autocomplete="off">
                             </div>
 
 

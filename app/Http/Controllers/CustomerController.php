@@ -37,7 +37,7 @@ class CustomerController extends Controller
     {
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('web_customer.verified_customer.customer_profile_view', compact('profileData'));
+        return view('web-customer.verified-customer.customer_profile_view', compact('profileData'));
     }//End Method
 
     public function CustomerProfileStore(Request $request)
@@ -71,7 +71,7 @@ class CustomerController extends Controller
     {
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('web_customer.verified_customer.customer_change_password', compact('profileData'));
+        return view('web-customer.verified-customer.customer_change_password', compact('profileData'));
     }//End Method
 
     public function CustomerUpdatePassword(Request $request){

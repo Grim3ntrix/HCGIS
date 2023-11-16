@@ -19,31 +19,33 @@
 
                     </div>
                     <div class="mt-3">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">User Code:</label>
+                        <p class="text-muted">{{ $profileData->user_code}}</p>
+                    </div>
+                    <div class="mt-3">
                         <label class="tx-11 fw-bolder mb-0 text-uppercase">Name:</label>
                         <p class="text-muted">{{ $profileData->name }}</p>
-                        </div>
-                        <div class="mt-3">
+                    </div>
+                    <div class="mt-3">
                         <label class="tx-11 fw-bolder mb-0 text-uppercase">Email:</label>
                         <p class="text-muted">{{ $profileData->email }}</p>
-                        </div>
-                        <div class="mt-3">
+                    </div>
+                    <div class="mt-3">
                         <label class="tx-11 fw-bolder mb-0 text-uppercase">Phone:</label>
                         <p class="text-muted">{{ $profileData->phone }}</p>
-                        </div>
-                        <div class="mt-3">
+                    </div>
+                    <div class="mt-3">
                         <label class="tx-11 fw-bolder mb-0 text-uppercase">Address:</label>
                         <p class="text-muted">{{ $profileData->address }}</p>
-                        </div>
-                        <div class="mt-3 d-flex social-links">
-                        
                     </div>
+                    <div class="mt-3 d-flex social-links"></div>
                 </div>
             </div>
         </div>
         <!-- left wrapper end -->
 
         <!-- middle wrapper start -->
-        <div class="col-md-8 col-xl-6 middle-wrapper">
+        <div class="col-md-8 col-xl-9 middle-wrapper">
             <div class="row">
                 <div class="card">
                     <div class="card-body">
@@ -94,7 +96,7 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(function(){
         $('#image').change(function(e){
             var reader = new FileReader();
             reader.onload = function(e){
@@ -103,6 +105,6 @@
             reader.readAsDataURL(e.target.files['0']);
         });
     });
-
 </script>
+
 @endsection

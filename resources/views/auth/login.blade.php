@@ -86,7 +86,7 @@
                            Login
                         </button>
                       </div>
-                      <a href="{{ route('register') }}" class="d-block mt-3 text-muted">Not a user? Sign up</a>
+                      <a href="{{ route('welcome.guest') }}" class="d-block mt-3 text-muted">No account? Login as Guest</a>
                     
                     </form>
 
