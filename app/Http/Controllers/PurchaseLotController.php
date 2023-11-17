@@ -19,7 +19,7 @@ class PurchaseLotController extends Controller
             $data = User::where('role','customer');
             return DataTables::of($data)->addIndexColumn()->make(true);          
         }
-        return view('admin.staff.content.index-purchase-lot');
+        return view('admin.staff.content.index-show-registered-customer');
 
     }//End Method (Purchase Lot Customers DataTable)
 
@@ -28,7 +28,7 @@ class PurchaseLotController extends Controller
         $userId = $request->route('id');
         $user = User::findOrFail($userId);
         
-        return view('admin.staff.content.index-add-purchase-lot', compact('user'));
+        return view('admin.staff.content.index-add-personal-info', compact('user'));
     }//End Method (Add Customer Personal Informations)
 
     public function storePersonalInfoForm(Request $request){
@@ -51,11 +51,11 @@ class PurchaseLotController extends Controller
             'agency_manager' => 'required',
         ]);
 
-        $user = User::findorFail($request->input('user_id'));
+        $userId = $request->input('user_id');
+
+        $personalInformation = PersonalInformation::firstOrNew(['user_id' => $userId]);
         
-        $personalInformation = PersonalInformation::updateOrCreate([
-            
-            'user_id' => $request->input('user_id'),
+        $personalInformation->fill([
             'last_name' => $request->input('last_name'),
             'first_name' => $request->input('first_name'),
             'middle_initial' => $request->input('middle_initial'),
@@ -74,15 +74,15 @@ class PurchaseLotController extends Controller
             'agency_manager' => $request->input('agency_manager'),
         ]);
         
-        $personalInformation->user()->associate($user);
         $personalInformation->save();
-
-        $notification = array(
-            'message' => 'Personal Info Successfully Added!',
+        
+        $notification = [
+            'message' => 'Personal Info Successfully Updated!',
             'alert-type' => 'success',
-        );
-
-        return redirect()->route('staff.show.productdetail.form', ['id' => $user->id])->with($notification);
+        ];
+        
+        return redirect()->route('staff.show.productdetail.form', ['id' => $userId])->with($notification);
+        
         
     }//End Method (Customer Personal Informations)
 

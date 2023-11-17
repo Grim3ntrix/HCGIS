@@ -29,11 +29,11 @@
           <li class="nav-item">
             <a href="{{ route('staff.addintern') }}" class="nav-link">
               <i class="link-icon" data-feather="plus-square"></i>
-              <span class="link-title">Interment</span>
+              <span class="link-title">Obituary</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('staff.show.customer.user') }}" class="nav-link">
+            <a href="{{ route('staff.show.user.customer') }}" class="nav-link">
               <i class="link-icon" data-feather="shopping-bag"></i>
               <span class="link-title">Purchase Memorial Lot</span>
             </a>

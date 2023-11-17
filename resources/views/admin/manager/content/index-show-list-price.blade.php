@@ -11,7 +11,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Product Type</label>
+                                        <label for="" class="form-label">Product Type</label>
                                         <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Product Type">
                                         @error('name')
                                         <span class="text-danger">{{ $message }}</span>

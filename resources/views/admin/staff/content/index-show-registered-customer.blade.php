@@ -35,7 +35,7 @@
           processing: true,
           serverSide: true,
           ajax: {
-            url: "{{ route('staff.show.customer.user') }}"
+            url: "{{ route('staff.show.user.customer') }}"
           },
           columns: [
             {

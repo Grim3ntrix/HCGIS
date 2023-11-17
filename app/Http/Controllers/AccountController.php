@@ -137,10 +137,9 @@ class AccountController extends Controller
             'alert-type' => 'success',
         ];
     
-        return redirect()->route('show.customer.account')->with($notification)->with('userCode', $userCode);
+        return redirect()->route('show.customer.account')->with($notification);
     }
     
-
     public function deleteCustomerAccount(Request $request){
         $userId = $request->route('id');
         $user = User::findOrFail($userId);

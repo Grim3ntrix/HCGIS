@@ -26,6 +26,15 @@ class User extends Authenticatable
         return $this->hasOne(PersonalInformation::class, 'user_id');
     }
 
+    public function obituary()
+    {
+        return $this->hasMany(Obituary::class, 'user_id');
+    }
+
+    public function order(){
+        return $this->hasMany(Order::class, 'user_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

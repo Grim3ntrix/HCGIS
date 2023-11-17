@@ -61,18 +61,22 @@
                     
                     <form class="forms-sample" method="POST" action="{{ route('login') }}">
                       @csrf
-
+                      @if ($errors->any())
+                          <div class="alert alert-danger">
+                              @foreach ($errors->all() as $error)
+                                  {{ $error }}<br>
+                              @endforeach
+                          </div>
+                      @endif
                       <div class="mb-3">
-                        <label for="login" class="form-label">Email/Name/Phone</label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="login" name="login" placeholder="Email"
-                        :value="old('login')" required>
-                        <x-input-error :messages="$errors->get('login')" class="mt-2" />
+                        <label for="login" class="form-label">Email/User-Code</label>
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Email address or user-code"
+                        :value="old('login')" >
                       </div>
                       <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" 
-                        required placeholder="Password">
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                         placeholder="Password">
                       </div>
                       <div class="form-check mb-3">
                       <label class="form-check-label" for="remember_me">

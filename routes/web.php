@@ -8,7 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PurchaseLotController;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\IntermentController;
+use App\Http\Controllers\ObituaryController;
 use App\Http\Controllers\MyLotController;
 use App\Http\Controllers\MyPaymentController;
 use App\Http\Controllers\PaymentController;
@@ -105,14 +105,14 @@ Route::middleware(['auth','role:staff'])->group(function(){
     //Payments Information
 
     //Create Customer Account
-    Route::get('/admin/staff/customer/account', [AccountController::class, 'showCustomerAccount'])->name('show.customer.account');
-    Route::get('/admin/staff/customer/account/create',[AccountController::class, 'addCustomerAccount'])->name('add.customer.account');
-    Route::post('/admin/staff/account/store', [AccountController::class, 'storeCustomerAccount'])->name('store.customer.account');
-    Route::get('/admin/staff/account/delete/{id}', [AccountController::class, 'deleteCustomerAccount'])->name('delete.customer.account');
+    Route::get('/admin/staff/user/customer/account', [AccountController::class, 'showCustomerAccount'])->name('show.customer.account');
+    Route::get('/admin/staff/user/customer/account/create',[AccountController::class, 'addCustomerAccount'])->name('add.customer.account');
+    Route::post('/admin/staff/user/customer/account/store', [AccountController::class, 'storeCustomerAccount'])->name('store.customer.account');
+    Route::get('/admin/staff/user/customer/account/delete/{id}', [AccountController::class, 'deleteCustomerAccount'])->name('delete.customer.account');
     //Create Customer Account
 
     //Add Buyer Information
-    Route::get('/admin/staff/user/customer', [PurchaseLotController::class, 'showUserCustomer'])->name('staff.show.customer.user');
+    Route::get('/admin/staff/user/customer/registered', [PurchaseLotController::class, 'showUserCustomer'])->name('staff.show.user.customer');
     Route::get('/admin/staff/user/customer/personalinfo/show/{id}', [PurchaseLotController::class, 'showPersonalInfo'])->name('staff.show.customer.personalinfo');
     Route::get('/admin/staff/user/customer/personalinfo/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
@@ -126,7 +126,7 @@ Route::middleware(['auth','role:staff'])->group(function(){
 
     Route::get('/admin/staff/chat', [ChatController::class, 'showStaffChat'])->name('staff.chat');
 
-    Route::get('/admin/staff/internment', [IntermentController::class, 'showInterment'])->name('staff.addintern');
+    Route::get('/admin/staff/internment', [ObituaryController::class, 'showInterment'])->name('staff.addintern');
     
     //How to use
     Route::get('/admin/staff/how-to-use/watch-online', [HowToUseController::class, 'StaffWatchOnline'])->name('staff.watchonline');

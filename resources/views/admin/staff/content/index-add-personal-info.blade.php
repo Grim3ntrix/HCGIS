@@ -41,7 +41,7 @@
 									<div class="mb-3">
 										<label for="name_extension" class="form-label">Extension</label>
 										<select name="name_extension" id="name_extension" class="form-select mb-3">
-											<option value="N/A" selected="">Select</option>
+											<option value="N/A" selected="">None</option>
 											<option value="Jr">Jr.</option>
 											<option value="Sr">Sr.</option>
 											<option value="I">I</option>
