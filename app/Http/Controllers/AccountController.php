@@ -32,11 +32,14 @@ class AccountController extends Controller
     }
 
     public function addAgentAccount(){
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
         
         $uuid = Str::uuid()->toString();
         $userCode = 'HCG' .  '-' . substr($uuid, 0, 4);
 
-        return view('admin.manager.content.index-add-agent-account', compact('userCode'));
+        return view('admin.manager.content.index-add-agent-account', compact('userCode','profileData'));
     }
 
     public function storeAgentAccount(Request $request){
@@ -105,10 +108,14 @@ class AccountController extends Controller
     }
 
     public function addCustomerAccount(){
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
         $uuid = Str::uuid()->toString();
         $userCode = 'HCG' .  '-' . substr($uuid, 0, 4);
 
-        return view('admin.staff.content.index-add-customer-account', compact('userCode'));
+        return view('admin.staff.content.index-add-customer-account', compact('userCode','profileData'));
     }
 
     public function storeCustomerAccount(Request $request){
