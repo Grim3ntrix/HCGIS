@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('no_down_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_list_price_id')->constrained('product_list_prices');
-            $table->integer('term');
-            $table->decimal('annual_interest', 10, 2);
-            $table->decimal('monthly_payment', 10, 2);
+            $table->foreignId('product_list_price_id')->constrained('product_list_prices')->onDelete('cascade');
+            $table->integer('ndp_term');
+            $table->decimal('ndp_annual_interest', 10, 2);
+            $table->decimal('ndp_monthly_payment', 10, 2);
             $table->timestamps();
         });
     }

@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rate extends Model
+class DownPayment extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
-    
-    /* removed for decoupling purposes
+
     public function productListPrice(){
-        return $this->hasOne(ProductListPrice::class, 'rate_id');
-    } */
+        return $this->belongsTo(ProductListPrice::class, 'product_list_price_id');
+    }
 }

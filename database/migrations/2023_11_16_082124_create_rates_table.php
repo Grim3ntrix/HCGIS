@@ -13,15 +13,10 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
-            $table->decimal('one_year_rate', 8, 2);
-            $table->decimal('two_year_rate', 8, 2);
-            $table->decimal('three_year_rate', 8, 2);
-            $table->decimal('four_year_rate', 8, 2);
-            $table->decimal('five_year_rate', 8, 2);
-            $table->decimal('spot_cash_rate', 8, 2);
-            $table->decimal('at_need_rate', 8, 2);
-            $table->decimal('down_payment_rate', 8, 2);
-            $table->decimal('penalty_rate', 8, 2);
+            $table->string('rate_name');
+            $table->integer('term');
+            $table->decimal('interest_rate_percentage', 10, 3);
+            $table->decimal('interest_rate_decimal', 10, 5);
             $table->timestamps();
         });
     }

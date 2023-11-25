@@ -15,7 +15,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HowToUseController;
 use App\Http\Controllers\ListPriceController;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\DiscountRateController;
+use App\Http\Controllers\RateController;
 use App\Http\Controllers\MemorialLotEntryController;
 
 
@@ -69,11 +69,16 @@ Route::middleware(['auth','role:manager'])->group(function(){
     //Sidebar
 
     //Discount Manager
-    Route::get('/admin/manager/discount/rate', [DiscountRateController::class, 'showDiscountRate'])->name('manager.show.discount.rate');
+    Route::get('/admin/manager/discount/rate', [RateController::class, 'showRate'])->name('manager.show.discount.rate');
+    Route::post('/admin/manager/discount/rate/store', [RateController::class, 'storeRate'])->name('manager.store.discount.rate');
     //Discount Manager
 
     //ListPrice Manager
-    Route::get('/admin/manager/listprice', [ListPriceController::class, 'showManagerListPrice'])->name('manager.show.list.price');
+    Route::get('/admin/manager/listprice/all', [ListPriceController::class, 'showallManagerListPrice'])->name('manager.show.all.list.price');
+    Route::get('/admin/manager/listprice/new', [ListPriceController::class, 'showManagerListPrice'])->name('manager.show.list.price');
+    Route::post('/admin/manager/listprice/store', [ListPriceController::class, 'storeManagerListPrice'])->name('manager.store.list.price');
+    Route::get('/admin/manager/listprice/view/{id}', [ListPriceController::class, 'viewManagerListPrice'])->name('manager.view.list.price');
+    Route::get('/admin/manager/listprice/delete/{id}', [ListPriceController::class, 'deleteManagerListPrice'])->name('manager.delete.list.price');
     //ListPrice Manager
 
     //Account Manager

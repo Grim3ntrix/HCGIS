@@ -32,6 +32,7 @@ class AccountController extends Controller
     }
 
     public function addAgentAccount(){
+        
         $uuid = Str::uuid()->toString();
         $userCode = 'HCG' .  '-' . substr($uuid, 0, 4);
 

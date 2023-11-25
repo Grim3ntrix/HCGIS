@@ -11,9 +11,10 @@ class ProductListPrice extends Model
 
     protected $guarded = [];
 
+    /* removed for decoupling purposes
     public function rate(){
         return $this->belongsTo(Rate::class, 'rate_id');
-    }
+    } */
 
     public function preNeed(){
         return $this->hasOne(PreNeed::class, 'product_list_price_id');
@@ -24,11 +25,11 @@ class ProductListPrice extends Model
     }
     
     public function noDownPayment(){
-        return $this->hasOne(NoDownPayment::class, 'product_list_price_id');
+        return $this->hasMany(NoDownPayment::class, 'product_list_price_id');
     }
 
     public function withDownPayment(){
-        return $this->hasOne(WithDownPayment::class, 'product_list_price_id');
+        return $this->hasMany(WithDownPayment::class, 'product_list_price_id');
     }
 
     public function productEntry(){
@@ -43,5 +44,8 @@ class ProductListPrice extends Model
         return $this->hasMany(WithDownPaymentNoInterest::class, 'product_list_price_id');
     }
     
+    public function downPayment(){
+        return $this->hasOne(DownPayment::class, 'product_list_price_id');
+    }
 }
 

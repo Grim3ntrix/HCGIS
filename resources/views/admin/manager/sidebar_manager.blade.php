@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item nav-category">List price</li>
           <li class="nav-item">
-            <a href="{{ route('manager.show.list.price') }}" class="nav-link">
+            <a href="{{ route('manager.show.all.list.price') }}" class="nav-link">
               <i class="link-icon" data-feather="file-plus"></i>
               <span class="link-title">New</span>
             </a>

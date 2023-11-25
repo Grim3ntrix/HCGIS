@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pre_needs', function (Blueprint $table) {
+        Schema::create('down_payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_list_price_id')->constrained('product_list_prices')->onDelete('cascade');
-            $table->decimal('spot_cash', 10, 2);
+            $table->decimal('down_payment_amount', 10, 2);
+            $table->decimal('remaining_balance', 10, 2);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pre_needs');
+        Schema::dropIfExists('down_payments');
     }
 };
