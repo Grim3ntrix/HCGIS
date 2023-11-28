@@ -10,12 +10,12 @@
 
 	<title>Purchase Lot | Holy Cross Garden </title>
 	
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <!-- End fonts -->
-  <script src="https://kit.fontawesome.com/07672f603e.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+  	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  	<!-- End fonts -->
+  	<script src="https://kit.fontawesome.com/07672f603e.js" crossorigin="anonymous"></script>
 
   
   	<!-- jQuery and Datatable Css-->
@@ -63,6 +63,7 @@
 		
 		</div>
 	</div>
+	
 	<!-- core:js Conflict if core.js is not loaded first-->
 	<script src="{{asset('frontend/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
@@ -81,7 +82,7 @@
 
 	<!-- Toaster JS -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+	
 	<script>
 		@if(Session::has('message'))
 		var type = "{{ Session::get('alert-type','info') }}"
@@ -106,9 +107,22 @@
 	</script>	
 	<!-- endtoaster -->
 
+	<!-- SweetAlert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{{asset('frontend/assets/js/code/sweetalert.js')}}"></script>
+	<!-- SweetAlert -->
+
+	<!-- Installment Interest JS -->
+	<script src="{{asset('frontend/assets/js/code/installment-interest.js')}}"></script>
+	<!-- Installment Interest JS -->
+
+	<!-- DownPayment-Rate-Calculation -->
+	<script src="{{asset('frontend/assets/js/code/downpayment-rate.js')}}"></script>
+	<!-- DownPayment-Rate-Calculation -->
+
 	<!-- Plugin js for this page -->
-  <script src="{{asset('frontend/assets/vendors/flatpickr/flatpickr.min.js')}}"></script>
-  <script src="{{asset('frontend/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
+  	<script src="{{asset('frontend/assets/vendors/flatpickr/flatpickr.min.js')}}"></script>
+  	<script src="{{asset('frontend/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
 	<!-- End plugin js for this page -->
 
 	<!-- inject:js -->
@@ -119,6 +133,7 @@
 	<!-- Custom js for this page -->
   <script src="{{asset('frontend/assets/js/dashboard-dark.js')}}"></script>
 	<!-- End custom js for this page -->
+	
 
 </body>
 </html>    

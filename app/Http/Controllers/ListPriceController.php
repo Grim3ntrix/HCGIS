@@ -20,7 +20,19 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ListPriceController extends Controller
 {
+    public function showallStaffListPrice(Request $request){
 
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
+        if($request->ajax()){
+            
+            $allListPrice = ProductListPrice::all();
+            return DataTables::of($allListPrice)->addIndexColumn()->make(true);          
+        }
+        return view('admin.staff.content.index-show-all-list-price', compact('profileData'));
+    }//End Show All Staff Pricelist
+    
     public function showallManagerListPrice(Request $request){
 
         $id = Auth::user()->id;
@@ -101,6 +113,7 @@ class ListPriceController extends Controller
                 'wdp_term' => $request->input("wdp_term_{$i}"),
                 'wdp_annual_interest' => $request->input("wdp_annual_interest_{$i}"),
                 'wdp_monthly_payment' => $request->input("wdp_monthly_payment_{$i}"),
+                'wdp_end_price' => $request->input("wdp_end_price_{$i}"),
             ]);
         }
 
@@ -111,6 +124,7 @@ class ListPriceController extends Controller
                 'ndp_term' => $request->input("ndp_term_{$i}"),
                 'ndp_annual_interest' => $request->input("ndp_annual_interest_{$i}"),
                 'ndp_monthly_payment' => $request->input("ndp_monthly_payment_{$i}"),
+                'ndp_end_price' => $request->input("ndp_end_price_{$i}"),
             ]);
         }
         
@@ -120,6 +134,7 @@ class ListPriceController extends Controller
                 'product_list_price_id' => $PLP_id,
                 'wdpni_term' => $request->input("wdpni_term_{$i}"),
                 'wdpni_monthly_payment' => $request->input("wdpni_monthly_payment_{$i}"),
+                'wdpni_end_price' => $request->input("wdpni_end_price_{$i}"),
             ]);
         }
 
@@ -129,6 +144,7 @@ class ListPriceController extends Controller
                 'product_list_price_id' => $PLP_id,
                 'ndpni_term' => $request->input("ndpni_term_{$i}"),
                 'ndpni_monthly_payment' => $request->input("ndpni_monthly_payment_{$i}"),
+                'ndpni_end_price' => $request->input("ndpni_end_price_{$i}"),
             ]);
         }
 

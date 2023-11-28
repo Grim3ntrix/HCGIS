@@ -1,5 +1,5 @@
-@extends('admin.staff.body.purchase-detail')
-@section('purchase-detail-content')
+@extends('admin.staff.body.purchase-lot')
+@section('purchase-lot-content')
 <div class="page-content">
 	<div class="row">
 		<div class="col-md-12 stretch-card">

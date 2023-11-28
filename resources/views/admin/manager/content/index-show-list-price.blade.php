@@ -103,6 +103,7 @@
                                     <div class="mb-3">
                                         <label for="wdp_monthly_payment_1" class="form-label">Monthly Payment</label>
                                         <input type="number" name="wdp_monthly_payment_1" id="wdp_monthly_payment_1" class="form-control @error('wdp_monthly_payment_1') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdp_end_price_1" id="wdp_end_price_1" value="">
                                         @error('wdp_monthly_payment_1')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -123,6 +124,7 @@
                                     <div class="mb-3">
                                         <label for="wdp_monthly_payment_2" class="form-label">Monthly Payment</label>
                                         <input type="number" name="wdp_monthly_payment_2" id="wdp_monthly_payment_2" class="form-control @error('wdp_monthly_payment_2') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdp_end_price_2" id="wdp_end_price_2" value="">
                                         @error('wdp_monthly_payment_2')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -144,6 +146,7 @@
                                     <div class="mb-3">
                                         <label for="wdp_monthly_payment_3" class="form-label">Monthly Payment</label>
                                         <input type="number" name="wdp_monthly_payment_3" id="wdp_monthly_payment_3" class="form-control @error('wdp_monthly_payment_3') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdp_end_price_3" id="wdp_end_price_3" value="">
                                         @error('wdp_monthly_payment_3')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -164,6 +167,7 @@
                                     <div class="mb-3">
                                         <label for="wdp_monthly_payment_4" class="form-label">Monthly Payment</label>
                                         <input type="number" name="wdp_monthly_payment_4" id="wdp_monthly_payment_4" class="form-control @error('wdp_monthly_payment_4') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdp_end_price_4" id="wdp_end_price_4" value="">
                                         @error('wdp_monthly_payment_4')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -185,6 +189,7 @@
                                     <div class="mb-3">
                                         <label for="wdp_monthly_payment_5" class="form-label">Monthly Payment</label>
                                         <input type="number" name="wdp_monthly_payment_5" id="wdp_monthly_payment_5" class="form-control @error('wdp_monthly_payment_5') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdp_end_price_5" id="wdp_end_price_5" value="">
                                         @error('wdp_monthly_payment_5')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -228,6 +233,7 @@
                                     <div class="mb-3">
                                         <label for="ndp_monthly_payment_1" class="form-label">Monthly Payment</label>
                                         <input type="number" name="ndp_monthly_payment_1" id="ndp_monthly_payment_1" class="form-control @error('email') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndp_end_price_1" id="ndp_end_price_1" value="">
                                         @error('email')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -248,6 +254,7 @@
                                     <div class="mb-3">
                                         <label for="ndp_monthly_payment_2" class="form-label">Monthly Payment</label>
                                         <input type="number" name="ndp_monthly_payment_2" id="ndp_monthly_payment_2" class="form-control @error('ndp_monthly_payment_2') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndp_end_price_2" id="ndp_end_price_2" value="">
                                         @error('ndp_monthly_payment_2')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -269,6 +276,7 @@
                                     <div class="mb-3">
                                         <label for="ndp_monthly_payment_3" class="form-label">Monthly Payment</label>
                                         <input type="number" name="ndp_monthly_payment_3" id="ndp_monthly_payment_3" class="form-control @error('ndp_monthly_payment_3') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndp_end_price_3" id="ndp_end_price_3" value="">
                                         @error('ndp_monthly_payment_3')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -289,6 +297,7 @@
                                     <div class="mb-3">
                                         <label for="ndp_monthly_payment_4" class="form-label">Monthly Payment</label>
                                         <input type="number" name="ndp_monthly_payment_4" id="ndp_monthly_payment_4" class="form-control @error('ndp_monthly_payment_4') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndp_end_price_4" id="ndp_end_price_4" value="">
                                         @error('ndp_monthly_payment_4')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -310,6 +319,7 @@
                                     <div class="mb-3">
                                         <label for="ndp_monthly_payment_5" class="form-label">Monthly Payment</label>
                                         <input type="number" name="ndp_monthly_payment_5" id="ndp_monthly_payment_5" class="form-control @error('ndp_monthly_payment_5') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndp_end_price_5" id="ndp_end_price_5" value="">
                                         @error('ndp_monthly_payment_5')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -343,6 +353,7 @@
                                         <input type="hidden" name="wdpni_term_1" id="wdpni_term_1" value="12">
                                         <label for="wdpni_monthly_payment_1" class="form-label">1yr/s 12 mos. (No Interest)</label>
                                         <input type="number" name="wdpni_monthly_payment_1" id="wdpni_monthly_payment_1" class="form-control @error('wdpni_monthly_payment_1') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdpni_end_price_1" id="wdpni_end_price_1" value="">
                                         @error('wdpni_monthly_payment_1')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -364,6 +375,7 @@
                                         <input type="hidden" name="wdpni_term_2" id="wdpni_term_2" value="24">
                                         <label for="wdpni_monthly_payment_2" class="form-label">2yr/s 24 mos. (No Interest)</label>
                                         <input type="number" name="wdpni_monthly_payment_2" id="wdpni_monthly_payment_2" class="form-control @error('wdpni_monthly_payment_2') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdpni_end_price_2" id="wdpni_end_price_2" value="">
                                         @error('wdpni_monthly_payment_2')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -386,6 +398,7 @@
                                         <input type="hidden" name="wdpni_term_3" id="wdpni_term_3" value="36">
                                         <label for="wdpni_monthly_payment_3" class="form-label">3yr/s 36 mos. (No Interest)</label>
                                         <input type="number" name="wdpni_monthly_payment_3" id="wdpni_monthly_payment_3" class="form-control @error('wdpni_monthly_payment_3') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdpni_end_price_3" id="wdpni_end_price_3" value="">
                                         @error('wdpni_monthly_payment_3')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -407,6 +420,7 @@
                                         <input type="hidden" name="wdpni_term_4" id="wdpni_term_4" value="48">
                                         <label for="wdpni_monthly_payment_4" class="form-label">4yr/s 48 mos. (No Interest)</label>
                                         <input type="number" name="wdpni_monthly_payment_4" id="wdpni_monthly_payment_4" class="form-control @error('wdpni_monthly_payment_4') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdpni_end_price_4" id="wdpni_end_price_4" value="">
                                         @error('wdpni_monthly_payment_4')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -429,6 +443,7 @@
                                         <input type="hidden" name="wdpni_term_5" id="wdpni_term_5" value="60">
                                         <label for="wdpni_monthly_payment_5" class="form-label">5yr/s 60 mos. (No Interest)</label>
                                         <input type="number" name="wdpni_monthly_payment_5" id="wdpni_monthly_payment_5" class="form-control @error('wdpni_monthly_payment_5') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="wdpni_end_price_5" id="wdpni_end_price_5" value="">
                                         @error('wdpni_monthly_payment_5')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -461,6 +476,7 @@
                                         <input type="hidden" name="ndpni_term_1" id="ndpni_term_1" value="12">
                                         <label for="ndpni_monthly_payment_1" class="form-label">1yr/s 12 mos. (No Interest)</label>
                                         <input type="number" name="ndpni_monthly_payment_1" id="ndpni_monthly_payment_1" class="form-control @error('ndpni_monthly_payment_1') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndpni_end_price_1" id="ndpni_end_price_1" value="">
                                         @error('ndpni_monthly_payment_1')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -481,6 +497,7 @@
                                         <input type="hidden" name="ndpni_term_2" id="ndpni_term_2" value="24">
                                         <label for="ndpni_monthly_payment_2" class="form-label">2yr/s 24 mos. (No Interest)</label>
                                         <input type="number" name="ndpni_monthly_payment_2" id="ndpni_monthly_payment_2" class="form-control @error('ndpni_monthly_payment_2') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndpni_end_price_2" id="ndpni_end_price_2" value="">
                                         @error('ndpni_monthly_payment_2')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -502,6 +519,7 @@
                                         <input type="hidden" name="ndpni_term_3" id="ndpni_term_3" value="36">
                                         <label for="ndpni_monthly_payment_3" class="form-label">3yr/s 36 mos. (No Interest)</label>
                                         <input type="number" name="ndpni_monthly_payment_3" id="ndpni_monthly_payment_3" class="form-control @error('ndpni_monthly_payment_3') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndpni_end_price_3" id="ndpni_end_price_3" value="">
                                         @error('ndpni_monthly_payment_3')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -522,6 +540,7 @@
                                         <input type="hidden" name="ndpni_term_4" id="ndpni_term_4" value="48">
                                         <label for="ndpni_monthly_payment_4" class="form-label">4yr/s 48 mos. (No Interest)</label>
                                         <input type="number" name="ndpni_monthly_payment_4" id="ndpni_monthly_payment_4" class="form-control @error('ndpni_monthly_payment_4') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndpni_end_price_4" id="ndpni_end_price_4" value="">
                                         @error('ndpni_monthly_payment_4')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -543,6 +562,7 @@
                                         <input type="hidden" name="ndpni_term_5" id="ndpni_term_5" value="60">
                                         <label for="ndpni_monthly_payment_5" class="form-label">5yr/s 60 mos. (No Interest)</label>
                                         <input type="number" name="ndpni_monthly_payment_5" id="ndpni_monthly_payment_5" class="form-control @error('ndpni_monthly_payment_5') is-invalid @enderror" placeholder="₱00.00" readonly>
+                                        <input type="hidden" name="ndpni_end_price_5" id="ndpni_end_price_5" value="">
                                         @error('ndpni_monthly_payment_5')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -719,49 +739,67 @@
 
                     $("#wdp_annual_interest_1").val(wdp_interestAmount_1.toFixed(2));
                     $("#wdp_monthly_payment_1").val(wdp_monthlyPayment_1.toFixed(2));
+                    $("#wdp_end_price_1").val(wdp_endPrice_1.toFixed(2));
                     
                     $("#wdp_annual_interest_2").val(wdp_interestAmount_2.toFixed(2));
                     $("#wdp_monthly_payment_2").val(wdp_monthlyPayment_2.toFixed(2));
+                    $("#wdp_end_price_2").val(wdp_endPrice_2.toFixed(2));
 
                     $("#wdp_annual_interest_3").val(wdp_interestAmount_3.toFixed(2));
                     $("#wdp_monthly_payment_3").val(wdp_monthlyPayment_3.toFixed(2));
+                    $("#wdp_end_price_3").val(wdp_endPrice_3.toFixed(2));
 
                     $("#wdp_annual_interest_4").val(wdp_interestAmount_4.toFixed(2));
                     $("#wdp_monthly_payment_4").val(wdp_monthlyPayment_4.toFixed(2));
+                    $("#wdp_end_price_4").val(wdp_endPrice_4.toFixed(2));
 
                     $("#wdp_annual_interest_5").val(wdp_interestAmount_5.toFixed(2));
-                    $("#wdp_monthly_payment_5").val(wdp_monthlyPayment_5.toFixed(2));//WDP
+                    $("#wdp_monthly_payment_5").val(wdp_monthlyPayment_5.toFixed(2));
+                    $("#wdp_end_price_5").val(wdp_endPrice_5.toFixed(2));//WDP
 
                     $("#ndp_annual_interest_1").val(ndp_interestAmount_1.toFixed(2));
                     $("#ndp_monthly_payment_1").val(ndp_monthlyPayment_1.toFixed(2));
+                    $("#ndp_end_price_1").val(ndp_endPrice_1.toFixed(2));
 
                     $("#ndp_annual_interest_2").val(ndp_interestAmount_2.toFixed(2));
                     $("#ndp_monthly_payment_2").val(ndp_monthlyPayment_2.toFixed(2));
+                    $("#ndp_end_price_2").val(ndp_endPrice_2.toFixed(2));
 
                     $("#ndp_annual_interest_3").val(ndp_interestAmount_3.toFixed(2));
                     $("#ndp_monthly_payment_3").val(ndp_monthlyPayment_3.toFixed(2));
+                    $("#ndp_end_price_3").val(ndp_endPrice_3.toFixed(2));
 
                     $("#ndp_annual_interest_4").val(ndp_interestAmount_4.toFixed(2));
                     $("#ndp_monthly_payment_4").val(ndp_monthlyPayment_4.toFixed(2));
+                    $("#ndp_end_price_4").val(ndp_endPrice_4.toFixed(2));
 
                     $("#ndp_annual_interest_5").val(ndp_interestAmount_5.toFixed(2));
-                    $("#ndp_monthly_payment_5").val(ndp_monthlyPayment_5.toFixed(2));//NDP
+                    $("#ndp_monthly_payment_5").val(ndp_monthlyPayment_5.toFixed(2));
+                    $("#ndp_end_price_5").val(ndp_endPrice_5.toFixed(2));//NDP
 
                     $("#wdpni_monthly_payment_1").val(wdpni_monthlyPayment_1.toFixed(2));
+                    $("#wdpni_end_price_1").val(wdpni_endPrice_1.toFixed(2));
                     $("#wdpni_monthly_payment_2").val(wdpni_monthlyPayment_2.toFixed(2));
+                    $("#wdpni_end_price_2").val(wdpni_endPrice_2.toFixed(2));
                     $("#wdpni_monthly_payment_3").val(wdpni_monthlyPayment_3.toFixed(2));
+                    $("#wdpni_end_price_3").val(wdpni_endPrice_3.toFixed(2));
                     $("#wdpni_monthly_payment_4").val(wdpni_monthlyPayment_4.toFixed(2));
-                    $("#wdpni_monthly_payment_5").val(wdpni_monthlyPayment_5.toFixed(2));//WDPNI
+                    $("#wdpni_end_price_4").val(wdpni_endPrice_4.toFixed(2));
+                    $("#wdpni_monthly_payment_5").val(wdpni_monthlyPayment_5.toFixed(2));
+                    $("#wdpni_end_price_5").val(wdpni_endPrice_5.toFixed(2));//WDPNI
 
                     $("#ndpni_monthly_payment_1").val(ndpni_monthlyPayment_1.toFixed(2));
+                    $("#ndpni_end_price_1").val(ndpni_endPrice_1.toFixed(2));
                     $("#ndpni_monthly_payment_2").val(ndpni_monthlyPayment_2.toFixed(2));
+                    $("#ndpni_end_price_2").val(ndpni_endPrice_2.toFixed(2));
                     $("#ndpni_monthly_payment_3").val(ndpni_monthlyPayment_3.toFixed(2));
+                    $("#ndpni_end_price_3").val(ndpni_endPrice_3.toFixed(2));
                     $("#ndpni_monthly_payment_4").val(ndpni_monthlyPayment_4.toFixed(2));
-                    $("#ndpni_monthly_payment_5").val(ndpni_monthlyPayment_5.toFixed(2));//NDPNI
-                    
+                    $("#ndpni_end_price_4").val(ndpni_endPrice_4.toFixed(2));
+                    $("#ndpni_monthly_payment_5").val(ndpni_monthlyPayment_5.toFixed(2));
+                    $("#ndpni_end_price_5").val(ndpni_endPrice_5.toFixed(2));//NDPNI
                 }
             }
-
             $(".generate").click(function (event) {
                 event.preventDefault();//Generate
 

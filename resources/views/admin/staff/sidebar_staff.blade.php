@@ -25,9 +25,23 @@
               <span class="link-title">Chat</span>
             </a>
           </li>
+          <li class="nav-item nav-category">Product List Price</li>
+          <li class="nav-item">
+            <a href="{{ route('staff.show.all.list.price') }}" class="nav-link">
+              <i class="link-icon" data-feather="dollar-sign"></i>
+              <span class="link-title">PLP</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Memorial Lot</li>
+          <li class="nav-item">
+            <a href="{{ route('staff.show.memorial.lot') }}" class="nav-link">
+              <i class="link-icon" data-feather="plus-circle"></i>
+              <span class="link-title">Entry</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">Buyers Ledger</li>
           <li class="nav-item">
-            <a href="{{ route('staff.addintern') }}" class="nav-link">
+            <a href="{{ route('staff.show.obituary') }}" class="nav-link">
               <i class="link-icon" data-feather="plus-square"></i>
               <span class="link-title">Obituary</span>
             </a>
@@ -43,13 +57,6 @@
             <a href="{{ route('staff.show.payment') }}" class="nav-link">
               <i class="link-icon" data-feather="plus-square"></i>
               <span class="link-title">Create</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">Memorial Lot</li>
-          <li class="nav-item">
-            <a href="{{ route('staff.show.memorial.lot.entry') }}" class="nav-link">
-              <i class="link-icon" data-feather="plus-circle"></i>
-              <span class="link-title">Entry</span>
             </a>
           </li>
           <li class="nav-item nav-category">Account Manager</li>

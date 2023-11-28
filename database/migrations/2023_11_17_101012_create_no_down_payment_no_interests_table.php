@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('product_list_price_id')->constrained('product_list_prices')->onDelete('cascade');
             $table->integer('ndpni_term');
             $table->decimal('ndpni_monthly_payment', 10, 2);
+            $table->decimal('ndpni_end_price', 10, 2);
             $table->timestamps();
         });
     }

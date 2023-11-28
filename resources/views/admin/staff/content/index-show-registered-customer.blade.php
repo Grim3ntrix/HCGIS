@@ -29,7 +29,7 @@
   $(document).ready(function() {
 
       var editUrl = "{{ route('staff.show.personalinfo.form', ':id') }}";
-      var showUrl = "{{ route('staff.show.productdetail.form', ':id') }}";
+      var cartUrl = "{{ route('staff.show.productdetail.form', ':id') }}";
 
       var purchaseLotTable = $('#showUserCustomer').DataTable({
           processing: true,
@@ -44,7 +44,7 @@
             render: function(data, type, row) {
                 var actions = '';
                 actions += '<a href="' + editUrl.replace(':id', data) + ' }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
-                actions += '<a href="' + showUrl.replace(':id', data) + ' }}" class="btn btn-outline-success btn-icon"><i class="fa-solid fa-cart-plus fa-sm"></i></a>';
+                actions += '<a href="' + cartUrl.replace(':id', data) + ' }}" class="btn btn-inverse-light btn-icon"><i class="fa-solid fa-cart-plus fa-sm"></i></a>';
                 return actions.replace(':id', data);
               }
             },

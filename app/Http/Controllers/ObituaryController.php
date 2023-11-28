@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class ObituaryController extends Controller
 {
-    public function showInterment(){
-        return view('admin.staff.content.index-show-interment');
+    public function showObituary(){
+        return view('admin.staff.content.index-show-obituary');
     }
 
     

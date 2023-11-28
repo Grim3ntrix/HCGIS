@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('wdp_term');
             $table->decimal('wdp_annual_interest', 10, 2);
             $table->decimal('wdp_monthly_payment', 10, 2);
+            $table->decimal('wdp_end_price', 10, 2);
             $table->timestamps();
         });
     }

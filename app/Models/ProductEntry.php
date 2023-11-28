@@ -15,7 +15,7 @@ class ProductEntry extends Model
         return $this->belongsTo(ProductListPrice::class, 'product_list_price_id');
     }
 
-    public function blockEntity(){
+    public function blockQuantity(){
         return $this->hasOne(BlockEntity::class, 'product_entry_id');
     }
 

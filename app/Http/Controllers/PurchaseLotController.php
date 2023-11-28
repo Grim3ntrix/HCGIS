@@ -52,8 +52,9 @@ class PurchaseLotController extends Controller
         ]);
 
         $userId = $request->input('user_id');
+        $userID = User::find($userId);
 
-        $personalInformation = PersonalInformation::firstOrNew(['user_id' => $userId]);
+        $personalInformation = PersonalInformation::firstOrNew(['user_id' => $userID->id]);
         
         $personalInformation->fill([
             'last_name' => $request->input('last_name'),
@@ -81,7 +82,7 @@ class PurchaseLotController extends Controller
             'alert-type' => 'success',
         ];
         
-        return redirect()->route('staff.show.productdetail.form', ['id' => $userId])->with($notification);
+        return redirect()->route('staff.show.productdetail.form', ['id' => $userID])->with($notification);
         
         
     }//End Method (Customer Personal Informations)

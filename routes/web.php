@@ -105,6 +105,10 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::get('/admin/staff/logout', [StaffController::class, 'StaffLogout'])->name('staff.logout');
     //Sidebar
 
+    //ListPrice Manager
+    Route::get('/admin/staff/listprice/show/all', [ListPriceController::class, 'showallStaffListPrice'])->name('staff.show.all.list.price');
+    //ListPrice Manager
+
     //Payments Information
     Route::get('admin/staff/show/payment', [PaymentController::class, 'showPayment'])->name('staff.show.payment');
     //Payments Information
@@ -118,20 +122,23 @@ Route::middleware(['auth','role:staff'])->group(function(){
 
     //Add Buyer Information
     Route::get('/admin/staff/user/customer/registered', [PurchaseLotController::class, 'showUserCustomer'])->name('staff.show.user.customer');
-    Route::get('/admin/staff/user/customer/personalinfo/show/{id}', [PurchaseLotController::class, 'showPersonalInfo'])->name('staff.show.customer.personalinfo');
-    Route::get('/admin/staff/user/customer/personalinfo/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
+    //Route::get('/admin/staff/user/customer/personalinfo/show/{id}', [PurchaseLotController::class, 'showPersonalInfo'])->name('staff.show.customer.personalinfo');
+    Route::get('/admin/staff/user/customer/personalinfo/fillup/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
     Route::get('/admin/staff/user/customer/purchasedetail/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
     Route::get('/admin/staff/user/customer/purchasedetail/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
 
     //Memorial Lot Entry
-    Route::get('/admin/staff/show/memorial-lot-entry', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('staff.show.memorial.lot.entry');
+    Route::get('/admin/staff/memorial-lot', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('staff.show.memorial.lot');
+    Route::get('/admin/staff/memorial-lot/product-entry/new', [MemorialLotEntryController::class, 'addMemorialLotEntry'])->name('staff.add.product.entry');
+    Route::get('/admin/staff/memorial-lot/product-entry/{id}/with-down-payment', [MemorialLotEntryController::class, 'dataWithDownPayment'])->name('staff.data.with.down.payment');
+    Route::post('/admin/staff/memorial-lot/product-entry/store', [MemorialLotEntryController::class, 'storeMemorialLotEntry'])->name('staff.store.product.entry');
     //Memorial Lot Entry
 
     Route::get('/admin/staff/chat', [ChatController::class, 'showStaffChat'])->name('staff.chat');
 
-    Route::get('/admin/staff/internment', [ObituaryController::class, 'showInterment'])->name('staff.addintern');
+    Route::get('/admin/staff/obituary', [ObituaryController::class, 'showObituary'])->name('staff.show.obituary');
     
     //How to use
     Route::get('/admin/staff/how-to-use/watch-online', [HowToUseController::class, 'StaffWatchOnline'])->name('staff.watchonline');

@@ -1,4 +1,4 @@
-@extends('admin.staff.body.interment')
+@extends('admin.staff.body.obituary')
 @section('interment-content')
 <div class="page-content">
 	<div class="row">
