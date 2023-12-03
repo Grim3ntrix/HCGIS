@@ -132,7 +132,7 @@ Route::middleware(['auth','role:staff'])->group(function(){
     //Memorial Lot Entry
     Route::get('/admin/staff/memorial-lot', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('staff.show.memorial.lot');
     Route::get('/admin/staff/memorial-lot/product-entry/new', [MemorialLotEntryController::class, 'addMemorialLotEntry'])->name('staff.add.product.entry');
-    Route::get('/admin/staff/memorial-lot/product-entry/{id}/with-down-payment', [MemorialLotEntryController::class, 'dataWithDownPayment'])->name('staff.data.with.down.payment');
+    Route::get('/admin/staff/memorial-lot/product-entry/{productId}/with-down-payment/{Term}', [MemorialLotEntryController::class, 'getSelectedMode'])->name('staff.data.with.down.payment');
     Route::post('/admin/staff/memorial-lot/product-entry/store', [MemorialLotEntryController::class, 'storeMemorialLotEntry'])->name('staff.store.product.entry');
     //Memorial Lot Entry
 

@@ -16,7 +16,7 @@ class ProductEntry extends Model
     }
 
     public function blockQuantity(){
-        return $this->hasOne(BlockEntity::class, 'product_entry_id');
+        return $this->hasOne(BlockQuantity::class, 'product_entry_id');
     }
 
     public function order(){

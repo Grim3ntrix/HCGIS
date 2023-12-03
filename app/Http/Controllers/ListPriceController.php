@@ -78,7 +78,7 @@ class ListPriceController extends Controller
         $productCategory = $request->input('product_category');
     
         $uuid = Str::uuid()->toString();
-        $PLP_Code = 'PLP' .  '-' . $productType . '-' . $productCategory. '-' . substr($uuid, 0, 2);
+        $PLP_Code = $productType . '-' . $productCategory. '-' . substr($uuid, 0, 2);
 
         $PLP = ProductListPrice::create([
             'product_list_price_code' => $PLP_Code,
