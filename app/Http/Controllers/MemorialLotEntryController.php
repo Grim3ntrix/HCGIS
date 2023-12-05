@@ -74,7 +74,17 @@ class MemorialLotEntryController extends Controller
         $term = $request->input('wdp_term');
         $phase = $request->input('phase');
 
-        $entryCode =  $PLP_code . '-' . $phase . $term;
+        $entryCode =  $PLP_code . '-' . $phase;
+
+        $existingCode = ProductEntry::where('product_entry_code', $entryCode)->first();
+
+        if ($existingCode) {
+            $notification = [
+                'message' => 'Product Entry Already Exists!',
+                'alert-type' => 'error',
+            ];
+            return redirect()->back()->with($notification);
+        }
 
         $ProductEntry = ProductEntry::create([
 
@@ -121,6 +131,19 @@ class MemorialLotEntryController extends Controller
             'alert-type' => 'success',
         ];
     
+        return redirect()->route('staff.show.memorial.lot')->with($notification);
+    }
+
+    public function deleteMemorialLotEntry(Request $request){
+
+        $entryID = $request->route('id');
+        $deleteEntry = ProductEntry::find($entryID)->delete();
+
+        $notification = [
+            'message' => 'Product Entry Successfully Deleted!',
+            'alert-type' => 'success',
+        ];
+
         return redirect()->back()->with($notification);
     }
 

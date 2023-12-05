@@ -3,7 +3,7 @@
     <div class="page-content">
         <div class="row">
             <div class="col-md-12 stretch-card">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-body">
                     <h4 class="card-title"><span style="padding-right:8px;"><i data-bs-toggle="tooltip" data-bs-placement="right" title="Make sure Rates is not Empty to Generate and Save PLP" data-feather="help-circle" class=""></i></span>Product List Price</h4>
                         <form action="{{ route('manager.store.list.price') }}" method="POST">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-        </div><br>
+        </div>
         <div class="row">
             <div class="col-md-3 grid-margin stretch-card">
                 <div class="card">
@@ -587,20 +587,20 @@
    
     <!-- Modal -->
     <div class="modal fade" id="ops" tabindex="-1" aria-labelledby="opsLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="opsLabel">Error</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="opsLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+            <div class="modal-body">
+                Ops! Cannot Generate, PLP and/or Rates cannot be Empty!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
         </div>
-        <div class="modal-body">
-            Ops! Cannot Generate, PLP and/or Rates cannot be Empty!
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-        </div>
-    </div>
     </div>
     <script>
         

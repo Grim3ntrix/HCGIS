@@ -16,6 +16,7 @@ use App\Http\Controllers\HowToUseController;
 use App\Http\Controllers\ListPriceController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\PhaseController;
 use App\Http\Controllers\MemorialLotEntryController;
 
 
@@ -81,6 +82,13 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/listprice/delete/{id}', [ListPriceController::class, 'deleteManagerListPrice'])->name('manager.delete.list.price');
     //ListPrice Manager
 
+    //Phase
+    Route::get('/admin/manager/phase', [PhaseController::class, 'showManagerPhase'])->name('manager.show.phase');
+    Route::post('/admin/manager/phase/store', [PhaseController::class, 'storeManagerPhase'])->name('manager.store.phase');
+    Route::get('/admin/manager/phase/edit/{id}', [PhaseController::class, 'updateManagerPhase'])->name('manager.edit.phase');
+    Route::get('/admin/manager/phase/delete/{id}', [PhaseController::class, 'deleteManagerPhase'])->name('manager.delete.phase');
+    //Phase
+
     //Account Manager
     Route::get('/admin/manager/agent/account', [AccountController::class, 'showAgentAccount'])->name('show.agent.account');
     Route::get('/admin/manager/agent/account/create',[AccountController::class, 'addAgentAccount'])->name('add.agent.account');
@@ -125,15 +133,17 @@ Route::middleware(['auth','role:staff'])->group(function(){
     //Route::get('/admin/staff/user/customer/personalinfo/show/{id}', [PurchaseLotController::class, 'showPersonalInfo'])->name('staff.show.customer.personalinfo');
     Route::get('/admin/staff/user/customer/personalinfo/fillup/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
-    Route::get('/admin/staff/user/customer/purchasedetail/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
-    Route::get('/admin/staff/user/customer/purchasedetail/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
+    Route::get('/admin/staff/user/customer/purchase-memorial-lot/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
+    
+    Route::get('/admin/staff/user/customer/purchase-memorial-lot/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
 
     //Memorial Lot Entry
     Route::get('/admin/staff/memorial-lot', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('staff.show.memorial.lot');
     Route::get('/admin/staff/memorial-lot/product-entry/new', [MemorialLotEntryController::class, 'addMemorialLotEntry'])->name('staff.add.product.entry');
-    Route::get('/admin/staff/memorial-lot/product-entry/{productId}/with-down-payment/{Term}', [MemorialLotEntryController::class, 'getSelectedMode'])->name('staff.data.with.down.payment');
+    Route::get('/admin/staff/memorial-lot/product/{productId}/entry/{Term}', [MemorialLotEntryController::class, 'getSelectedMode'])->name('staff.data.with.down.payment');
     Route::post('/admin/staff/memorial-lot/product-entry/store', [MemorialLotEntryController::class, 'storeMemorialLotEntry'])->name('staff.store.product.entry');
+    Route::get('/admin/staff/memorial-lot/product-entry/delete/{id}', [MemorialLotEntryController::class, 'deleteMemorialLotEntry'])->name('staff.delete.product.entry');
     //Memorial Lot Entry
 
     Route::get('/admin/staff/chat', [ChatController::class, 'showStaffChat'])->name('staff.chat');

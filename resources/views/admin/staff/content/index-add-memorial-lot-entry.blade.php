@@ -1,35 +1,85 @@
 @extends('admin.staff.body.memorial-lot-entry')
 @section('memorial-lot-entry-content')
 <div class="page-content">
+<div class="row">
+            <div class="col-md-12 stretch-card">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title"><span style="padding-right:8px;"><i data-bs-toggle="tooltip" data-bs-placement="right" title="Make Entry based on Product List Price" data-feather="help-circle" class=""></i></span>Memorial Lot Entry</h4>
+                        <form action="{{ route('staff.store.product.entry') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <input type="hidden" name="id" id="plp_id" value="">
+                                        <label for="product_list_price_code" class="form-label">PLP Code</label>
+                                        <select name="product_list_price_code" class="form-select mb-3 @error('product_list_price_code') is-invalid @enderror" id="product_list_price_code">
+                                            <option selected disabled>Open this select menu</option>
+                                            @foreach($PLP_CODE as $PLP)
+                                            <option name="product_list_price_id" value="{{ $PLP->id }}"
+                                                    data-down-payment-amount="{{ $PLP->downPayment->down_payment_amount }}"
+                                                    data-remaining-balance="{{ $PLP->downPayment->remaining_balance }}" 
+                                                    data-pre-need="{{ $PLP->preNeed->spot_cash }}" 
+                                                    data-at-need="{{ $PLP->atNeed->at_need }}">
+                                                    {{ $PLP->product_list_price_code }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                        @error('product_list_price_code')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <label for="product_list_price_mode" class="form-label">PLP Mode</label>
+                                        <select name="product_list_price_mode" class="form-select mb-3 @error('product_list_price_mode') is-invalid @enderror" id="product_list_price_mode">
+                                            <option selected disabled>Open this select menu</option>
+                                            <option value="At-Need">At-Need</option>
+                                            <option value="Spot Cash">Spot Cash</option>	
+                                            <option value="With Down Payment">With Down Payment</option>
+                                            <option value="No Down Payment">No Down Payment</option>
+                                            <option value="With Down Payment No Interest">With Down Payment No Interest</option>
+                                            <option value="No Down Payment No Interest">No Down Payment No Interest</option>										
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <input type="hidden" name="term_id" id="term_id" value="">
+                                        <label for="wdp_term" class="form-label">Term</label>
+                                        <select name="wdp_term" class="form-select mb-3 @error('wdp_term') is-invalid @enderror" id="wdp_term">
+                                        </select>
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-2">
+                                    <div class="mb-3">
+                                        <label for="phase" class="form-label">Phase</label>
+                                        <input type="text" name="phase" id="phase" value="{{ old('phase') }}" class="form-control @error('phase') is-invalid @enderror" autocomplete="on" placeholder="Enter Phase">
+                                        @error('phase')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-1">
+                                    <div class="mb-3">
+                                        <label for="block_quantity" class="form-label">Qty.</label>
+                                        <input type="number" name="block_quantity" id="block_quantity" value="{{ old('block_quantity') }}" class="form-control @error('block_quantity') is-invalid @enderror" autocomplete="on" placeholder="0">
+                                        @error('block_quantity')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                            </div><!-- Row -->
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="row">
         <div class="col-md-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title" style="margin-bottom: 20px;">Memorial Lot Entry</h6>
-                    <form action="{{ route('staff.store.product.entry') }}" method="POST">
-                        @csrf
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <input type="hidden" name="id" id="plp_id" value="">
-                                    <label for="product_list_price_code" class="form-label">PLP Code</label>
-                                    <select name="product_list_price_code" class="form-select mb-3 @error('product_list_price_code') is-invalid @enderror" id="product_list_price_code">
-                                        <option selected disabled>Open this select menu</option>
-                                        @foreach($PLP_CODE as $PLP)
-                                        <option name="product_list_price_id" value="{{ $PLP->id }}"
-                                                data-down-payment-amount="{{ $PLP->downPayment->down_payment_amount }}"
-                                                data-remaining-balance="{{ $PLP->downPayment->remaining_balance }}" 
-                                                data-pre-need="{{ $PLP->preNeed->spot_cash }}" 
-                                                data-at-need="{{ $PLP->atNeed->at_need }}">
-                                                {{ $PLP->product_list_price_code }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    @error('product_list_price_code')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div><!-- Col -->
                             <div class="col-sm-3">
                                 <div class="mb-3">
                                     <label for="down_payment_amount" class="form-label">DP Amount</label>
@@ -48,58 +98,7 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                        </div><!-- Row -->
-
-						<div class="row">
-
                             <div class="col-sm-3">
-                                <div class="mb-3">
-                                    <label for="product_list_price_mode" class="form-label">PLP Mode</label>
-                                    <select name="product_list_price_mode" class="form-select mb-3 @error('product_list_price_mode') is-invalid @enderror" id="product_list_price_mode">
-                                        <option selected disabled>Open this select menu</option>
-										<option value="At-Need">At-Need</option>
-										<option value="Spot Cash">Spot Cash</option>	
-										<option value="With Down Payment">With Down Payment</option>
-										<option value="No Down Payment">No Down Payment</option>
-										<option value="With Down Payment No Interest">With Down Payment No Interest</option>
-										<option value="No Down Payment No Interest">No Down Payment No Interest</option>										
-                                    </select>
-                                </div>
-                            </div><!-- Col -->
-
-                            <!-- Term form -->
-                            <div class="col-sm-3">
-                                <div class="mb-3">
-                                    <input type="hidden" name="term_id" id="term_id" value="">
-                                    <label for="wdp_term" class="form-label">Term</label>
-                                    <select name="wdp_term" class="form-select mb-3 @error('wdp_term') is-invalid @enderror" id="wdp_term">
-                                        
-                                    </select>
-                                </div>
-                            </div><!-- Col -->
-
-                            <div class="col-sm-3">
-                                <div class="mb-3">
-                                    <label for="phase" class="form-label">Phase</label>
-                                    <input type="text" name="phase" id="phase" value="" class="form-control @error('phase') is-invalid @enderror" autocomplete="on" placeholder="Enter Phase">
-                                    @error('phase')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div><!-- Col -->
-                            <div class="col-sm-3">
-                                <div class="mb-3">
-                                    <label for="block_quantity" class="form-label">Quantity (Block)</label>
-                                    <input type="number" name="block_quantity" id="block_quantity" value="" class="form-control @error('block_quantity') is-invalid @enderror" autocomplete="on" placeholder="0">
-                                    @error('block_quantity')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div><!-- Col -->
-                        </div><!-- Row -->
-
-                        <div class="row">
-                            <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="at_need" class="form-label">At Need Price</label>
                                     <input type="number" name="at_need" id="at_need" value="" class="form-control @error('at_need') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
@@ -108,7 +107,7 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <div class="mb-3">
                                     <label for="spot_cash" class="form-label">Pre Need (Spot Cash)</label>
                                     <input type="number" name="spot_cash" id="spot_cash" value="" class="form-control @error('spot_cash') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
@@ -359,7 +358,7 @@
             var selectedMode = $('#product_list_price_mode').val();
 
             $.ajax({
-                url: '/admin/staff/memorial-lot/product-entry/' + plpId + '/with-down-payment/' + selectedTerm,
+                url: '/admin/staff/memorial-lot/product/' + plpId + '/entry/' + selectedTerm,
                 method: 'GET',
                 data: { selectedMode: selectedMode },
                 success: function (ajaxData) {

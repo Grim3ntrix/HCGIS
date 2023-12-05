@@ -33,7 +33,7 @@ return new class extends Migration
             $table->decimal('wdpni_end_amount', 10, 2)->nullable();
             $table->decimal('ndpni_monthly', 10, 2)->nullable();
             $table->decimal('ndpni_end_amount', 10, 2)->nullable();
-            $table->enum('status', ['available','sold'])->default('Available');
+            $table->enum('status', ['available','sold'])->default('available');
             $table->timestamps();
         });
     }

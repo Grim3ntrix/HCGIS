@@ -39,6 +39,13 @@
               <span class="link-title">Rate</span>
             </a>
           </li>
+          <li class="nav-item nav-category">Phase Manager</li>
+          <li class="nav-item">
+            <a href="{{ route('manager.show.phase') }}" class="nav-link">
+              <i class="link-icon" data-feather="map"></i>
+              <span class="link-title">Phase</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">Account Manager</li>
           <li class="nav-item">
             <a href="{{ route('show.agent.account') }}" class="nav-link">

@@ -77,8 +77,18 @@ class ListPriceController extends Controller
         $productType = $request->input('product_type');
         $productCategory = $request->input('product_category');
     
-        $uuid = Str::uuid()->toString();
-        $PLP_Code = $productType . '-' . $productCategory. '-' . substr($uuid, 0, 2);
+        //$uuid = Str::uuid()->toString();
+        $PLP_Code = $productType . '-' . $productCategory;
+
+        $existingPLP = ProductListPrice::where('product_list_price_code', $PLP_Code)->first();
+
+        if ($existingPLP) {
+            $notification = [
+                'message' => 'Product List Price Already Exists!',
+                'alert-type' => 'error',
+            ];
+            return redirect()->back()->with($notification);
+        }
 
         $PLP = ProductListPrice::create([
             'product_list_price_code' => $PLP_Code,

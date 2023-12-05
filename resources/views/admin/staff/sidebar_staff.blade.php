@@ -49,7 +49,7 @@
           <li class="nav-item">
             <a href="{{ route('staff.show.user.customer') }}" class="nav-link">
               <i class="link-icon" data-feather="shopping-bag"></i>
-              <span class="link-title">Purchase Memorial Lot</span>
+              <span class="link-title">Purchase</span>
             </a>
           </li>
           <li class="nav-item nav-category">Payment</li>

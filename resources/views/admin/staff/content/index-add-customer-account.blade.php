@@ -38,17 +38,17 @@
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-3">
-										<div class="mb-3">
-                                            <label class="form-label">Role</label>
-                                            <select name="role"class="form-select mb-3 @error('role') is-invalid @enderror">
-                                                <option  selected="">Open this select menu</option>
-                                                <option value="customer">Customer</option>
-                                            </select>
-                                            @error('role')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-										</div>
-									</div><!-- Col -->
+                                <div class="mb-3">
+                                    <label class="form-label">Role</label>
+                                    <select name="role"class="form-select mb-3 @error('role') is-invalid @enderror">
+                                        <option  selected="">Open this select menu</option>
+                                        <option value="customer">Customer</option>
+                                    </select>
+                                    @error('role')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
                         </div><!-- Row -->
 
                         <button type="submit" class="btn btn-primary submit">Submit</button>

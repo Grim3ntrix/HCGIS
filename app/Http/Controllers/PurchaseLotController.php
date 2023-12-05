@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\PersonalInformation;
 use App\Models\PurchaseDetail;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\ProductEntry;
 
 class PurchaseLotController extends Controller
 {
@@ -89,7 +91,9 @@ class PurchaseLotController extends Controller
 
     public function showPurchaseProductDetailForm(Request $request){
 
-        return view('admin.staff.content.index-show-purchase-detail');
+        $entryCode = ProductEntry::get();
+
+        return view('admin.staff.content.index-show-purchase-detail', compact('entryCode'));
     }//End Method (Customer Product Details)
 
     public function storePurchaseProductDetailForm(Request $request){
