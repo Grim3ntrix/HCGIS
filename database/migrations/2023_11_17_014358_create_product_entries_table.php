@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('product_list_price_id')->constrained('product_list_prices')->onDelete('cascade');
             $table->string('product_list_price_code');
             $table->string('product_entry_code');
+            $table->foreignId('phase_id')->constrained('phases');
             $table->decimal('down_payment_amount', 10, 2)->nullable();
             $table->decimal('balance', 10, 2)->nullable();
             $table->string('product_list_price_mode');
             $table->string('term')->nullable();
-            $table->string('phase');
             $table->decimal('at_need', 10, 2)->nullable();
             $table->decimal('spot_cash', 10, 2)->nullable();
             $table->decimal('wdp_interest', 10, 2)->nullable();

@@ -22,4 +22,8 @@ class ProductEntry extends Model
     public function order(){
         return $this->hasMany(Order::class, 'product_entry_id');
     }
+
+    public function phase(){
+        return $this->belongsTo(Phase::class, 'phase_id');
+    }
 }

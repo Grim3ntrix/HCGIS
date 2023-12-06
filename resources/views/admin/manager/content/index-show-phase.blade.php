@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <label for="phase_name" class="form-label">Name</label>
+                                    <label for="phase_name" class="form-label">Phase Name</label>
                                     <input type="text" name="phase_name" id="phase_name" value="{{ old('phase_name') }}" class="form-control @error('phase_name') is-invalid @enderror" placeholder="Enter Phase Name">
                                     @error('phase_name')
                                     <span class="text-danger">{{ $message }}</span>
@@ -19,6 +19,7 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
+                        
                         <button type="submit" class="btn btn-primary submit">Submit</button>
                     </form>
                 </div>
@@ -49,8 +50,8 @@
 
 <!-- Modal -->
 <div class="modal fade" id="editPhaseModal" tabindex="-1" aria-labelledby="editPhaseModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editPhaseModalLabel">Edit Phase</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
@@ -61,22 +62,22 @@
                     <input type="hidden" name="id" id="editPhaseId">
                     <div class="mb-3">
                         <label for="phase_name" class="form-label">Phase Name</label>
-                        <input type="text" name="phase_name" id="phase_name" class="form-control">
+                        <input type="text" name="phase_name" id="retrieve_phase_name" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select name="status" class="form-select mb-3 @error('status') is-invalid @enderror" id="status">
                             <option selected disabled>Open this select menu</option>
-                            <option value="Available">Available</option>
-                            <option value="Not-Available">Not-Available</option>											
+                            <option value="available">Available</option>
+                            <option value="unavailable">Not-Available</option>
                         </select>
                     </div>
                     <button type="button" class="btn btn-primary" id="submitEditPhase">Update</button>
                 </form>
             </div>
-            </div>
         </div>
     </div>
+</div>
 
 <script>
 $(document).ready(function() {
@@ -120,8 +121,9 @@ $(document).ready(function() {
             url: editUrl.replace(':id', phaseId),
             type: 'GET',
             success: function(response) {
-                $('#phase_name').val(response.phase_name);
+                $('#retrieve_phase_name').val(response.phase_name); // Set the phase_name value
                 $('#editPhaseId').val(phaseId);
+                $('#status').val(response.status); // Set the selected status
                 $('#editPhaseModal').modal('show');
             },
             error: function(error) {

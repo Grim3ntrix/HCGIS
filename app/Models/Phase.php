@@ -10,4 +10,8 @@ class Phase extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function productEntry(){
+        return $this->hasMany(ProductEntry::class, 'phase_id');
+    }
 }

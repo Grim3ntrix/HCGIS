@@ -54,10 +54,15 @@
                                 </div><!-- Col -->
                                 <div class="col-sm-2">
                                     <div class="mb-3">
-                                        <label for="phase" class="form-label">Phase</label>
-                                        <input type="text" name="phase" id="phase" value="{{ old('phase') }}" class="form-control @error('phase') is-invalid @enderror" autocomplete="on" placeholder="Enter Phase">
-                                        @error('phase')
-                                        <span class="text-danger">{{ $message }}</span>
+                                        <label for="phase_id" class="form-label">Phase</label>
+                                        <select name="phase_id" class="form-select mb-3 @error('phase_id') is-invalid @enderror" id="phase_id">
+                                            <option selected disabled>Open this select menu</option>
+                                            @foreach($showEntry as $phase)
+                                                <option value="{{ $phase->id }}">{{ $phase->phase_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('phase_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div><!-- Col -->

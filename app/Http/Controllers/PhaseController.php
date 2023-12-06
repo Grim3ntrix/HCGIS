@@ -44,6 +44,7 @@ class PhaseController extends Controller
     
         $updatePhase = Phase::where('id', $phaseID)->update([
             'phase_name' => $request->input('phase_name'),
+            'status' => $request->input('status'),
         ]);
     
         $notification = [

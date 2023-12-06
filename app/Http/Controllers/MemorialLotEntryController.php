@@ -11,12 +11,13 @@ use App\Models\WithDownPaymentNoInterest;
 use App\Models\NoDownPaymentNoInterest;
 use App\Models\ProductEntry;
 use App\Models\BlockQuantity;
+use App\Models\Phase;
 
 class MemorialLotEntryController extends Controller
 {
     public function showMemorialLotEntry(Request $request){
 
-        $showEntryInfo = ProductEntry::latest()->with('blockQuantity','productListPrice')->get();
+        $showEntryInfo = ProductEntry::latest()->with('blockQuantity','productListPrice','phase')->get();
 
         return view('admin.staff.content.index-show-memorial-lot-entry', compact('showEntryInfo'));
     }
@@ -25,7 +26,9 @@ class MemorialLotEntryController extends Controller
 
         $PLP_CODE = ProductListPrice::with('downPayment','preNeed','atNeed')->get();
 
-        return view('admin.staff.content.index-add-memorial-lot-entry', compact('PLP_CODE'));
+        $showEntry = Phase::get();
+
+        return view('admin.staff.content.index-add-memorial-lot-entry', compact('PLP_CODE','showEntry'));
     }
 
     public function getSelectedMode($productId, $Term)
@@ -63,7 +66,6 @@ class MemorialLotEntryController extends Controller
     public function storeMemorialLotEntry(Request $request){
 
         $request->validate([
-            'phase' => 'required',
             'block_quantity' => 'required',
         ]);
 
@@ -72,9 +74,11 @@ class MemorialLotEntryController extends Controller
 
         $PLP_mode = $request->input('product_list_price_mode');
         $term = $request->input('wdp_term');
-        $phase = $request->input('phase');
+        $phase_id = $request->input('phase_id');
 
-        $entryCode =  $PLP_code . '-' . $phase;
+        $phase_name = Phase::find($phase_id)->phase_name;
+
+        $entryCode =  $PLP_code . '-' . $phase_name;
 
         $existingCode = ProductEntry::where('product_entry_code', $entryCode)->first();
 
@@ -96,7 +100,7 @@ class MemorialLotEntryController extends Controller
             'balance' => $request->input('remaining_balance'),
             'product_list_price_mode' => $PLP_mode,
             'term' => $term,
-            'phase' => $phase,
+            'phase_id' => $phase_id,
 
             'at_need' => $request->input('at_need'),
             'spot_cash' => $request->input('spot_cash'),
