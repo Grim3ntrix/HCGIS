@@ -16,7 +16,7 @@
   	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   	<!-- End fonts -->
   	<script src="https://kit.fontawesome.com/07672f603e.js" crossorigin="anonymous"></script>
-
+	<link rel="stylesheet" href="{{asset('frontend/assets/vendors/pickr/themes/classic.min.css')}}">
   
   	<!-- jQuery and Datatable Css-->
   	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

@@ -1,7 +1,7 @@
 <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-          HolyCross<span>Sys</span>
+        <h4 class="text-white p-2">HolyCross<span>Garden</span></h4></a>
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>

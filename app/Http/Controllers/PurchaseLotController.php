@@ -9,6 +9,7 @@ use App\Models\PersonalInformation;
 use App\Models\PurchaseDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Phase;
 use App\Models\ProductEntry;
 
 class PurchaseLotController extends Controller
@@ -19,7 +20,7 @@ class PurchaseLotController extends Controller
         if($request->ajax()){
             
             $data = User::where('role','customer');
-            return DataTables::of($data)->addIndexColumn()->make(true);          
+            return DataTables::of($data)->addIndexColumn()->make(true);        
         }
         return view('admin.staff.content.index-show-registered-customer');
 
@@ -85,17 +86,40 @@ class PurchaseLotController extends Controller
         ];
         
         return redirect()->route('staff.show.productdetail.form', ['id' => $userID])->with($notification);
-        
-        
     }//End Method (Customer Personal Informations)
 
     public function showPurchaseProductDetailForm(Request $request){
 
-        $entryCode = ProductEntry::get();
+            $phase = Phase::get();
 
-        return view('admin.staff.content.index-show-purchase-detail', compact('entryCode'));
+        
+        return view('admin.staff.content.index-show-purchase-detail', compact('phase'));
     }//End Method (Customer Product Details)
 
+    public function getEntryCode(Request $request)
+    {
+        $selectedPhase = $request->input('selectedPhase');
+        $selectedMode = $request->input('selectedMode');
+        $term = $request->input('term');
+
+        $query = ProductEntry::query();
+
+        if ($selectedPhase) {
+            $query->where('phase_id', $selectedPhase);
+        }
+
+        if ($selectedMode) {
+            $query->where('product_list_price_mode', $selectedMode);
+        }
+
+        if ($term) {
+            $query->where('term', $term);
+        }
+
+        $entryCodes = $query->get();
+        return response()->json($entryCodes ? $entryCodes->toArray() : []);
+    }
+        
     public function storePurchaseProductDetailForm(Request $request){
 
     

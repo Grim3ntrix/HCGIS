@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('product_entry_id')->constrained('product_entries');
-            $table->string('product_entry_code');
             $table->string('order_code');
             $table->date('start_date');
             $table->date('end_date');

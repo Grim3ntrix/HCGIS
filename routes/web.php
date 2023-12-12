@@ -118,7 +118,8 @@ Route::middleware(['auth','role:staff'])->group(function(){
     //ListPrice Manager
 
     //Payments Information
-    Route::get('admin/staff/show/payment', [PaymentController::class, 'showPayment'])->name('staff.show.payment');
+    Route::get('admin/staff/customer/latest', [PaymentController::class, 'showCustomer'])->name('staff.show.customer');
+    Route::get('admin/staff/customer/add-payment/{id}', [PaymentController::class, 'addPayment'])->name('staff.add.payment');
     //Payments Information
 
     //Create Customer Account
@@ -130,11 +131,10 @@ Route::middleware(['auth','role:staff'])->group(function(){
 
     //Add Buyer Information
     Route::get('/admin/staff/user/customer/registered', [PurchaseLotController::class, 'showUserCustomer'])->name('staff.show.user.customer');
-    //Route::get('/admin/staff/user/customer/personalinfo/show/{id}', [PurchaseLotController::class, 'showPersonalInfo'])->name('staff.show.customer.personalinfo');
     Route::get('/admin/staff/user/customer/personalinfo/fillup/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
-    
+    Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/{selectedPhase}/{selectedMode}/{term}', [PurchaseLotController::class, 'getEntryCode'])->name('staff.get.entry.code');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
 
