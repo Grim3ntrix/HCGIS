@@ -115,8 +115,9 @@ class PurchaseLotController extends Controller
         if ($term) {
             $query->where('term', $term);
         }
-
+        
         $entryCodes = $query->get();
+
         return response()->json($entryCodes ? $entryCodes->toArray() : []);
     }
         

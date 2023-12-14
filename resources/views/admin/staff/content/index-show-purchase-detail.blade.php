@@ -138,7 +138,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="container-fluid mt-3 d-flex justify-content-center w-100">
+                        <div class="container-fluid mt-3 d-flex justify-content-center w-100 mb-2">
                             <div class="table-responsive w-100">
                                 <table class="table table-bordered">
                                     <thead>
@@ -157,36 +157,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="container-fluid mt-5 w-100">
-                        <div class="row">
-                            <div class="col-md-6 ms-auto">
-                                <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                        <td>Sub Total</td>
-                                        <td class="text-end">₱ 45000.00</td>
-                                        </tr>
-                                        <tr>
-                                        <td class="text-bold-800">Down payment</td>
-                                        <td class="text-bold-800 text-end">₱ 9000.00</td>
-                                        </tr>
-                                        <td class="text-bold-800">Balance</td>
-                                        <td class="text-bold-800 text-end">₱ 36000.00</td>
-                                        </tr>
-                                        <td class="text-bold-800">Total</td>
-                                        <td class="text-bold-800 text-end">₱ 39300.48</td>
-                                        </tr>
-                                        <tr class="bg-dark">
-                                        <td class="text-bold-800">Balance Due</td>
-                                        <td class="text-bold-800 text-end">₱ 3275.04</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
                 </form>
