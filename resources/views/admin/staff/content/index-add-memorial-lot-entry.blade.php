@@ -9,7 +9,7 @@
                         <form action="{{ route('staff.store.product.entry') }}" method="POST">
                             @csrf
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <div class="mb-3">
                                         <input type="hidden" name="id" id="plp_id" value="">
                                         <label for="product_list_price_code" class="form-label">PLP Code</label>
@@ -30,7 +30,7 @@
                                         @enderror
                                     </div>
                                 </div><!-- Col -->
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label for="product_list_price_mode" class="form-label">PLP Mode</label>
                                         <select name="product_list_price_mode" class="form-select mb-3 @error('product_list_price_mode') is-invalid @enderror" id="product_list_price_mode">
@@ -44,7 +44,7 @@
                                         </select>
                                     </div>
                                 </div><!-- Col -->
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <div class="mb-3">
                                         <input type="hidden" name="term_id" id="term_id" value="">
                                         <label for="wdp_term" class="form-label">Term</label>
@@ -52,7 +52,9 @@
                                         </select>
                                     </div>
                                 </div><!-- Col -->
-                                <div class="col-sm-2">
+                            </div><!-- Row -->
+                            <div class="row">
+                                <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label for="phase_id" class="form-label">Phase</label>
                                         <select name="phase_id" class="form-select mb-3 @error('phase_id') is-invalid @enderror" id="phase_id">
@@ -66,16 +68,25 @@
                                         @enderror
                                     </div>
                                 </div><!-- Col -->
-                                <div class="col-sm-1">
+                                <div class="col-sm-4">
                                     <div class="mb-3">
-                                        <label for="block_quantity" class="form-label">Qty.</label>
+                                        <label for="block_number" class="form-label">Block Number</label>
+                                        <input type="number" name="block_number" id="block_number" value="{{ old('block_number') }}" class="form-control @error('block_number') is-invalid @enderror" autocomplete="on" placeholder="0">
+                                        @error('block_number')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label for="block_quantity" class="form-label">Quantity</label>
                                         <input type="number" name="block_quantity" id="block_quantity" value="{{ old('block_quantity') }}" class="form-control @error('block_quantity') is-invalid @enderror" autocomplete="on" placeholder="0">
                                         @error('block_quantity')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div><!-- Col -->
-                            </div><!-- Row -->
+                        </div><!-- Row -->
                     </div>
                 </div>
             </div>

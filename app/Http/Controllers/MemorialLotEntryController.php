@@ -10,14 +10,14 @@ use App\Models\NoDownPayment;
 use App\Models\WithDownPaymentNoInterest;
 use App\Models\NoDownPaymentNoInterest;
 use App\Models\ProductEntry;
-use App\Models\BlockQuantity;
+use App\Models\Block;
 use App\Models\Phase;
 
 class MemorialLotEntryController extends Controller
 {
     public function showMemorialLotEntry(Request $request){
 
-        $showEntryInfo = ProductEntry::latest()->with('blockQuantity','productListPrice','phase')->get();
+        $showEntryInfo = ProductEntry::latest()->with('block','productListPrice','phase')->get();
 
         return view('admin.staff.content.index-show-memorial-lot-entry', compact('showEntryInfo'));
     }
@@ -66,6 +66,7 @@ class MemorialLotEntryController extends Controller
     public function storeMemorialLotEntry(Request $request){
 
         $request->validate([
+            'block_number' => 'required',
             'block_quantity' => 'required',
         ]);
 
@@ -123,8 +124,9 @@ class MemorialLotEntryController extends Controller
 
         $productEntry_id = $ProductEntry->id;
 
-        $blockQuantity = BlockQuantity::create([
+        $blockQuantity = Block::create([
             'product_entry_id' => $productEntry_id,
+            'block_number' => $request->input('block_number'),
             'block_quantity' => $request->input('block_quantity'),
         ]);
 
