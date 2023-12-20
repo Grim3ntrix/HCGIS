@@ -71,7 +71,12 @@ class ListPriceController extends Controller
             'product_category' => 'required',
             'list_price' => 'required',
             'product_description' => 'required',
-        
+
+            'spot_cash' => 'required',
+            'at_need' => 'required',
+            'down_payment_amount' => 'required',
+            'remaining_balance' => 'required',
+
         ]);
 
         $productType = $request->input('product_type');

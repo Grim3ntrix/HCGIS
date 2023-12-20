@@ -92,15 +92,11 @@ class PurchaseLotController extends Controller
 
             $phase = Phase::get();
 
-        
         return view('admin.staff.content.index-show-purchase-detail', compact('phase'));
     }//End Method (Customer Product Details)
 
-    public function getEntryCode(Request $request)
+    public function getEntryCode(Request $request, $selectedPhase)
     {
-        $selectedPhase = $request->input('selectedPhase');
-        $selectedMode = $request->input('selectedMode');
-        $term = $request->input('term');
 
         $query = ProductEntry::query();
 
@@ -108,18 +104,11 @@ class PurchaseLotController extends Controller
             $query->where('phase_id', $selectedPhase);
         }
 
-        if ($selectedMode) {
-            $query->where('product_list_price_mode', $selectedMode);
-        }
-
-        if ($term) {
-            $query->where('term', $term);
-        }
-        
         $entryCodes = $query->get();
 
         return response()->json($entryCodes ? $entryCodes->toArray() : []);
     }
+
         
     public function storePurchaseProductDetailForm(Request $request){
 

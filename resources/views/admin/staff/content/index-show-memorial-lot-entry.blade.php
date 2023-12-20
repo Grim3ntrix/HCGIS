@@ -29,12 +29,11 @@
                                 <div class="card-body d-flex justify-content-between">
                                     <div>
                                         <p class="card-text mb-1">Phase: {{ $entryInfo->phase->phase_name }}</p>
+                                        <p class="card-text mb-2">Block Number: {{ $entryInfo->block->block_number }}</p>
                                         <p class="card-text mb-2">Quantity: {{ $entryInfo->block->block_quantity }}</p>
-                                        <p class="card-text mb-2">PLP Mode: {{ $entryInfo->product_list_price_mode }}</p>
                                         <p class="card-text mb-2">Price: {{ $entryInfo->productListPrice->list_price }}</p>
-                                        <p class="card-text mb-2">WDP Price: {{ $entryInfo->balance }}</p>
                                         <p class="card-text mb-2">Phase Status: {{ $entryInfo->phase->status }}</p>
-                                        <p class="card-text mb-2">Block Status: {{ $entryInfo->status }}</p>
+                                        <p class="card-text mb-2">Entry Status: {{ $entryInfo->status }}</p>
                                     </div>
                                     <div>
                                         <!-- Icon for delete aligned with Phase -->

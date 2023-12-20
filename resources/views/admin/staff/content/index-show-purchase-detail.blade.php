@@ -9,7 +9,6 @@
                     <h6 class="card-title" style="margin-bottom: 20px;">Purchase Memorial Lot</h6>
                     <form action="" method="POST">
                         @csrf
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3">
@@ -26,6 +25,24 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="mb-3">
+                                    <input type="hidden" name="entry_id" id="entry_id" value="">
+                                    <label for="product_entry_code" class="form-label">Entry Code</label>
+                                    <select name="product_entry_code" id="product_entry_code" class="form-select mb-3 @error('product_entry_code') is-invalid @enderror">
+                                        <option selected disabled>Open this select menu</option>
+                                        
+                                            <option value=""></option>
+                                       
+                                    </select>
+                                    @error('product_entry_code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3">
@@ -55,23 +72,6 @@
                                         <option value="48">4 year/s or 48 Months</option>
                                         <option value="60">5 year/s or 60 Months</option>
                                     </select>
-                                </div>
-                            </div><!-- Col -->
-                        </div><!-- Row -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="mb-3">
-                                    <input type="hidden" name="entry_id" id="entry_id" value="">
-                                    <label for="product_entry_code" class="form-label">Entry Code</label>
-                                    <select name="product_entry_code" id="product_entry_code" class="form-select mb-3 @error('product_entry_code') is-invalid @enderror">
-                                        <option selected disabled>Open this select menu</option>
-                                        
-                                            <option value=""></option>
-                                       
-                                    </select>
-                                    @error('product_entry_code')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
@@ -180,35 +180,44 @@
     });
 
     $(document).ready(function () {
-        $('#selectedPhase, #plpMode, #term').on('change', function () {
-            const selectedPhase = $('#selectedPhase').val();
-            const selectedMode = $('#plpMode').val();
-            const selectedTerm = $('#term').val();
+        // Event handler for the selectedPhase dropdown
+        $('#selectedPhase').on('change', function () {
+            const selectedPhase = $(this).val();
 
+            // Perform AJAX request to get entry codes based on the selectedPhase
             $.ajax({
-                url: '/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/' + selectedPhase + '/' + selectedMode + '/' + selectedTerm,
+                url: '/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/' + selectedPhase,
                 method: 'GET',
                 data: {
-                    selectedPhase: selectedPhase,
-                    selectedMode: selectedMode,
-                    term: selectedTerm
+                    selectedPhase: selectedPhase  // Pass selectedPhase as a parameter
                 },
                 dataType: 'json',
                 success: function (response) {
-                console.log(response);
+                    console.log(response);
 
-                // Assuming response is an array of entry codes
-                var dropdown = $('#product_entry_code');
+                    // Assuming response is an array of entry codes
+                    var dropdown = $('#product_entry_code');
                     dropdown.empty();
 
-                    // Append new options based on the response
-                    $.each(response, function (index, entryCode) {
-                        dropdown.append($('<option></option>').attr('value', entryCode.id).text(entryCode.product_entry_code));
-                    });
+                    if (response.length > 0) {
+                        // Append new options based on the response
+                        $.each(response, function (index, entryCode) {
+                            dropdown.append($('<option></option>').attr('value', entryCode.id).text(entryCode.product_entry_code));
+                        });
+                    } else {
+                        // If no entries are found, reset the dropdown completely
+                        dropdown.append($('<option selected disabled></option>').text('Open this select menu'));
+                    }
                 },
             });
         });
+
+        // Event handler for the plpMode and term dropdowns
+        $('#plpMode, #term').on('change', function () {
+            // Include logic here if needed based on plpMode and term selections
+        });
     });
+
 </script>
 
 @endsection

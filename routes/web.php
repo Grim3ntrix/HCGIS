@@ -134,14 +134,14 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::get('/admin/staff/user/customer/personalinfo/fillup/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
-    Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/{selectedPhase}/{selectedMode}/{term}', [PurchaseLotController::class, 'getEntryCode'])->name('staff.get.entry.code');
+    Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/{selectedPhase}', [PurchaseLotController::class, 'getEntryCode'])->name('staff.get.entry.code');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
 
     //Memorial Lot Entry
     Route::get('/admin/staff/memorial-lot', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('staff.show.memorial.lot');
     Route::get('/admin/staff/memorial-lot/product-entry/new', [MemorialLotEntryController::class, 'addMemorialLotEntry'])->name('staff.add.product.entry');
-    Route::get('/admin/staff/memorial-lot/product/{productId}/entry/{Term}', [MemorialLotEntryController::class, 'getSelectedMode'])->name('staff.data.with.down.payment');
+    //Route::get('/admin/staff/memorial-lot/product/{productId}/entry/{Term}', [MemorialLotEntryController::class, 'getSelectedMode'])->name('staff.data.with.down.payment');
     Route::post('/admin/staff/memorial-lot/product-entry/store', [MemorialLotEntryController::class, 'storeMemorialLotEntry'])->name('staff.store.product.entry');
     Route::get('/admin/staff/memorial-lot/product-entry/delete/{id}', [MemorialLotEntryController::class, 'deleteMemorialLotEntry'])->name('staff.delete.product.entry');
     //Memorial Lot Entry
