@@ -90,9 +90,12 @@ class PurchaseLotController extends Controller
 
     public function showPurchaseProductDetailForm(Request $request){
 
-            $phase = Phase::get();
+        $userId = $request->route('id');
+        $user = User::findOrFail($userId);
 
-        return view('admin.staff.content.index-show-purchase-detail', compact('phase'));
+        $phase = Phase::get();
+
+        return view('admin.staff.content.index-show-purchase-detail', compact('phase', 'user'));
     }//End Method (Customer Product Details)
 
     public function getEntryCode(Request $request, $selectedPhase)

@@ -17,7 +17,7 @@ class MemorialLotEntryController extends Controller
 {
     public function showMemorialLotEntry(Request $request){
 
-        $showEntryInfo = ProductEntry::latest()->with('block','productListPrice','phase')->get();
+        $showEntryInfo = ProductEntry::with('block','productListPrice','phase')->get();
 
         return view('admin.staff.content.index-show-memorial-lot-entry', compact('showEntryInfo'));
     }

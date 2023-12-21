@@ -28,13 +28,12 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <input type="hidden" name="entry_id" id="entry_id" value="">
+                                    <!-- Identify Prodduct List Price ID base on selected Product Entry Code -->
+                                    <input type="text" name="plp_id" id="plp_id" value="">
                                     <label for="product_entry_code" class="form-label">Entry Code</label>
                                     <select name="product_entry_code" id="product_entry_code" class="form-select mb-3 @error('product_entry_code') is-invalid @enderror">
                                         <option selected disabled>Open this select menu</option>
-                                        
-                                            <option value=""></option>
-                                       
+                                        <option value=""></option>
                                     </select>
                                     @error('product_entry_code')
                                     <span class="text-danger">{{ $message }}</span>
@@ -62,16 +61,12 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <input type="hidden" name="term_id" id="term_id" value="">
-                                    <label for="term" class="form-label">Term</label>
-                                    <select name="term" id="term" class="form-select mb-3 @error('term') is-invalid @enderror">
-                                        <option selected disabled>Open this select menu</option>
-                                        <option value="12">1 year/s or 12 Months</option>
-                                        <option value="24">2 year/s or 24 Months</option>
-                                        <option value="36">3 year/s or 36 Months</option>
-                                        <option value="48">4 year/s or 48 Months</option>
-                                        <option value="60">5 year/s or 60 Months</option>
-                                    </select>
+                                    <div class="mb-3">
+                                        <input type="hidden" name="term_id" id="term_id" value="">
+                                        <label for="wdp_term" class="form-label">Term</label>
+                                        <select name="wdp_term" class="form-select mb-3 @error('wdp_term') is-invalid @enderror" id="wdp_term">
+                                        </select>
+                                    </div>
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
@@ -107,7 +102,7 @@
                             <p class="mt-1 mb-1"><b>Site: Brgy. Sto. Ni&ntilde;o, Bontoc, So. Leyte</b></p>
                             <p>Office: St. Bernard Multipurpose Bldg.,<br> Unit 2,<br>Zamora St., Brgy. Zone 1, Sogod, So. Leyte.</p>
                             <h5 class="mt-5 mb-2 text-muted">Order by :</h5>
-                            <p>Do Dong,<br> Brgy. San Isidro,<br> Mahaplag, Leyte.</p>
+                            <p>{{ $user->name }},<br> {{ $user->address }}</p>
                         </div>
                         <div class="col-lg-3 pe-0">
                             <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">Order</h4>
@@ -179,43 +174,62 @@
         });
     });
 
-    $(document).ready(function () {
-        // Event handler for the selectedPhase dropdown
-        $('#selectedPhase').on('change', function () {
-            const selectedPhase = $(this).val();
+    // Declare a variable to hold the response array
+    var responseArray = [];
 
-            // Perform AJAX request to get entry codes based on the selectedPhase
-            $.ajax({
-                url: '/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/' + selectedPhase,
-                method: 'GET',
-                data: {
-                    selectedPhase: selectedPhase  // Pass selectedPhase as a parameter
-                },
-                dataType: 'json',
-                success: function (response) {
-                    console.log(response);
+    // Event handler for the selectedPhase dropdown
+    $('#selectedPhase').on('change', function () {
+        const selectedPhase = $(this).val();
 
-                    // Assuming response is an array of entry codes
-                    var dropdown = $('#product_entry_code');
-                    dropdown.empty();
+        // Perform AJAX request to get entry codes based on the selectedPhase
+        $.ajax({
+            url: '/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/' + selectedPhase,
+            method: 'GET',
+            data: {
+                selectedPhase: selectedPhase // Pass selectedPhase as a parameter
+            },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
 
-                    if (response.length > 0) {
-                        // Append new options based on the response
-                        $.each(response, function (index, entryCode) {
-                            dropdown.append($('<option></option>').attr('value', entryCode.id).text(entryCode.product_entry_code));
-                        });
-                    } else {
-                        // If no entries are found, reset the dropdown completely
-                        dropdown.append($('<option selected disabled></option>').text('Open this select menu'));
-                    }
-                },
-            });
+                var dropdown = $('#product_entry_code');
+                var plpIdInput = $('#plp_id');
+                dropdown.empty();
+
+                // Set the responseArray directly
+                responseArray = response;
+
+                if (response.length > 0) {
+                    // Append new options based on the response
+                    $.each(response, function (index, entryCode) {
+                        dropdown.append($('<option></option>').attr('value', entryCode.id).text(entryCode.product_entry_code));
+                    });
+
+                    // Set the initial value of plp_id based on the first entry code
+                    plpIdInput.val(response[0].product_list_price_id);
+                } else {
+                    // If no entries are found, reset the dropdown and plp_id
+                    dropdown.append($('<option selected disabled></option>').text('Open this select menu'));
+                    plpIdInput.val('');
+                }
+            },
         });
+    });
 
-        // Event handler for the plpMode and term dropdowns
-        $('#plpMode, #term').on('change', function () {
-            // Include logic here if needed based on plpMode and term selections
-        });
+    // Event handler for the product_entry_code dropdown
+    $('#product_entry_code').on('change', function () {
+        var selectedEntryCode = $(this).val();
+        var plpIdInput = $('#plp_id');
+
+        // Find the selected entry code in the responseArray
+        var selectedEntry = responseArray.find(entry => entry.id == selectedEntryCode);
+
+        // Set the value of plp_id based on the selected entry code
+        if (selectedEntry) {
+            plpIdInput.val(selectedEntry.product_list_price_id);
+        } else {
+            plpIdInput.val('');
+        }
     });
 
 </script>
