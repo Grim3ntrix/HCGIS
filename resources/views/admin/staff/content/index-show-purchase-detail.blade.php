@@ -29,7 +29,7 @@
                             <div class="col-sm-12">
                                 <div class="mb-3">
                                     <!-- Identify Prodduct List Price ID base on selected Product Entry Code -->
-                                    <input type="text" name="plp_id" id="plp_id" value="">
+                                    <input type="hidden" name="plp_id" id="plp_id" value="">
                                     <label for="product_entry_code" class="form-label">Entry Code</label>
                                     <select name="product_entry_code" id="product_entry_code" class="form-select mb-3 @error('product_entry_code') is-invalid @enderror">
                                         <option selected disabled>Open this select menu</option>
@@ -65,6 +65,12 @@
                                         <input type="hidden" name="term_id" id="term_id" value="">
                                         <label for="wdp_term" class="form-label">Term</label>
                                         <select name="wdp_term" class="form-select mb-3 @error('wdp_term') is-invalid @enderror" id="wdp_term">
+                                            <option selected disabled>Open this select menu</option>
+                                            <option value="At-Need">1 year/s or 12 months</option>
+                                            <option value="Spot Cash">2 year/s or 24 months</option>	
+                                            <option value="With Down Payment">3 year/s or 38 months</option>
+                                            <option value="No Down Payment">4 year/s or 48 months</option>
+                                            <option value="No Down Payment No Interest">5 year/s or 60 months</option>
                                         </select>
                                     </div>
                                 </div>
@@ -93,68 +99,150 @@
         <!-- Right card -->
         <div class="col-md-8 stretch-card">
             <div class="card">
-                <form action="{{ route('store.customer.account') }}" method="POST">
-                    @csrf
-                    <div class="card-body">
-                        <div class="container-fluid d-flex justify-content-between">
-                        <div class="col-lg-3 ps-0">
-                            <a href="#" class="logo-light d-block mt-3 mb-3"><h4 class="text-white">HolyCross</h4><h4><span>Garden</span></h4></a>                 
-                            <p class="mt-1 mb-1"><b>Site: Brgy. Sto. Ni&ntilde;o, Bontoc, So. Leyte</b></p>
-                            <p>Office: St. Bernard Multipurpose Bldg.,<br> Unit 2,<br>Zamora St., Brgy. Zone 1, Sogod, So. Leyte.</p>
-                            <h5 class="mt-5 mb-2 text-muted">Order by :</h5>
-                            <p>{{ $user->name }},<br> {{ $user->address }}</p>
-                        </div>
-                        <div class="col-lg-3 pe-0">
-                            <h4 class="fw-bolder text-uppercase text-end mt-4 mb-2">Order</h4>
-                            <h6 class="text-end mb-5 pb-4"># Order-002308</h6>
-                            <p class="text-end mb-1">Product List Price</p>
-                            <h4 class="text-end fw-normal">₱ 45000.00</h4>
-                            <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Start Date :</span> 2023-12-7</h6>
-                            <h6 class="text-end fw-normal"><span class="text-muted">End Date :</span> 2024-12-7</h6>
-                        </div>
-                        </div>
-                        <div class="container-fluid mt-5 d-flex justify-content-center w-100">
-                            <div class="table-responsive w-100">
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-start">Product</th>
-                                        <th class="text-start">Term</th>
-                                        <th class="text-start">PLP Mode</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="text-end">
-                                        <td class="text-start">Lawn Lot-Regular-AB</td>
-                                        <td class="text-start">1 year/s or 12 months</td>
-                                        <td class="text-start">With Down Payment</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="container-fluid mt-3 d-flex justify-content-center w-100 mb-2">
-                            <div class="table-responsive w-100">
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-start">Interest</th>
-                                        <th class="text-start">Monthly</th>
-                                        <th class="text-start">End Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="text-end">
-                                        <td class="text-start">3300.48</td>
-                                        <td class="text-start">3275.04</td>
-                                        <td class="text-start">39300.48</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+            <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label for="down_payment_amount" class="form-label">DP Amount</label>
+                                    <input type="number" name="down_payment_amount" id="down_payment_amount" value="" class="form-control @error('down_payment_amount') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('down_payment_amount')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label for="remaining_balance" class="form-label">Balance</label>
+                                    <input type="number" name="remaining_balance" id="remaining_balance" value="" class="form-control @error('remaining_balance') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('remaining_balance')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label for="at_need" class="form-label">At Need Price</label>
+                                    <input type="number" name="at_need" id="at_need" value="" class="form-control @error('at_need') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('at_need')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label for="spot_cash" class="form-label">Pre Need (Spot Cash)</label>
+                                    <input type="number" name="spot_cash" id="spot_cash" value="" class="form-control @error('spot_cash') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('spot_cash')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->  
+                        </div><!-- Row -->
+
+						<div class="row">
+                            <div class="col-sm-4">
+                                <div class="mb-3">  
+                                    <label for="wdp_annual_interest" class="form-label">WDP Interest</label>
+                                    <input type="number" name="wdp_annual_interest" id="wdp_annual_interest" value="" class="form-control @error('wdp_annual_interest') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('wdp_annual_interest')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+							<div class="col-sm-4">
+                                <div class="mb-3">      
+                                    <label for="wdp_monthly_payment" class="form-label">WDP Monthly</label>
+                                    <input type="number" name="wdp_monthly_payment" id="wdp_monthly_payment" value="" class="form-control @error('wdp_monthly_payment') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('wdp_monthly_payment')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label for="wdp_end_price" class="form-label">End Amount</label>
+                                    <input type="number" name="wdp_end_price" id="wdp_end_price" value="" class="form-control @error('wdp_end_price') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('wdp_end_price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    
+                                    <label for="ndp_annual_interest" class="form-label">NDP Interest</label>
+                                    <input type="number" name="ndp_annual_interest" id="ndp_annual_interest" value="" class="form-control @error('ndp_annual_interest') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('ndp_annual_interest')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+							<div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label for="ndp_monthly_payment" class="form-label">NDP Monthly</label>
+                                    <input type="number" name="ndp_monthly_payment" id="ndp_monthly_payment" value="" class="form-control @error('ndp_monthly_payment') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('ndp_monthly_payment')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label for="ndp_end_price" class="form-label">End Amount</label>
+                                    <input type="number" name="ndp_end_price" id="ndp_end_price" value="" class="form-control @error('ndp_end_price') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('ndp_end_price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
+
+                        <div class="row">
+							<div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="wdpni_monthly_payment" class="form-label">WDPNI Monthly</label>
+                                    <input type="number" name="wdpni_monthly_payment" id="wdpni_monthly_payment" value="" class="form-control @error('wdpni_monthly_payment') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('wdpni_monthly_payment')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="wdpni_end_price" class="form-label">End Amount</label>
+                                    <input type="number" name="wdpni_end_price" id="wdpni_end_price" value="" class="form-control @error('wdpni_end_price') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('wdpni_end_price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
+
+                        <div class="row">
+							<div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="ndpni_monthly_payment" class="form-label">NDPNI Monthly</label>
+                                    <input type="number" name="ndpni_monthly_payment" id="ndpni_monthly_payment" value="" class="form-control @error('ndpni_monthly_payment') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('ndpni_monthly_payment')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="ndpni_end_price" class="form-label">End Amount</label>
+                                    <input type="number" name="ndpni_end_price" id="ndpni_end_price" value="" class="form-control @error('ndpni_end_price') is-invalid @enderror" autocomplete="on" placeholder="₱00.00" readonly>
+                                    @error('ndpni_end_price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
+                    </form>
+                </div>
             </div>
         </div>
         </div>

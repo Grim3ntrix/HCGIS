@@ -56,7 +56,7 @@
           <li class="nav-item">
             <a href="{{ route('staff.show.customer') }}" class="nav-link">
               <i class="link-icon" data-feather="plus-square"></i>
-              <span class="link-title">Create</span>
+              <span class="link-title">Pay</span>
             </a>
           </li>
           <li class="nav-item nav-category">Account Manager</li>

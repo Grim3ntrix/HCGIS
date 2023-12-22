@@ -38,7 +38,7 @@
                 <i class="link-icon" data-feather="credit-card"></i>
                 <span class="link-title">My Payment</span>
               </a>
-          </li>
+          </li><!--
           <li class="nav-item nav-category">How to use</li>
           <li class="nav-item">
             <a href="{{ route('customer.show.watchonline') }}" class="nav-link">
@@ -51,7 +51,7 @@
               <i class="link-icon" data-feather="info"></i>
               <span class="link-title">FAQ</span>
             </a>
-          </li>
+          </li>-->
         </ul>
       </div>
     </nav>
