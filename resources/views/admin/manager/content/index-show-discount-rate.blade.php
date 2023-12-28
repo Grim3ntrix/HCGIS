@@ -1,19 +1,18 @@
 @extends('admin.manager.body.discount-rate')
 @section('discount-rate-content')
 <div class="page-content">
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-md-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                
-                    <form action="{{ route('manager.store.discount.rate') }}" method="POST">
+<form action="{{ route('manager.store.discount.rate') }}" method="POST">
                         @csrf
                         <h4 class="card-title"><span style="padding-right:8px;"><i data-bs-toggle="tooltip" data-bs-placement="right" title="Percentage/100 = Decimal, Decimal * 100 = Percentage" data-feather="help-circle" class=""></i></span>Interest Rate</h4>
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_1" class="form-label">1 year (12 months) %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_1" id="one_year_rate_percentage" value="{{ optional($rate1)->interest_rate_percentage . '%' }}" class="form-control @error('one_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_1" class="form-label">1 year or 12 months %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_1" id="one_year_rate_percentage" value="{{ optional($rate1)->interest_rate_percentage}}" class="form-control @error('one_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('one_year_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -33,8 +32,8 @@
                             
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_2" class="form-label">2 years (24 months) %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_2" id="two_year_rate_percentage" value="{{ optional($rate2)->interest_rate_percentage . '%' }}" class="form-control @error('two_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_2" class="form-label">2 years or 24 months %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_2" id="two_year_rate_percentage" value="{{ optional($rate2)->interest_rate_percentage}}" class="form-control @error('two_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('two_year_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -55,8 +54,8 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_3" class="form-label">3 year (36 months) %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_3" id="three_year_rate_percentage" value="{{ optional($rate3)->interest_rate_percentage . '%' }}" class="form-control @error('three_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_3" class="form-label">3 year or 36 months %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_3" id="three_year_rate_percentage" value="{{ optional($rate3)->interest_rate_percentage}}" class="form-control @error('three_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('three_year_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -76,8 +75,8 @@
                             
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_4" class="form-label">4 year (48 months) %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_4" id="four_year_rate_percentage" value="{{ optional($rate4)->interest_rate_percentage . '%' }}" class="form-control @error('four_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_4" class="form-label">4 year or 48 months %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_4" id="four_year_rate_percentage" value="{{ optional($rate4)->interest_rate_percentage}}" class="form-control @error('four_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('four_year_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -99,8 +98,8 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_5" class="form-label">5 year (60 months) %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_5" id="five_year_rate_percentage" value="{{ optional($rate5)->interest_rate_percentage . '%' }}" class="form-control @error('five_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_5" class="form-label">5 year or 60 months %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_5" id="five_year_rate_percentage" value="{{ optional($rate5)->interest_rate_percentage}}" class="form-control @error('five_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('five_year_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -118,14 +117,20 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row --> <br>
-
-                        <h4 class="card-title">List Price Rate</h4>
-
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title"><span style="padding-right:8px;"><i data-bs-toggle="tooltip" data-bs-placement="right" title="Price List Rate is the product prices rate" data-feather="help-circle" class=""></i></span>Price List Rate</h4>
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_6" class="form-label">Spot Cash Price %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_6" id="spot_cash_rate_percentage" value="{{ optional($rate6)->interest_rate_percentage . '%' }}" class="form-control @error('spot_cash_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_6" class="form-label">Spot Cash (Discount) %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_6" id="spot_cash_rate_percentage" value="{{ optional($rate6)->interest_rate_percentage}}" class="form-control @error('spot_cash_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('spot_cash_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -145,8 +150,8 @@
                             
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_7" class="form-label">At Need %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_7" id="at_need_rate_percentage" value="{{ optional($rate7)->interest_rate_percentage . '%' }}" class="form-control @error('at_need_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_7" class="form-label">At Need (Additional) %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_7" id="at_need_rate_percentage" value="{{ optional($rate7)->interest_rate_percentage}}" class="form-control @error('at_need_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('at_need_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -168,8 +173,8 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="mb-3">
-                                    <label for="interest_rate_percentage_8" class="form-label">Down payment %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_8" id="down_payment_rate_percentage" value="{{ optional($rate8)->interest_rate_percentage . '%' }}" class="form-control @error('down_payment_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <label for="interest_rate_percentage_8" class="form-label">Down Payment Rate %</label>
+                                    <input type="text" step="any" name="interest_rate_percentage_8" id="down_payment_rate_percentage" value="{{ optional($rate8)->interest_rate_percentage}}" class="form-control @error('down_payment_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('down_payment_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -188,14 +193,20 @@
                             </div><!-- Col -->
 
                         </div><!-- Row --> <br>
-
-                        <h4 class="card-title">Penalty Rate</h4>
-
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title"><span style="padding-right:8px;"><i data-bs-toggle="tooltip" data-bs-placement="right" title="Penalty rate is the additional payment if not payed on due date" data-feather="help-circle" class=""></i></span>Penalty Rate</h4>
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_9" class="form-label">Penalty Rate %</label>
-                                    <input type="text" step="any" name="interest_rate_percentage_9" id="penalty_rate_percentage" value="{{ optional($rate9)->interest_rate_percentage . '%' }}" class="form-control @error('penalty_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                    <input type="text" step="any" name="interest_rate_percentage_9" id="penalty_rate_percentage" value="{{ optional($rate9)->interest_rate_percentage}}" class="form-control @error('penalty_rate_percentage') is-invalid @enderror" placeholder="0.000%">
                                     @error('penalty_rate_percentage')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -213,8 +224,8 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
-                        <button type="submit" class="btn btn-primary submit">Submit</button>
-                    </form>
+                        <button type="submit" class="btn btn-primary submit">Save All</button>
+</form>
                 </div>
             </div>
         </div>

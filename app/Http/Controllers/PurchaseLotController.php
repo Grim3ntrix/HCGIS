@@ -112,11 +112,19 @@ class PurchaseLotController extends Controller
         return response()->json($entryCodes ? $entryCodes->toArray() : []);
     }
 
+    public function getEntryDetails(Request $request, $entryCodeId)
+    {
+        // Use $entryCodeId to fetch additional details from the database
+        $entryDetails = ProductEntry::find($entryCodeId);
+
+        // Return the details as a JSON response
+        return response()->json($entryDetails ? $entryDetails->toArray() : []);
+    }
+
         
     public function storePurchaseProductDetailForm(Request $request){
 
     
     }//End Method (Customer Product Details)
-
 
 }

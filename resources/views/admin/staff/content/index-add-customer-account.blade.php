@@ -5,7 +5,7 @@
         <div class="col-md-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Add Account</h4>
+                    <h4 class="card-title">Log in Credentials</h4>
                     <form action="{{ route('store.customer.account') }}" method="POST">
                         @csrf
                         <div class="row">

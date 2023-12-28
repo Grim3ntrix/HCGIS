@@ -69,10 +69,25 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/logout', [ManagerController::class, 'ManagerLogout'])->name('manager.logout');
     //Sidebar
 
+    //Chat
+    Route::get('/admin/manager/chat', [ChatController::class, 'showManagerChat'])->name('manager.chat');
+    //End Chat
+
+    //
+    //Memorial Lot Manager Routes in Sidebar
+    //
+
     //Discount Manager
     Route::get('/admin/manager/discount/rate', [RateController::class, 'showRate'])->name('manager.show.discount.rate');
     Route::post('/admin/manager/discount/rate/store', [RateController::class, 'storeRate'])->name('manager.store.discount.rate');
     //Discount Manager
+
+    //Phase
+    Route::get('/admin/manager/phase', [PhaseController::class, 'showManagerPhase'])->name('manager.show.phase');
+    Route::post('/admin/manager/phase/store', [PhaseController::class, 'storeManagerPhase'])->name('manager.store.phase');
+    Route::get('/admin/manager/phase/edit/{id}', [PhaseController::class, 'updateManagerPhase'])->name('manager.edit.phase');
+    Route::get('/admin/manager/phase/delete/{id}', [PhaseController::class, 'deleteManagerPhase'])->name('manager.delete.phase');
+    //Phase
 
     //ListPrice Manager
     Route::get('/admin/manager/listprice/all', [ListPriceController::class, 'showallManagerListPrice'])->name('manager.show.all.list.price');
@@ -82,23 +97,20 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/listprice/delete/{id}', [ListPriceController::class, 'deleteManagerListPrice'])->name('manager.delete.list.price');
     //ListPrice Manager
 
-    //Phase
-    Route::get('/admin/manager/phase', [PhaseController::class, 'showManagerPhase'])->name('manager.show.phase');
-    Route::post('/admin/manager/phase/store', [PhaseController::class, 'storeManagerPhase'])->name('manager.store.phase');
-    Route::get('/admin/manager/phase/edit/{id}', [PhaseController::class, 'updateManagerPhase'])->name('manager.edit.phase');
-    Route::get('/admin/manager/phase/delete/{id}', [PhaseController::class, 'deleteManagerPhase'])->name('manager.delete.phase');
-    //Phase
+    //Memorial Lot Entry
+    Route::get('/admin/manager/memorial-lot', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('manager.show.memorial.lot');
+    Route::get('/admin/manager/memorial-lot/product-entry/new', [MemorialLotEntryController::class, 'addMemorialLotEntry'])->name('manager.add.product.entry');
+    //Route::get('/admin/staff/memorial-lot/product/{productId}/entry/{Term}', [MemorialLotEntryController::class, 'getSelectedMode'])->name('staff.data.with.down.payment');
+    Route::post('/admin/manager/memorial-lot/product-entry/store', [MemorialLotEntryController::class, 'storeMemorialLotEntry'])->name('manager.store.product.entry');
+    Route::get('/admin/manager/memorial-lot/product-entry/delete/{id}/now', [MemorialLotEntryController::class, 'deleteMemorialLotEntryNow'])->name('manager.delete.product.entry.now');
+    //Memorial Lot Entry
 
-    //Account Manager
+    //Agent Account
     Route::get('/admin/manager/agent/account', [AccountController::class, 'showAgentAccount'])->name('show.agent.account');
     Route::get('/admin/manager/agent/account/create',[AccountController::class, 'addAgentAccount'])->name('add.agent.account');
     Route::post('/admin/manager/account/store', [AccountController::class, 'storeAgentAccount'])->name('store.agent.account');
     Route::get('/admin/manager/account/delete/{id}', [AccountController::class, 'deleteAgentAccount'])->name('delete.agent.account');
-    //Account Manager
-
-    //Chat
-    Route::get('/admin/manager/chat', [ChatController::class, 'showManagerChat'])->name('manager.chat');
-    //End Chat
+    //Agent Account
 
     Route::get('/admin/manager/how-to-use/watch-online', [HowToUseController::class, 'ManagerWatchOnline'])->name('manager.watchonline');
     Route::get('/admin/manager/how-to-use/frequently-ask-question', [HowToUseController::class, 'ManagerFAQ'])->name('manager.faq');
@@ -133,11 +145,14 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::get('/admin/staff/user/customer/registered', [PurchaseLotController::class, 'showUserCustomer'])->name('staff.show.user.customer');
     Route::get('/admin/staff/user/customer/personalinfo/fillup/{id}', [PurchaseLotController::class, 'showPersonalInfoForm'])->name('staff.show.personalinfo.form');
     Route::post('/admin/staff/user/customer/personalinfo/store', [PurchaseLotController::class, 'storePersonalInfoForm'])->name('staff.store.personalinfo.form');
+    
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/{selectedPhase}', [PurchaseLotController::class, 'getEntryCode'])->name('staff.get.entry.code');
+    Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-entry-details/{entryCodeId}', [PurchaseLotController::class, 'getEntryDetails'])->name('staff.get.entry.details');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
 
+/*This part was Revised and moved into manager as feature
     //Memorial Lot Entry
     Route::get('/admin/staff/memorial-lot', [MemorialLotEntryController::class, 'showMemorialLotEntry'])->name('staff.show.memorial.lot');
     Route::get('/admin/staff/memorial-lot/product-entry/new', [MemorialLotEntryController::class, 'addMemorialLotEntry'])->name('staff.add.product.entry');
@@ -145,7 +160,7 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::post('/admin/staff/memorial-lot/product-entry/store', [MemorialLotEntryController::class, 'storeMemorialLotEntry'])->name('staff.store.product.entry');
     Route::get('/admin/staff/memorial-lot/product-entry/delete/{id}', [MemorialLotEntryController::class, 'deleteMemorialLotEntry'])->name('staff.delete.product.entry');
     //Memorial Lot Entry
-
+*/
     Route::get('/admin/staff/chat', [ChatController::class, 'showStaffChat'])->name('staff.chat');
 
     Route::get('/admin/staff/obituary', [ObituaryController::class, 'showObituary'])->name('staff.show.obituary');

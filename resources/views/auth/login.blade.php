@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-md-8 ps-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
-                    <a href="#" class="noble-ui-logo logo-light d-block mb-2">HolyCross<span>Garden</span></a>
+                    <a href="#" class="noble-ui-logo logo-light d-block mb-2">HolyCross<span>Gardens</span></a>
                     <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
                     
                     <form class="forms-sample" method="POST" action="{{ route('login') }}">
@@ -90,7 +90,7 @@
                            Login
                         </button>
                       </div>
-                      <a href="{{ route('welcome.guest') }}" class="d-block mt-3 text-muted">No account? Login as Guest</a>
+                      <a href="{{ route('welcome.guest') }}" class="d-block mt-3 text-muted">No account? Tour as Guest</a>
                     
                     </form>
 

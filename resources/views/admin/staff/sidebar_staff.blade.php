@@ -1,7 +1,7 @@
 <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-        <h4 class="text-white p-2">HolyCross<span>Garden</span></h4></a>
+        <h4 class="text-white p-2">HolyCross<span>Gardens</span></h4></a>
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
@@ -25,18 +25,11 @@
               <span class="link-title">Chat</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Product List Price</li>
+          <li class="nav-item nav-category">Price List</li>
           <li class="nav-item">
             <a href="{{ route('staff.show.all.list.price') }}" class="nav-link">
               <i class="link-icon" data-feather="dollar-sign"></i>
-              <span class="link-title">PLP</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">Memorial Lot</li>
-          <li class="nav-item">
-            <a href="{{ route('staff.show.memorial.lot') }}" class="nav-link">
-              <i class="link-icon" data-feather="plus-circle"></i>
-              <span class="link-title">Entry</span>
+              <span class="link-title">All Price List</span>
             </a>
           </li>
           <li class="nav-item nav-category">Buyers Ledger</li>
@@ -59,11 +52,11 @@
               <span class="link-title">Pay</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Account Manager</li>
+          <li class="nav-item nav-category">Ledger Account</li>
           <li class="nav-item">
             <a href="{{ route('show.customer.account') }}" class="nav-link">
               <i class="link-icon" data-feather="user-plus"></i>
-              <span class="link-title">Create</span>
+              <span class="link-title">All Account</span>
             </a>
           </li>
         </ul>

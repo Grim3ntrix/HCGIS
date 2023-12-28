@@ -61,7 +61,7 @@ class RateController extends Controller
     
             if ($existingRate) {
                 $existingRate->update([
-                    'interest_rate_percentage' => rtrim($request->input("interest_rate_percentage_{$i}"), '%'),
+                    'interest_rate_percentage' => str_replace('%', '', $request->input("interest_rate_percentage_{$i}")),
                     'interest_rate_decimal' => $request->input("interest_rate_decimal_{$i}"),
                 ]);
 
@@ -69,7 +69,7 @@ class RateController extends Controller
                 Rate::create([
                     'rate_name' => $request->input("rate_name_{$i}"),
                     'term' => $request->input("term_{$i}"),
-                    'interest_rate_percentage' => rtrim($request->input("interest_rate_percentage_{$i}"), '%'),
+                    'interest_rate_percentage' => str_replace('%', '', $request->input("interest_rate_percentage_{$i}")),
                     'interest_rate_decimal' => $request->input("interest_rate_decimal_{$i}"),
                 ]);
             }

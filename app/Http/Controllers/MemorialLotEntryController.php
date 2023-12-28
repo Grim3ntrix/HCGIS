@@ -19,7 +19,7 @@ class MemorialLotEntryController extends Controller
 
         $showEntryInfo = ProductEntry::with('block','productListPrice','phase')->get();
 
-        return view('admin.staff.content.index-show-memorial-lot-entry', compact('showEntryInfo'));
+        return view('admin.manager.content.index-show-memorial-lot-entry', compact('showEntryInfo'));
     }
 
     public function addMemorialLotEntry(Request $request){
@@ -28,7 +28,7 @@ class MemorialLotEntryController extends Controller
 
         $showEntry = Phase::get();
 
-        return view('admin.staff.content.index-add-memorial-lot-entry', compact('PLP_CODE','showEntry'));
+        return view('admin.manager.content.index-add-memorial-lot-entry', compact('PLP_CODE','showEntry'));
     }
     
     public function storeMemorialLotEntry(Request $request){
@@ -81,13 +81,14 @@ class MemorialLotEntryController extends Controller
             'alert-type' => 'success',
         ];
     
-        return redirect()->route('staff.show.memorial.lot')->with($notification);
+        return redirect()->route('manager.show.memorial.lot')->with($notification);
     }
 
-    public function deleteMemorialLotEntry(Request $request){
+    public function deleteMemorialLotEntryNow(Request $request){
 
         $entryID = $request->route('id');
-        $deleteEntry = ProductEntry::find($entryID)->delete();
+        $deleteEntry = ProductEntry::find($entryID);
+        $deleteEntry->delete();
 
         $notification = [
             'message' => 'Product Entry Successfully Deleted!',

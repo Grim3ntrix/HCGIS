@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('blocks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_entry_id')->constrained('product_entries')->onDelete('cascade');
-            $table->integer('block_number');
+            $table->string('block_number');
             $table->integer('block_quantity');
             $table->timestamps();
         });

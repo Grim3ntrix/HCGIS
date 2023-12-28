@@ -11,20 +11,36 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="mb-3">
-                                   
                                         <label for="product_type" class="form-label">Product Type</label>
-                                        <input type="text" name="product_type" id="product_type" value="{{ old('product_type') }}" class="form-control @error('product_type') is-invalid @enderror" placeholder="Enter Product Type">
+                                        <select name="product_type" class="form-select mb-3 @error('product_type') is-invalid @enderror" id="product_type">
+                                                <option selected disabled>Open this select menu</option>
+                                                <option value="Lawn Lot">Lawn Lot</option>
+                                                <option value="Garden Lot-Twin Lot">Garden Lot-Twin Lot</option>
+                                                <option value="Garden Lot-Triple Lot">Garden Lot-Triple Lot</option>
+                                                <option value="Garden Lot-4 Lot">Garden Lot-4 Lot</option>
+                                                <option value="Garden Estate-A">Garden Estate-A</option>
+                                                <option value="Garden Estate-A">Garden Estate-B</option>
+                                                <option value="Family Estate">Family Estate</option>
+                                                <option value="Apartment Units">Apartment Units</option>
+                                        </select>
                                         @error('product_type')
-                                        <span class="text-danger">{{ $message }}</span>
+                                            <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label for="product_category" class="form-label">Product Category</label>
-                                        <input type="product_category" name="product_category" id="product_category" value="{{ old('product_category') }}" class="form-control @error('product_category') is-invalid @enderror" placeholder="Enter Product Category">
+                                        <select name="product_category" class="form-select mb-3 @error('product_category') is-invalid @enderror" id="product_category">
+                                                <option selected disabled>Open this select menu</option>
+                                                <option value="Regular">Regular</option>
+                                                <option value="Prime">Prime</option>
+                                                <option value="Super Prime">Super Prime</option>
+                                                <option value="Level D">Level D</option>
+                                                <option value="Level A, B, & C">Level A, B, and C</option>
+                                        </select>
                                         @error('product_category')
-                                        <span class="text-danger">{{ $message }}</span>
+                                            <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div><!-- Col -->

@@ -119,11 +119,10 @@ $(function(){
 });
 
 $(function(){
-    $(document).on('click','#delete-product_entry',function(e){
+    $(document).on('click','#delete_product_entry',function(e){
         e.preventDefault();
         var link = $(this).attr("href");
 
-  
             Swal.fire({
             title: 'Are you sure?',
             text: "Remove this Product Entry?",
