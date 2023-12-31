@@ -149,6 +149,7 @@ Route::middleware(['auth','role:staff'])->group(function(){
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/{id}', [PurchaseLotController::class, 'showPurchaseProductDetailForm'])->name('staff.show.productdetail.form');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-entry-codes/{selectedPhase}', [PurchaseLotController::class, 'getEntryCode'])->name('staff.get.entry.code');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-entry-details/{entryCodeId}', [PurchaseLotController::class, 'getEntryDetails'])->name('staff.get.entry.details');
+    Route::get('/admin/staff/user/customer/purchase-memorial-lot/get-product-list-price-mode-details/{selectedPlpMode}', [PurchaseLotController::class, 'getProductListPriceModeDetails'])->name('staff.get.plpmode.details');
     Route::get('/admin/staff/user/customer/purchase-memorial-lot/store', [PurchaseLotController::class, 'storePurchaseProductDetailForm'])->name('staff.store.productdetail.form');
     //End
 

@@ -39,7 +39,20 @@
 
   <!-- Toaster -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-
+  <style>
+	#wdp_more_price:hover {
+	color: #00ffff;
+	}
+	#ndp_more_price:hover {
+	color: #00ffff;
+	}
+	#wdpni_more_price:hover {
+	color: #00ffff;
+	}
+	#ndpni_more_price:hover {
+	color: #00ffff;
+	}
+</style>
 </head>
 <body>
 	<div class="main-wrapper">

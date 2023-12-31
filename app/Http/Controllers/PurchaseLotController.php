@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Phase;
 use App\Models\ProductEntry;
+use App\Models\ProductListPrice;
+use App\Models\AtNeed;
+use App\Models\PreNeed;
+use App\Models\WithDownPayment;
+use App\Models\NoDownPayment;
+use App\Models\WithDownPaymentNoInterest;
+use App\Models\NoDownPaymentNoInterest;
 
 class PurchaseLotController extends Controller
 {
@@ -114,17 +121,68 @@ class PurchaseLotController extends Controller
 
     public function getEntryDetails(Request $request, $entryCodeId)
     {
-        // Use $entryCodeId to fetch additional details from the database
+        // Use $entryCodeId to fetch details from the 'ProductEntry' table
         $entryDetails = ProductEntry::find($entryCodeId);
-
-        // Return the details as a JSON response
-        return response()->json($entryDetails ? $entryDetails->toArray() : []);
+    
+        // Fetch additional information from the 'ProductListPrice' table
+        $listPriceDetails = ProductListPrice::where('id', $entryDetails->product_list_price_id)->first();
+    
+        // Fetch additional information from the 'Phase' table
+        $phaseDetails = Phase::where('id', $entryDetails->phase_id)->first();
+    
+        // Return details as a JSON response
+        return response()->json([
+            'entryDetails' => $entryDetails ? $entryDetails->toArray() : [],
+            'listPriceDetails' => $listPriceDetails ? $listPriceDetails->toArray() : [],
+            'phaseDetails' => $phaseDetails ? $phaseDetails->toArray() : [],
+        ]);
     }
+    
+    public function getProductListPriceModeDetails(Request $request, $selectedPlpMode)
+    {
+        // Retrieve plpId and term from the request
+        $plpID_of_specific_entryCode = $request->input('plpId');
+        $termValue = $request->input('selectedTerm');
+
+        switch ($selectedPlpMode) {
+            case 'At-Need':
+                $plpModeDetails = AtNeed::where('product_list_price_id', $plpID_of_specific_entryCode)
+                    ->first();
+                break;
+            case 'Spot Cash':
+                $plpModeDetails = PreNeed::where('product_list_price_id', $plpID_of_specific_entryCode)
+                    ->first();
+                break;
+            case 'With Down Payment':
+                $plpModeDetails = WithDownPayment::where('product_list_price_id', $plpID_of_specific_entryCode)
+                    //->where('wdp_term', $termValue)
+                    ->get();
+                break;
+            case 'No Down Payment':
+                $plpModeDetails = NoDownPayment::where('product_list_price_id', $plpID_of_specific_entryCode)
+                    //->where('ndp_term', $termValue)
+                    ->get();
+                break;
+            case 'With Down Payment No Interest':
+                $plpModeDetails = WithDownPaymentNoInterest::where('product_list_price_id', $plpID_of_specific_entryCode)
+                    //->where('wdpni_term', $termValue)
+                    ->get();
+                break;
+            case 'No Down Payment No Interest':
+                $plpModeDetails = NoDownPaymentNoInterest::where('product_list_price_id', $plpID_of_specific_entryCode)
+                    //->where('ndpni_term', $termValue)
+                    ->get();
+                break;
+            default:
+                $plpModeDetails = null;
+        }
+
+        return response()->json($plpModeDetails ? $plpModeDetails->toArray() : []);
+    }
+
 
         
     public function storePurchaseProductDetailForm(Request $request){
-
-    
     }//End Method (Customer Product Details)
 
 }

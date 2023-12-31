@@ -37,7 +37,7 @@
                                     </div>
                                     <div>
                                         <!-- Icon for delete aligned with Phase -->
-                                        <a href="{{ route ('manager.delete.product.entry.now', [$entryInfo->id]) }}" id="delete-agent-account"><i data-feather="trash"></i></a>
+                                        <a href="{{ route ('manager.delete.product.entry.now', [$entryInfo->id]) }}" id="delete_product_entry"><i data-feather="trash"></i></a>
                                     </div>
                                 </div>
                                 <div class="card-footer" style="text-align: center;">{{ optional($entryInfo)->product_entry_code }}</div>
