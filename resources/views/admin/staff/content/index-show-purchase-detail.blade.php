@@ -62,7 +62,7 @@
                                         <div class="mb-3">
                                             <input type="hidden" name="term_id" id="term_id" value="">
                                             <label for="term" class="form-label">Term</label>
-                                            <select name="wdp_term" class="form-select mb-3 @error('wdp_term') is-invalid @enderror" id="term">
+                                            <select name="term" class="form-select mb-3 @error('term') is-invalid @enderror" id="term">
                                                 <option selected disabled>No Available Term</option>
                                             </select>
                                         </div>
@@ -94,13 +94,16 @@
                 <div class="card-body">
                     <h6 class="card-title" style="margin-bottom: 20px;">Product Entry Information</h6>
                     <ul>
-                        <li id="productPrice">Product Price: ₱ </li>
-                        <li id="description">Description: </li>
-                        <li id="phase">Phase: </li>
-                        <li id="phaseStatus">Phase Status: </li>
-                        <li id="entryStatus">Entry Status: </li>
-                        <li id="start_date">Start Date: </li>
-                        <li id="end_date">End Date: </li>
+                        <li >Product Type: <span id="productType" class="text-white"></span></li>
+                        <li >Product Category: <span id="productCategory" class="text-white"></span></li>
+                        <li id="productPrice">Product Price: ₱ <span id="productCategory" class="text-white"></span></li>
+                        <li id="description">Description: <span id="productCategory" class="text-white"></span></li>
+                        <li id="phase">Phase: <span id="productCategory" class="text-white"></span></li>
+                        <li id="block">Block: <span id="productCategory" class="text-white"></span></li>
+                        <li id="phaseStatus">Phase Status: <span id="productCategory" class="text-white"></span></li>
+                        <li id="entryStatus">Entry Status: <span id="productCategory" class="text-white"></span></li>
+                        <li id="start_date">Start Date: <span id="productCategory" class="text-white"></span></li>
+                        <li id="end_date">End Date: <span id="productCategory" class="text-white"></span></li>
                     </ul>
                 </div>
                 <hr style="border: 2px dashed;">
@@ -125,8 +128,8 @@
                                 <i class="fas fa-check-circle" id="wdp-check-circle-color" style="position: absolute; top: 20%; transform: translateY(-50%); right: 0;"></i>
                             </p>
                             <ul class="mb-2">
-                                <li id="">Monthly: ₱</li>
-                                <li id="">Term: </li>
+                                <li id="wdp_monthly_payment">Monthly: ₱</li>
+                                <li id="wdp_term">Term: </li>
                             </ul>
                         </li>
                         <li style="position: relative;">
@@ -135,8 +138,8 @@
                                 <i class="fas fa-check-circle" id="ndp-check-circle-color" style="position: absolute; top: 20%; transform: translateY(-50%); right: 0;"></i>
                             </p>
                             <ul class="mb-2">
-                                <li id="">Monthly: ₱</li>
-                                <li id="">Term: </li>
+                                <li id="ndp_monthly_payment">Monthly: ₱</li>
+                                <li id="ndp_term">Term: </li>
                             </ul>
                         </li>
                         <li style="position: relative;">
@@ -145,8 +148,8 @@
                                 <i class="fas fa-check-circle" id="wdpni-check-circle-color" style="position: absolute; top: 20%; transform: translateY(-50%); right: 0;"></i>
                             </p>
                             <ul class="mb-2">
-                                <li id="">Monthly: ₱</li>
-                                <li id="">Term: </li>
+                                <li id="wdpni_monthly_payment">Monthly: ₱</li>
+                                <li id="wdpni_term">Term: </li>
                             </ul>
                         </li>
                         <li style="position: relative;">
@@ -155,8 +158,8 @@
                                 <i class="fas fa-check-circle" id="ndpni-check-circle-color" style="position: absolute; top: 20%; transform: translateY(-50%); right: 0;"></i>
                             </p>
                             <ul>
-                                <li id="">Monthly: ₱</li>
-                                <li id="">Term: </li>
+                                <li id="ndpni_monthly_payment">Monthly: ₱</li>
+                                <li id="ndpni_term">Term: </li>
                             </ul>
                         </li>
                     </ol>
@@ -392,6 +395,8 @@
                 resetSelectedPlpMode();
                 updateFileTextIconVisibility('');
                 resetCheckCircleColors();
+                resetProductPriceModeDetails();
+                resetTermOption();
 
                 console.log(response);
 
@@ -429,9 +434,12 @@
 
         $('#plp_id').val('');
         
+        $('#productType').text('');
+        $('#productCategory').text('');
         $('#productPrice').text('Product Price: ₱ ');
         $('#description').text('Description: ');
         $('#phase').text('Phase: ');
+        $('#block').text('Block: ');
         $('#phaseStatus').text('Phase Status: ');
         $('#entryStatus').text('Entry Status: ');
     }
@@ -459,6 +467,8 @@
                     resetSelectedPlpMode();
                     updateFileTextIconVisibility('');
                     resetCheckCircleColors();
+                    resetProductPriceModeDetails();
+                    resetTermOption();
 
                     // Handle the received details (update UI, etc.)
                     console.log(details);
@@ -466,9 +476,12 @@
                     $('#plp_id').val(details.entryDetails.product_list_price_id);
 
                     // Update the content of the HTML elements with the received details
+                    $('#productType').text(details.listPriceDetails.product_type);
+                    $('#productCategory').text(details.listPriceDetails.product_category);
                     $('#productPrice').text('Product Price: ₱ ' + details.listPriceDetails.list_price);
                     $('#description').text('Description: ' + details.listPriceDetails.product_description);
                     $('#phase').text('Phase: ' + details.phaseDetails.phase_name);
+                    $('#block').text('Block: ' + details.blockDetails.block_number);
                     $('#phaseStatus').text('Phase Status: ' + details.phaseDetails.status);
                     $('#entryStatus').text('Entry Status: ' + details.entryDetails.status);
                 },
@@ -555,7 +568,7 @@
 
      //Event handler for the product list price mode dropdown
     $('#plpMode').on('change', function () {
-        var selectedPlpMode = $(this).val();
+        selectedPlpMode = $(this).val();
         var plpIdValue = $('#plp_id').val(); // Get the value of the plp_id input field so that we can get the prices
 
         $.ajax({
@@ -570,9 +583,11 @@
                 // Handle the received details (update UI, etc.)
                 console.log(plpModeDetails);
 
+                resetProductPriceModeDetails()
+
                 // Update the content of the HTML elements with the received plpModeDetails
-                $('#at_need').text('Price: ₱' + plpModeDetails.at_need);
-                $('#spot_cash').text('Price: ₱ ' + plpModeDetails.spot_cash);
+                updateAtNeedAndSpotCash('#at_need', plpModeDetails.at_need, 'Price:');
+                updateAtNeedAndSpotCash('#spot_cash', plpModeDetails.spot_cash, 'Price:');
 
                 var termOptions = $('#term'); //populate option on this id
 
@@ -596,7 +611,13 @@
                     `);
                 }
 
-                // Populate the table with data for WDPNI modal
+                // Check if the condition for scrolling is met (replace 'yourCondition' with your actual condition)
+                if (selectedPlpMode) {
+                    // Scroll to the top of the element with the ID 'scrollToElement'
+                    $('html, body').scrollTop($('#product_entry_code').offset().top);
+                }
+
+                // Populate the table with data for WDP modal
                 var wdpTableBody = $('#wdp_show_more_price .table-dark tbody');
                 wdpTableBody.empty(); // Clear existing rows
 
@@ -613,7 +634,7 @@
                     wdpTableBody.append(rowHtml);
                 }
 
-                // Populate the table with data for WDPNI modal
+                // Populate the table with data for NDP modal
                 var ndpTableBody = $('#ndp_show_more_price .table-dark tbody');
                 ndpTableBody.empty(); // Clear existing rows
 
@@ -647,7 +668,7 @@
                     wdpniTableBody.append(rowHtml);
                 }
 
-                // Populate the table with data for WDPNI modal
+                // Populate the table with data for NDPNI modal
                 var ndpniTableBody = $('#ndpni_show_more_price .table-dark tbody');
                 ndpniTableBody.empty(); // Clear existing rows
 
@@ -733,34 +754,84 @@
         });
     });
 
-    // Event handler for WDP Term change
+    // Function to clear term optiom
+    function resetTermOption() {
+        $('#term').html(`<option>No Available Term</option>`);
+    }
+
+    // Function to clear product price mode details
+    function resetProductPriceModeDetails() {
+
+        $('#at_need').text('Price: ₱ ');
+        $('#spot_cash').text('Price: ₱ ');
+
+        $('#wdp_monthly_payment').text('Monthly: ₱ ');
+        $('#wdp_term').text('Term: ');
+
+        $('#ndp_monthly_payment').text('Monthly: ₱ ');
+        $('#ndp_term').text('Term: ');
+
+        $('#wdpni_monthly_payment').text('Monthly: ₱ ');
+        $('#wdpni_term').text('Term: ');
+
+        $('#ndpni_monthly_payment').text('Monthly: ₱ ');
+        $('#ndpmi_term').text('Term: ');
+    }
+
+    function updateMonthly(elementId, value, label) {
+        // Update the content of the HTML element with the received value or an empty string if undefined
+        $(elementId).text(value !== undefined && value !== null ? label + ' ₱ ' + value : label + ' ₱');
+    }
+
+    function updateTerm(elementId, value, label) {
+        // Update the content of the HTML element with the received value or an empty string if undefined
+        $(elementId).text(value !== undefined && value !== null ? label + value + ' months' : label + '');
+    }
+
+    function updateAtNeedAndSpotCash(elementId, value, label) {
+        // Update the content of the HTML element with the received value or an empty string if undefined
+        $(elementId).text(value !== undefined && value !== null ? label + ' ₱ ' + value : label + ' ₱');
+    }
+
+    // Event handler for Term change
     $('#term').change(function () {
-        var selectedPlpMode = $('#plpMode').val();
-        var plpIdValue = $('#plp_id').val();
+        // Assuming selectedPlpMode is already declared globally
         var selectedTerm = $(this).val();
-
+        var plpIdValue = $('#plp_id').val(); // Get the value of the hidden input field
+        
         selectedTerm = parseInt(selectedTerm);
-
+        
         $.ajax({
-            url: '/admin/staff/user/customer/purchase-memorial-lot/get-product-list-price-mode-details/' + selectedTerm,
+            url: '/admin/staff/user/customer/purchase-memorial-lot/get-product-term-details/' + selectedTerm + '/' + selectedPlpMode + '/' + plpIdValue,
             method: 'GET',
-            data: { 
-                selectedPlpMode: selectedPlpMode,
-                plpId: plpIdValue,
+            data: {
+                selectedPlpMode: selectedPlpMode, // Reuse the globally declared variable
                 selectedTerm: selectedTerm,
+                plpId: plpIdValue, // Include the value of the hidden input field
             },
             dataType: 'json',
-            success: function (plpModeDetails) {
+            success: function (plpModeAndTermDetails) {
                 // Handle the received details (update UI, etc.)
-                console.log(plpModeDetails);
+                console.log(plpModeAndTermDetails);
 
-                // Additional logic as needed
+                updateMonthly('#wdp_monthly_payment', plpModeAndTermDetails.wdp_monthly_payment, 'Monthly:');
+                updateTerm('#wdp_term', plpModeAndTermDetails.wdp_term, 'Term: ');
+
+                updateMonthly('#ndp_monthly_payment', plpModeAndTermDetails.ndp_monthly_payment, 'Monthly:');
+                updateTerm('#ndp_term', plpModeAndTermDetails.ndp_term, 'Term: ');
+
+                updateMonthly('#wdpni_monthly_payment', plpModeAndTermDetails.wdpni_monthly_payment, 'Monthly:');
+                updateTerm('#wdpni_term', plpModeAndTermDetails.wdpni_term, 'Term: ');
+
+                updateMonthly('#ndpni_monthly_payment', plpModeAndTermDetails.ndpni_monthly_payment, 'Monthly:');
+                updateTerm('#ndpmi_term', plpModeAndTermDetails.ndpmi_term, 'Term: ');
+
             },
             error: function (error) {
                 console.error('Error fetching product list price details:', error);
             }
         });
     });
-    
+
 </script>
 @endsection

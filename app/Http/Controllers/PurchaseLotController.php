@@ -18,6 +18,7 @@ use App\Models\WithDownPayment;
 use App\Models\NoDownPayment;
 use App\Models\WithDownPaymentNoInterest;
 use App\Models\NoDownPaymentNoInterest;
+use App\Models\Block;
 
 class PurchaseLotController extends Controller
 {
@@ -129,12 +130,15 @@ class PurchaseLotController extends Controller
     
         // Fetch additional information from the 'Phase' table
         $phaseDetails = Phase::where('id', $entryDetails->phase_id)->first();
+
+        $blockDetails = Block::where('id', $entryCodeId)->first();
     
         // Return details as a JSON response
         return response()->json([
             'entryDetails' => $entryDetails ? $entryDetails->toArray() : [],
             'listPriceDetails' => $listPriceDetails ? $listPriceDetails->toArray() : [],
             'phaseDetails' => $phaseDetails ? $phaseDetails->toArray() : [],
+            'blockDetails' => $blockDetails ? $blockDetails->toArray() : [],
         ]);
     }
     
@@ -179,6 +183,48 @@ class PurchaseLotController extends Controller
 
         return response()->json($plpModeDetails ? $plpModeDetails->toArray() : []);
     }
+
+    public function getTermDetails(Request $request, $selectedTerm, $selectedPlpMode, $plpId) {
+        
+        $selectedPlpMode = $request->input('selectedPlpMode');
+        $plpIdValue = $request->input('plpId');
+
+        switch ($selectedPlpMode) {
+            case 'At-Need':
+                $plpModeAndTermDetails = AtNeed::where('product_list_price_id', $plpIdValue)
+                    ->first();
+                break;
+            case 'Spot Cash':
+                $plpModeAndTermDetails = PreNeed::where('product_list_price_id', $plpIdValue)
+                    ->first();
+                break;
+            case 'With Down Payment':
+                $plpModeAndTermDetails = WithDownPayment::where('product_list_price_id', $plpIdValue)
+                    ->where('wdp_term', $selectedTerm)
+                    ->first();
+                break;
+            case 'No Down Payment':
+                $plpModeAndTermDetails = NoDownPayment::where('product_list_price_id', $plpIdValue)
+                    ->where('ndp_term', $selectedTerm)
+                    ->first();
+                break;
+            case 'With Down Payment No Interest':
+                $plpModeAndTermDetails = WithDownPaymentNoInterest::where('product_list_price_id', $plpIdValue)
+                    ->where('wdpni_term', $selectedTerm)
+                    ->first();
+                break;
+            case 'No Down Payment No Interest':
+                $plpModeAndTermDetails = NoDownPaymentNoInterest::where('product_list_price_id', $plpIdValue)
+                    ->where('ndpni_term', $selectedTerm)
+                    ->first();
+                break;
+            default:
+                $plpModeAndTermDetails = null;
+        }
+
+        return response()->json($plpModeAndTermDetails ? $plpModeAndTermDetails->toArray() : []);
+
+    }//End Method
 
 
         
