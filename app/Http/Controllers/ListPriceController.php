@@ -15,6 +15,7 @@ use App\Models\WithDownPayment;
 use App\Models\NoDownPayment;
 use App\Models\WithDownPaymentNoInterest;
 use App\Models\NoDownPaymentNoInterest;
+use App\Models\SetTermNoInterestPurchase;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -61,7 +62,9 @@ class ListPriceController extends Controller
         $rate8 = Rate::find(8);
         $rate9 = Rate::find(9);
 
-        return view('admin.manager.content.index-show-list-price', compact('profileData','rate1', 'rate2', 'rate3', 'rate4', 'rate5', 'rate6', 'rate7', 'rate8', 'rate9'));
+        $termNoInterestPurchaseThatHasBeenSet = SetTermNoInterestPurchase::first();
+
+        return view('admin.manager.content.index-show-list-price', compact('profileData','rate1', 'rate2', 'rate3', 'rate4', 'rate5', 'rate6', 'rate7', 'rate8', 'rate9', 'termNoInterestPurchaseThatHasBeenSet'));
     }//End Show Manager Pricelist
 
     public function storeManagerListPrice(Request $request){
@@ -76,6 +79,9 @@ class ListPriceController extends Controller
             'at_need' => 'required',
             'down_payment_amount' => 'required',
             'remaining_balance' => 'required',
+
+            'wdpni_monthly_payment' => 'required',
+            'ndpni_monthly_payment' => 'required',
 
         ]);
 
@@ -126,7 +132,6 @@ class ListPriceController extends Controller
             WithDownPayment::create([
                 'product_list_price_id' => $PLP_id,
                 'wdp_term' => $request->input("wdp_term_{$i}"),
-                'wdp_annual_interest' => $request->input("wdp_annual_interest_{$i}"),
                 'wdp_monthly_payment' => $request->input("wdp_monthly_payment_{$i}"),
                 'wdp_end_price' => $request->input("wdp_end_price_{$i}"),
             ]);
@@ -137,31 +142,24 @@ class ListPriceController extends Controller
             NoDownPayment::create([
                 'product_list_price_id' => $PLP_id,
                 'ndp_term' => $request->input("ndp_term_{$i}"),
-                'ndp_annual_interest' => $request->input("ndp_annual_interest_{$i}"),
                 'ndp_monthly_payment' => $request->input("ndp_monthly_payment_{$i}"),
                 'ndp_end_price' => $request->input("ndp_end_price_{$i}"),
             ]);
         }
-        
-        for ($i = 1; $i <= 5; $i++) {
     
-            WithDownPaymentNoInterest::create([
-                'product_list_price_id' => $PLP_id,
-                'wdpni_term' => $request->input("wdpni_term_{$i}"),
-                'wdpni_monthly_payment' => $request->input("wdpni_monthly_payment_{$i}"),
-                'wdpni_end_price' => $request->input("wdpni_end_price_{$i}"),
-            ]);
-        }
-
-        for ($i = 1; $i <= 5; $i++) {
-    
-            NoDownPaymentNoInterest::create([
-                'product_list_price_id' => $PLP_id,
-                'ndpni_term' => $request->input("ndpni_term_{$i}"),
-                'ndpni_monthly_payment' => $request->input("ndpni_monthly_payment_{$i}"),
-                'ndpni_end_price' => $request->input("ndpni_end_price_{$i}"),
-            ]);
-        }
+        WithDownPaymentNoInterest::create([
+            'product_list_price_id' => $PLP_id,
+            'wdpni_term' => $request->input("wdpni_term_1"),
+            'wdpni_monthly_payment' => $request->input("wdpni_monthly_payment"),
+            'wdpni_end_price' => $request->input("wdpni_end_price_1"),
+        ]);
+       
+        NoDownPaymentNoInterest::create([
+            'product_list_price_id' => $PLP_id,
+            'ndpni_term' => $request->input("ndpni_term_1"),
+            'ndpni_monthly_payment' => $request->input("ndpni_monthly_payment"),
+            'ndpni_end_price' => $request->input("ndpni_end_price_1"),
+        ]);
 
         //dd($request->all());
 

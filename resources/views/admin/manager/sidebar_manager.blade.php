@@ -33,6 +33,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('manager.show.set.term') }}" class="nav-link">
+              <i class="link-icon" data-feather="edit-2"></i>
+              <span class="link-title">Set Term (No Interest)</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('manager.show.phase') }}" class="nav-link">
               <i class="link-icon" data-feather="map"></i>
               <span class="link-title">Phase</span>

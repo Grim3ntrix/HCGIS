@@ -184,7 +184,6 @@
                                 <thead>
                                     <tr>
                                         <th>Term in Months</th>
-                                        <th>Annual Interest</th>
                                         <th>Monthly</th>
                                         <th>End Price</th>
                                     </tr>
@@ -223,7 +222,6 @@
                             <thead>
                                 <tr>
                                     <th>Term in Months</th>
-                                    <th>Annual Interest</th>
                                     <th>Monthly</th>
                                     <th>End Price</th>
                                 </tr>
@@ -262,7 +260,6 @@
                             <thead>
                                 <tr>
                                     <th>Term in Months</th>
-                                    <th>Annual Interest</th>
                                     <th>Monthly</th>
                                     <th>End Price</th>
                                 </tr>
@@ -301,7 +298,6 @@
                             <thead>
                                 <tr>
                                     <th>Term in Months</th>
-                                    <th>Annual Interest</th>
                                     <th>Monthly</th>
                                     <th>End Price</th>
                                 </tr>
@@ -591,30 +587,34 @@
 
                 var termOptions = $('#term'); //populate option on this id
 
-                if (
-                    selectedPlpMode === 'With Down Payment' ||
-                    selectedPlpMode === 'No Down Payment' ||
-                    selectedPlpMode === 'With Down Payment No Interest' ||
-                    selectedPlpMode === 'No Down Payment No Interest'
-                    ) {
-                    termOptions.html(`
-                        <option selected disabled>Open this select menu</option>
-                        <option value="12">1 year/s or 12 Months</option>
-                        <option value="24">2 year/s or 24 Months</option>
-                        <option value="36">3 year/s or 36 Months</option>
-                        <option value="48">4 year/s or 48 Months</option>
-                        <option value="60">5 year/s or 60 Months</option>
-                    `);
-                    } else {
-                    termOptions.html(`
-                        <option value="" selected>No Available Term</option>
+                switch (selectedPlpMode) {
+                    case 'With Down Payment':
+                    case 'No Down Payment':
+                        termOptions.html(`
+                            <option selected disabled>Open this select menu</option>
+                            <option value="12">1 year/s or 12 Months</option>
+                            <option value="24">2 year/s or 24 Months</option>
+                            <option value="36">3 year/s or 36 Months</option>
+                            <option value="48">4 year/s or 48 Months</option>
+                            <option value="60">5 year/s or 60 Months</option>
+                        `);
+                        break;
+                    case 'With Down Payment No Interest':
+                    case 'No Down Payment No Interest':
+                        termOptions.html(`
+                            <option selected disabled>Term is Already Set</option>
+                        `);
+                        break;
+                    default:
+                        termOptions.html(`
+                            <option value="" selected>No Available Term</option>
                     `);
                 }
 
                 // Check if the condition for scrolling is met (replace 'yourCondition' with your actual condition)
                 if (selectedPlpMode) {
                     // Scroll to the top of the element with the ID 'scrollToElement'
-                    $('html, body').scrollTop($('#product_entry_code').offset().top);
+                    $(window).scrollTop($('#product_entry_code').offset().top);
                 }
 
                 // Populate the table with data for WDP modal
@@ -626,7 +626,6 @@
                     var rowHtml = `
                         <tr>
                             <td>${rowData.wdp_term}</td>
-                            <td>${rowData.wdp_annual_interest}</td>
                             <td>${rowData.wdp_monthly_payment}</td>
                             <td>${rowData.wdp_end_price}</td>
                         </tr>
@@ -643,7 +642,6 @@
                     var rowHtml = `
                         <tr>
                             <td>${rowData.ndp_term}</td>
-                            <td>${rowData.ndp_annual_interest}</td>
                             <td>${rowData.ndp_monthly_payment}</td>
                             <td>${rowData.ndp_end_price}</td>
                         </tr>
@@ -660,7 +658,6 @@
                     var rowHtml = `
                         <tr>
                             <td>${rowData.wdpni_term}</td>
-                            <td>${rowData.wdpni_annual_interest}</td>
                             <td>${rowData.wdpni_monthly_payment}</td>
                             <td>${rowData.wdpni_end_price}</td>
                         </tr>
@@ -677,7 +674,6 @@
                     var rowHtml = `
                         <tr>
                             <td>${rowData.ndpni_term}</td>
-                            <td>${rowData.annual_interest}</td>
                             <td>${rowData.ndpni_monthly_payment}</td>
                             <td>${rowData.ndpni_end_price}</td>
                         </tr>
@@ -793,10 +789,12 @@
         $(elementId).text(value !== undefined && value !== null ? label + ' ₱ ' + value : label + ' ₱');
     }
 
+    var selectedTerm;
+
     // Event handler for Term change
     $('#term').change(function () {
         // Assuming selectedPlpMode is already declared globally
-        var selectedTerm = $(this).val();
+        selectedTerm = $(this).val();
         var plpIdValue = $('#plp_id').val(); // Get the value of the hidden input field
         
         selectedTerm = parseInt(selectedTerm);
@@ -826,6 +824,12 @@
                 updateMonthly('#ndpni_monthly_payment', plpModeAndTermDetails.ndpni_monthly_payment, 'Monthly:');
                 updateTerm('#ndpmi_term', plpModeAndTermDetails.ndpmi_term, 'Term: ');
 
+                // Check if the condition for scrolling is met (replace 'yourCondition' with your actual condition)
+                if (selectedTerm) {
+                    // Scroll to the top of the element with the ID 'scrollToElement'
+                    $(window).scrollTop($('#product_entry_code').offset().top);
+                }
+            
             },
             error: function (error) {
                 console.error('Error fetching product list price details:', error);

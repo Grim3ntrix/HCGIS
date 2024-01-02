@@ -39,7 +39,7 @@
 
 <script>
     $(document).ready(function () {
-        var viewUrl = "{{ route('manager.view.list.price', ':id') }}";
+        //var viewUrl = "{{ route('manager.view.list.price', ':id') }}";
         var deleteUrl = "{{ route('manager.delete.list.price', ':id') }}";
 
         var allListPrice = $('#allListPrice').DataTable({
@@ -54,7 +54,7 @@
                     name: 'id',
                     render: function (data, type, row) {
                         var actions = '';
-                        actions += '<a href="' + viewUrl.replace(':id', data) + ' }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-eye fa-sm"></i></a>';
+                        //actions += '<a href="' + viewUrl.replace(':id', data) + ' }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-eye fa-sm"></i></a>';
                         actions += '<a href="' + deleteUrl.replace(':id', data) + ' }}" id="delete" class="btn btn-outline-danger btn-icon" style="margin-right: 3px"><i class="fa-solid fa-trash fa-sm"></i></a>';
                         return actions.replace(':id', data);
                     }

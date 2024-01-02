@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('with_down_payments', function (Blueprint $table) {
+        Schema::create('set_term_no_interest_purchases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_list_price_id')->constrained('product_list_prices')->onDelete('cascade');
-            $table->integer('wdp_term');
-            $table->decimal('wdp_monthly_payment', 10, 2);
-            $table->decimal('wdp_end_price', 10, 2);
+            $table->integer('term_in_months');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('with_down_payments');
+        Schema::dropIfExists('set_term_no_interest_purchases');
     }
 };

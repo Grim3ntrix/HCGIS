@@ -18,7 +18,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\PhaseController;
 use App\Http\Controllers\MemorialLotEntryController;
-
+use App\Http\Controllers\SetTermNoInterestPurchaseController;
 
 /*
 /*
@@ -81,6 +81,11 @@ Route::middleware(['auth','role:manager'])->group(function(){
     Route::get('/admin/manager/discount/rate', [RateController::class, 'showRate'])->name('manager.show.discount.rate');
     Route::post('/admin/manager/discount/rate/store', [RateController::class, 'storeRate'])->name('manager.store.discount.rate');
     //Discount Manager
+
+    //Set Term Manager
+    Route::get('/admin/manager/set-term-no-interest-purchase', [SetTermNoInterestPurchaseController::class, 'showSetTermNoInterestPurchase'])->name('manager.show.set.term');
+    Route::post('/admin/manager/set-term/store', [SetTermNoInterestPurchaseController::class, 'storeSetTermNoInterestPurchase'])->name('manager.store.set.term');
+    //Set Term Manager
 
     //Phase
     Route::get('/admin/manager/phase', [PhaseController::class, 'showManagerPhase'])->name('manager.show.phase');
