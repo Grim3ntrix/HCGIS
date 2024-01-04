@@ -12,7 +12,7 @@
                             <div class="col-sm-12">
                                 <div class="mb-3">
                                     <label for="phase_name" class="form-label">Phase Name</label>
-                                    <input type="text" name="phase_name" id="phase_name" value="{{ old('phase_name') }}" class="form-control @error('phase_name') is-invalid @enderror" placeholder="Enter Phase Name">
+                                    <input type="text" name="phase_name" id="phase_name" value="{{ old('phase_name') }}" class="form-control @error('phase_name') is-invalid @enderror" placeholder="Enter Phase Name" autocomplete="off">
                                     @error('phase_name')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -48,6 +48,8 @@
     </div>
 </div>
 
+<!-- ... -->
+
 <!-- Modal -->
 <div class="modal fade" id="editPhaseModal" tabindex="-1" aria-labelledby="editPhaseModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -61,8 +63,8 @@
                     @csrf
                     <input type="hidden" name="id" id="editPhaseId">
                     <div class="mb-3">
-                        <label for="phase_name" class="form-label">Phase Name</label>
-                        <input type="text" name="phase_name" id="retrieve_phase_name" class="form-control">
+                        <label for="edit_phase_name" class="form-label">Phase Name</label>
+                        <input type="text" name="edit_phase_name" id="edit_phase_name" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
@@ -72,7 +74,7 @@
                             <option value="unavailable">Not-Available</option>
                         </select>
                     </div>
-                    <button type="button" class="btn btn-primary" id="submitEditPhase">Update</button>
+                    <button type="submit" class="btn btn-primary" id="submit">Update</button>
                 </form>
             </div>
         </div>
@@ -80,11 +82,11 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    var editUrl = "{{ route('manager.edit.phase', ':id') }}";
-    var deleteUrl = "{{ route('manager.delete.phase', ':id') }}";
+    $(document).ready(function() {
+        var editUrl = "{{ route('manager.edit.phase', ':id') }}";
+        var deleteUrl = "{{ route('manager.delete.phase', ':id') }}";
 
-    var Phase = $('#phase').DataTable({
+        var Phase = $('#phase').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
@@ -114,17 +116,24 @@ $(document).ready(function() {
         ]
     });
 
-    $('#phase tbody').on('click', '.edit-phase', function() {
-        var phaseId = $(this).data('id');
+    var phaseId = $(this).data('id');
 
+    // Event handler for the editPhase
+    $('#phase tbody').on('click', '.edit-phase', function() {
+        phaseId = $(this).data('id');
+
+        // Perform AJAX request to get specific phaseId
         $.ajax({
-            url: editUrl.replace(':id', phaseId),
-            type: 'GET',
-            success: function(response) {
-                $('#retrieve_phase_name').val(response.phase_name); // Set the phase_name value
+            url: '/admin/manager/phase/edit/' + phaseId,
+            method: 'GET',
+            dataType: 'json',
+            success: function (editPhase) {
+                $('#edit_phase_name').val(editPhase.editPhase.phase_name); // Set the phase_name value
                 $('#editPhaseId').val(phaseId);
-                $('#status').val(response.status); // Set the selected status
+                $('#status').val(editPhase.editPhase.status); // Set the selected status
                 $('#editPhaseModal').modal('show');
+
+                console.log(editPhase);
             },
             error: function(error) {
                 console.error('Error fetching phase details:', error);
@@ -133,16 +142,15 @@ $(document).ready(function() {
     });
 
     // Submit Edit Phase Form
-    $('#submitEditPhase').on('click', function() {
+    $('#submit').on('click', function() {
         var editPhaseForm = $('#editPhaseForm');
 
         $.ajax({
-            url: editUrl.replace(':id', $('#editPhaseId').val()),
+            url: '/admin/manager/phase/update/' + phaseId,
             type: 'HEAD',
             data: editPhaseForm.serialize(),
             success: function(response) {
                 $('#editPhaseModal').modal('hide');
-                Phase.ajax.reload();
             },
             error: function(error) {
                 console.error('Error updating phase:', error);

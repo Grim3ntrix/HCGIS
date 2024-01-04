@@ -38,22 +38,36 @@ class PhaseController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function updateManagerPhase(Request $request)
+    public function editManagerPhase(Request $request, $phaseId)
     {
-        $phaseID = $request->input('id');
+        $editPhase = Phase::where('id', $phaseId)->first();
     
+        return response()->json([
+            'editPhase' => $editPhase ? $editPhase->toArray() : [],
+        ]);
+    }
+
+    public function updateManagerPhase(Request $request)
+{
+    $phaseID = $request->input('id');
+
+    try {
         $updatePhase = Phase::where('id', $phaseID)->update([
-            'phase_name' => $request->input('phase_name'),
+            'phase_name' => $request->input('edit_phase_name'),
             'status' => $request->input('status'),
         ]);
-    
+
         $notification = [
             'message' => 'Phase Updated Successfully!',
             'alert-type' => 'success',
         ];
-    
+
         return response()->json($notification);
-    }    
+    } catch (\Exception $e) {
+        Log::error('Error updating phase: ' . $e->getMessage());
+        return response()->json(['error' => 'An error occurred during the update. Please check the logs for more details.'], 500);
+    }
+}
 
     public function deleteManagerPhase(Request $request){
 

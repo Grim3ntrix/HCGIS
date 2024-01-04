@@ -57,9 +57,10 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                    </div><!-- Row -->
-
-                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                        </div><!-- Row -->
+                    
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

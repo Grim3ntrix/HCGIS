@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('personal_information', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('last_name', 50);
             $table->string('first_name', 50);
-            $table->string('middle_initial', 10);
+            $table->string('middle_initial', 1)->nullable();
             $table->string('name_extension', 10)->nullable();
             $table->string('gender', 50);
             $table->string('religion', 50);
@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('email_address');
             $table->string('telephone')->nullable();
             $table->string('phone_number');
-            $table->string('sales_counselor', 50);
-            $table->string('agency_manager', 60);
+            //$table->string('sales_counselor', 50);
+            //$table->string('agency_manager', 60);
             $table->timestamps();
         });
     }

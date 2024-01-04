@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Customer Account</h4>
-                    <a href="{{ route('add.customer.account') }}" class="btn btn-dark btn-xs">New</a>
+                    <a href="{{ route('add.customer.account') }}" class="btn btn-dark btn-xs">Register Account</a>
                     <div class="table-responsive pt-3">
                         <table class="table table-dark">
                             <thead>

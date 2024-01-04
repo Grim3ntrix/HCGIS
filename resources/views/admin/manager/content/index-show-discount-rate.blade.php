@@ -13,7 +13,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_1" class="form-label">1 year or 12 months</label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_1" id="one_year_rate_percentage" value="{{ optional($rate1)->interest_rate_percentage}}" class="form-control @error('one_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_1" id="one_year_rate_percentage" value="{{ optional($rate1)->interest_rate_percentage}}" class="form-control @error('one_year_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('one_year_rate_percentage')
@@ -37,7 +37,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_2" class="form-label">2 years or 24 months</label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_2" id="two_year_rate_percentage" value="{{ optional($rate2)->interest_rate_percentage}}" class="form-control @error('two_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_2" id="two_year_rate_percentage" value="{{ optional($rate2)->interest_rate_percentage}}" class="form-control @error('two_year_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('two_year_rate_percentage')
@@ -62,7 +62,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_3" class="form-label">3 year or 36 months</label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_3" id="three_year_rate_percentage" value="{{ optional($rate3)->interest_rate_percentage}}" class="form-control @error('three_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_3" id="three_year_rate_percentage" value="{{ optional($rate3)->interest_rate_percentage}}" class="form-control @error('three_year_rate_percentage') is-invalid @enderror" placeholder="0.000%" >
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('three_year_rate_percentage')
@@ -86,7 +86,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_4" class="form-label">4 year or 48 months</label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_4" id="four_year_rate_percentage" value="{{ optional($rate4)->interest_rate_percentage}}" class="form-control @error('four_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_4" id="four_year_rate_percentage" value="{{ optional($rate4)->interest_rate_percentage}}" class="form-control @error('four_year_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('four_year_rate_percentage')
@@ -112,7 +112,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_5" class="form-label">5 year or 60 months</label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_5" id="five_year_rate_percentage" value="{{ optional($rate5)->interest_rate_percentage}}" class="form-control @error('five_year_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_5" id="five_year_rate_percentage" value="{{ optional($rate5)->interest_rate_percentage}}" class="form-control @error('five_year_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('five_year_rate_percentage')
@@ -146,7 +146,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_6" class="form-label">Spot Cash<span style="font-size:12px; color: #0DCAF0;"> (Discount)</span></label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_6" id="spot_cash_rate_percentage" value="{{ optional($rate6)->interest_rate_percentage}}" class="form-control @error('spot_cash_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_6" id="spot_cash_rate_percentage" value="{{ optional($rate6)->interest_rate_percentage}}" class="form-control @error('spot_cash_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('spot_cash_rate_percentage')
@@ -170,7 +170,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_7" class="form-label">At Need<span style="font-size:12px; color: #0DCAF0;"> (Additional Fee)</span></label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_7" id="at_need_rate_percentage" value="{{ optional($rate7)->interest_rate_percentage}}" class="form-control @error('at_need_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_7" id="at_need_rate_percentage" value="{{ optional($rate7)->interest_rate_percentage}}" class="form-control @error('at_need_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('at_need_rate_percentage')
@@ -196,7 +196,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_8" class="form-label">Down Payment Rate</label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_8" id="down_payment_rate_percentage" value="{{ optional($rate8)->interest_rate_percentage}}" class="form-control @error('down_payment_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_8" id="down_payment_rate_percentage" value="{{ optional($rate8)->interest_rate_percentage}}" class="form-control @error('down_payment_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('down_payment_rate_percentage')
@@ -231,7 +231,7 @@
                                 <div class="mb-3">
                                     <label for="interest_rate_percentage_9" class="form-label">Penalty Rate</label>
                                     <div class="input-group">
-                                        <input type="text" step="any" name="interest_rate_percentage_9" id="penalty_rate_percentage" value="{{ optional($rate9)->interest_rate_percentage}}" class="form-control @error('penalty_rate_percentage') is-invalid @enderror" placeholder="0.000%">
+                                        <input type="text" step="any" name="interest_rate_percentage_9" id="penalty_rate_percentage" value="{{ optional($rate9)->interest_rate_percentage}}" class="form-control @error('penalty_rate_percentage') is-invalid @enderror" placeholder="0.000%" autocomplete="off">
                                         <span class="input-group-text">%</span>
                                     </div>
                                     @error('penalty_rate_percentage')

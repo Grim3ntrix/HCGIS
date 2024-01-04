@@ -11,8 +11,6 @@
                         <thead>
                             <th>Action</th>
                             <th>Name</th>
-                            <th>Address</th>
-                            <th>Email</th>
                             <th>Phone</th>
                             <th>Created</th>
                         </thead>
@@ -28,7 +26,7 @@
 <script>
   $(document).ready(function() {
 
-      var editUrl = "{{ route('staff.show.personalinfo.form', ':id') }}";
+      //var editUrl = "{{ route('staff.show.personalinfo.form', ':id') }}";
       var cartUrl = "{{ route('staff.show.productdetail.form', ':id') }}";
 
       var purchaseLotTable = $('#showUserCustomer').DataTable({
@@ -43,14 +41,12 @@
             name: 'id',
             render: function(data, type, row) {
                 var actions = '';
-                actions += '<a href="' + editUrl.replace(':id', data) + ' }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
-                actions += '<a href="' + cartUrl.replace(':id', data) + ' }}" class="btn btn-inverse-light btn-icon"><i class="fa-solid fa-cart-plus fa-sm"></i></a>';
+                //actions += '<a href="' + editUrl.replace(':id', data) + ' }}" class="btn btn-outline-primary btn-icon" style="margin-right: 3px"><i class="fa-solid fa-edit fa-sm"></i></a>';
+                actions += '<a href="' + cartUrl.replace(':id', data) + ' }}" class="btn btn-outline-primary btn-icon"><i class="fa-solid fa-cart-plus fa-sm"></i></a>';
                 return actions.replace(':id', data);
               }
             },
             {data: 'name', name: 'name' },
-            {data: 'address', name: 'address' },
-            {data: 'email', name: 'email' },
             {data: 'phone', name: 'phone' },
             {data: 'created_at', name: 'created_at',
             render: function (data, type, row) {
