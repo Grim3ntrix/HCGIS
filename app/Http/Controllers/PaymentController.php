@@ -16,13 +16,31 @@ class PaymentController extends Controller
             $showCustomer = User::where('role','customer');
             return DataTables::of($showCustomer)->addIndexColumn()->make(true);        
         }
-        return view('admin.staff.content.index-show-payment');
+        return view('admin.staff.content.index-show-customer-for-payment');
     }
 
-    public function addPayment(){
+    public function showOrderNumber(Request $request){
 
+        $customerId = $request->route('id');
+        $customer = User::find($customerId);
 
-        return view('admin.staff.content.index-add-payment');
+        return view('admin.staff.content.index-show-order-number', compact('customer'));
+    }
+
+    public function showPaymentForm(Request $request){
+
+        $customerId = $request->route('id');
+        $customer = User::find($customerId);
+
+        return view('admin.staff.content.index-show-order-number', compact('customer'));
+    }
+
+    public function showPaymentDetails(Request $request){
+
+        $customerId = $request->route('id');
+        $customer = User::find($customerId);
+
+        return view('admin.staff.content.index-show-order-details', compact('customer'));
     }
 
 }

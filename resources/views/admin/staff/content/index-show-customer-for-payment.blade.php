@@ -28,7 +28,7 @@
 <script>
   $(document).ready(function() {
 
-      var paymentUrl = "{{ route('staff.add.payment', ':id') }}";
+      var paymentUrl = "{{ route('staff.show.order.number', ':id') }}";
 
       var payment = $('#showCustomers').DataTable({
           processing: true,

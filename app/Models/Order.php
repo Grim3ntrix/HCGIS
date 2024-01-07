@@ -26,5 +26,9 @@ class Order extends Model
     public function paymentSchedule(){
         return $this->hasMany(PaymentSchedule::class, 'order_id');
     }
+
+    public function orderCode(){
+        return $this->belongsTo(OrderCode::class, 'order_code_id');
+    }
     
 }

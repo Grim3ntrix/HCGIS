@@ -137,7 +137,9 @@ Route::middleware(['auth','role:staff'])->group(function(){
 
     //Payments Information
     Route::get('admin/staff/customer/latest', [PaymentController::class, 'showCustomer'])->name('staff.show.customer');
-    Route::get('admin/staff/customer/add-payment/{id}', [PaymentController::class, 'addPayment'])->name('staff.add.payment');
+    Route::get('admin/staff/customer/show/payment/order/{id}', [PaymentController::class, 'showOrderNumber'])->name('staff.show.order.number');
+    Route::get('admin/staff/customer/show/payment-form/{id}', [PaymentController::class, 'showPaymentForm'])->name('staff.show.payment.form');
+    Route::get('admin/staff/customer/show/payment-details/{id}', [PaymentController::class, 'showPaymentDetails'])->name('staff.show.payment.details');
     //Payments Information
 
     //Create Customer Account
